@@ -1,0 +1,274 @@
+{
+  "generatedAt": "2026-11-10T13:28:29.855Z",
+  "projects": 13,
+  "projectPages": 40,
+  "images": 40,
+  "files": [
+    {
+      "file": "assets/pages/page-05.jpg",
+      "bytes": 88084
+    },
+    {
+      "file": "assets/pages/page-06.jpg",
+      "bytes": 41529
+    },
+    {
+      "file": "assets/pages/page-07.jpg",
+      "bytes": 114153
+    },
+    {
+      "file": "assets/pages/page-09.jpg",
+      "bytes": 120932
+    },
+    {
+      "file": "assets/pages/page-10.jpg",
+      "bytes": 110644
+    },
+    {
+      "file": "assets/pages/page-08.jpg",
+      "bytes": 99568
+    },
+    {
+      "file": "assets/pages/page-11.jpg",
+      "bytes": 88737
+    },
+    {
+      "file": "assets/pages/page-12.jpg",
+      "bytes": 61607
+    },
+    {
+      "file": "assets/pages/page-13.jpg",
+      "bytes": 85883
+    },
+    {
+      "file": "assets/pages/page-14.jpg",
+      "bytes": 116564
+    },
+    {
+      "file": "assets/pages/page-15.jpg",
+      "bytes": 86168
+    },
+    {
+      "file": "assets/pages/page-16.jpg",
+      "bytes": 46876
+    },
+    {
+      "file": "assets/pages/page-17.jpg",
+      "bytes": 125445
+    },
+    {
+      "file": "assets/pages/page-18.jpg",
+      "bytes": 87046
+    },
+    {
+      "file": "assets/pages/page-21.jpg",
+      "bytes": 102721
+    },
+    {
+      "file": "assets/pages/page-19.jpg",
+      "bytes": 79184
+    },
+    {
+      "file": "assets/pages/page-22.jpg",
+      "bytes": 80001
+    },
+    {
+      "file": "assets/pages/page-23.jpg",
+      "bytes": 66175
+    },
+    {
+      "file": "assets/pages/page-24.jpg",
+      "bytes": 77688
+    },
+    {
+      "file": "assets/pages/page-20.jpg",
+      "bytes": 98364
+    },
+    {
+      "file": "assets/pages/page-33.jpg",
+      "bytes": 108011
+    },
+    {
+      "file": "assets/pages/page-34.jpg",
+      "bytes": 142252
+    },
+    {
+      "file": "assets/pages/page-35.jpg",
+      "bytes": 131292
+    },
+    {
+      "file": "assets/pages/page-36.jpg",
+      "bytes": 96891
+    },
+    {
+      "file": "assets/pages/page-25.jpg",
+      "bytes": 121616
+    },
+    {
+      "file": "assets/pages/page-29.jpg",
+      "bytes": 46644
+    },
+    {
+      "file": "assets/pages/page-27.jpg",
+      "bytes": 124420
+    },
+    {
+      "file": "assets/pages/page-28.jpg",
+      "bytes": 139252
+    },
+    {
+      "file": "assets/pages/page-26.jpg",
+      "bytes": 130426
+    },
+    {
+      "file": "assets/pages/page-31.jpg",
+      "bytes": 125742
+    },
+    {
+      "file": "assets/pages/page-30.jpg",
+      "bytes": 148545
+    },
+    {
+      "file": "assets/pages/page-32.jpg",
+      "bytes": 125053
+    },
+    {
+      "file": "assets/pages/page-37.jpg",
+      "bytes": 97745
+    },
+    {
+      "file": "assets/pages/page-38.jpg",
+      "bytes": 76653
+    },
+    {
+      "file": "assets/pages/page-39.jpg",
+      "bytes": 78468
+    },
+    {
+      "file": "assets/pages/page-40.jpg",
+      "bytes": 92976
+    },
+    {
+      "file": "assets/pages/page-41.jpg",
+      "bytes": 179586
+    },
+    {
+      "file": "assets/pages/page-42.jpg",
+      "bytes": 91165
+    },
+    {
+      "file": "assets/pages/page-43.jpg",
+      "bytes": 78557
+    },
+    {
+      "file": "assets/pages/page-44.jpg",
+      "bytes": 63095
+    },
+    {
+      "file": "projects.json",
+      "bytes": 3470
+    },
+    {
+      "file": "index.html",
+      "bytes": 2033
+    },
+    {
+      "file": "style.css",
+      "bytes": 6094
+    },
+    {
+      "file": "journey.css",
+      "bytes": 5750
+    },
+    {
+      "file": "journey.js",
+      "bytes": 10636
+    },
+    {
+      "file": "journey-scene.js",
+      "bytes": 8835
+    },
+    {
+      "file": "projects.js",
+      "bytes": 472
+    },
+    {
+      "file": "cv.html",
+      "bytes": 5439
+    },
+    {
+      "file": "cv.css",
+      "bytes": 2230
+    },
+    {
+      "file": "cv-detail.html",
+      "bytes": 1553
+    },
+    {
+      "file": "cv-detail.css",
+      "bytes": 1290
+    },
+    {
+      "file": "cv-detail.js",
+      "bytes": 1681
+    },
+    {
+      "file": "cv-experience.js",
+      "bytes": 5809
+    },
+    {
+      "file": "editor.html",
+      "bytes": 1357
+    },
+    {
+      "file": "editor.css",
+      "bytes": 3147
+    },
+    {
+      "file": "editor.js",
+      "bytes": 6807
+    },
+    {
+      "file": "fonts/archivo-expanded-black.ttf",
+      "bytes": 111836
+    },
+    {
+      "file": "fonts/barlow-condensed-regular.ttf",
+      "bytes": 102480
+    },
+    {
+      "file": "fonts/barlow-condensed-semibold.ttf",
+      "bytes": 109428
+    },
+    {
+      "file": "fonts/Barlow-OFL.txt",
+      "bytes": 4377
+    },
+    {
+      "file": "fonts/OFL.txt",
+      "bytes": 4388
+    },
+    {
+      "file": "vendor/three.module.js",
+      "bytes": 1272972
+    },
+    {
+      "file": "vendor/THREE-LICENSE.txt",
+      "bytes": 1081
+    },
+    {
+      "file": ".nojekyll",
+      "bytes": 0
+    },
+    {
+      "file": "robots.txt",
+      "bytes": 26
+    },
+    {
+      "file": "README.md",
+      "bytes": 846
+    }
+  ],
+  "totalBytes": 5649795,
+  "externalAssets": []
+}

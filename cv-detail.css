@@ -1,0 +1,8 @@
+body,body *{font-family:BarlowCondensed,sans-serif}
+.cv-content{max-width:1060px}.cv-content h1,.cv-content h2,.cv-content h3,.cv-content h4{font-weight:600;letter-spacing:.035em}
+.cv-content h2{font-size:27px}.cv-content h3{font-size:22px}.cv-content h4{font-size:21px}.cv-content p{font-size:17px;line-height:1.55}
+.section-label>span,.eyebrow{display:none}.cv-content .source,.cv-content .muted{font-size:15px;color:#53595b}.profile{padding-bottom:35px}
+.section-body .placeholder{border:0;padding:0;font-size:21px!important}.section-body h3{margin-top:26px}.section-body .row time{font-size:15px}
+#experience{margin-top:50px;border-top:1px solid #bec4c1;padding-top:30px}.experience-group{margin-top:36px}.experience-group>h3{border-bottom:1px solid #aeb5b1;padding-bottom:12px;margin-bottom:0;text-transform:uppercase}
+.experience-row{display:grid;grid-template-columns:155px minmax(0,1fr);gap:28px;padding:22px 0;border-bottom:1px solid #d8ddda}.experience-date{font-size:16px;color:#50585a;font-variant-numeric:tabular-nums}.experience-row h4{margin:0}.experience-row p{margin:6px 0;max-width:70ch}.experience-row .practice{font-size:15px;color:#525b5b}
+@media(max-width:650px){.experience-row{grid-template-columns:1fr;gap:6px}.cv-section{gap:10px}.cv-content{padding-inline:22px}}

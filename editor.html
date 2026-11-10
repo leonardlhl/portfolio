@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en"><head><meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Project editor | Leonard Lo</title><link rel="icon" href="data:,"><link rel="stylesheet" href="editor.css"></head>
+<body><header><div><a href="./">Back to portfolio</a><h1>Project editor</h1></div><div class="actions"><button id="undo" disabled>Undo</button><button id="open-json">Open JSON</button><input id="import" type="file" accept=".json,application/json" hidden><button id="export" class="primary" disabled>Export projects.json</button></div></header>
+<p class="notice">Edit locally, then export. To apply changes, replace <strong>outputs/tree-draft/projects.json</strong> with the exported file and refresh the portfolio. Keep a copy of the original. Nothing is published or overwritten here.</p>
+<p id="status" role="status" aria-live="polite">Loading projects…</p>
+<main><aside><div class="list-head"><h2>Project order</h2><button id="add" disabled>Add project</button></div><p class="hint">CV always comes first. Select a project to edit; move it with Up / Down.</p><ol id="list"></ol></aside><section id="detail" aria-label="Edit selected project"><p>Select a project to begin.</p></section></main>
+<script type="module" src="editor.js"></script></body></html>
