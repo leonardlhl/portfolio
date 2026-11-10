@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-10T13:28:29.855Z",
+  "generatedAt": "2026-11-10T13:58:01.915Z",
   "projects": 13,
   "projectPages": 40,
-  "images": 40,
+  "images": 150,
   "files": [
     {
       "file": "assets/pages/page-05.jpg",
@@ -13,16 +13,16 @@
       "bytes": 41529
     },
     {
-      "file": "assets/pages/page-07.jpg",
-      "bytes": 114153
+      "file": "assets/pages/page-10.jpg",
+      "bytes": 110644
     },
     {
       "file": "assets/pages/page-09.jpg",
       "bytes": 120932
     },
     {
-      "file": "assets/pages/page-10.jpg",
-      "bytes": 110644
+      "file": "assets/pages/page-07.jpg",
+      "bytes": 114153
     },
     {
       "file": "assets/pages/page-08.jpg",
@@ -33,40 +33,48 @@
       "bytes": 88737
     },
     {
-      "file": "assets/pages/page-12.jpg",
-      "bytes": 61607
-    },
-    {
       "file": "assets/pages/page-13.jpg",
       "bytes": 85883
     },
     {
-      "file": "assets/pages/page-14.jpg",
-      "bytes": 116564
-    },
-    {
-      "file": "assets/pages/page-15.jpg",
-      "bytes": 86168
+      "file": "assets/pages/page-12.jpg",
+      "bytes": 61607
     },
     {
       "file": "assets/pages/page-16.jpg",
       "bytes": 46876
     },
     {
+      "file": "assets/pages/page-14.jpg",
+      "bytes": 116564
+    },
+    {
       "file": "assets/pages/page-17.jpg",
       "bytes": 125445
+    },
+    {
+      "file": "assets/pages/page-15.jpg",
+      "bytes": 86168
     },
     {
       "file": "assets/pages/page-18.jpg",
       "bytes": 87046
     },
     {
+      "file": "assets/pages/page-19.jpg",
+      "bytes": 79184
+    },
+    {
+      "file": "assets/pages/page-20.jpg",
+      "bytes": 98364
+    },
+    {
       "file": "assets/pages/page-21.jpg",
       "bytes": 102721
     },
     {
-      "file": "assets/pages/page-19.jpg",
-      "bytes": 79184
+      "file": "assets/pages/page-24.jpg",
+      "bytes": 77688
     },
     {
       "file": "assets/pages/page-22.jpg",
@@ -75,14 +83,6 @@
     {
       "file": "assets/pages/page-23.jpg",
       "bytes": 66175
-    },
-    {
-      "file": "assets/pages/page-24.jpg",
-      "bytes": 77688
-    },
-    {
-      "file": "assets/pages/page-20.jpg",
-      "bytes": 98364
     },
     {
       "file": "assets/pages/page-33.jpg",
@@ -105,28 +105,28 @@
       "bytes": 121616
     },
     {
-      "file": "assets/pages/page-29.jpg",
-      "bytes": 46644
-    },
-    {
       "file": "assets/pages/page-27.jpg",
       "bytes": 124420
-    },
-    {
-      "file": "assets/pages/page-28.jpg",
-      "bytes": 139252
     },
     {
       "file": "assets/pages/page-26.jpg",
       "bytes": 130426
     },
     {
-      "file": "assets/pages/page-31.jpg",
-      "bytes": 125742
+      "file": "assets/pages/page-29.jpg",
+      "bytes": 46644
+    },
+    {
+      "file": "assets/pages/page-28.jpg",
+      "bytes": 139252
     },
     {
       "file": "assets/pages/page-30.jpg",
       "bytes": 148545
+    },
+    {
+      "file": "assets/pages/page-31.jpg",
+      "bytes": 125742
     },
     {
       "file": "assets/pages/page-32.jpg",
@@ -169,8 +169,452 @@
       "bytes": 3470
     },
     {
+      "file": "assets/page-layers/page-05-base.webp",
+      "bytes": 103608
+    },
+    {
+      "file": "assets/page-layers/page-05-description.png",
+      "bytes": 69828
+    },
+    {
+      "file": "assets/page-layers/page-05-full.webp",
+      "bytes": 286686
+    },
+    {
+      "file": "assets/page-layers/page-06-base.webp",
+      "bytes": 37484
+    },
+    {
+      "file": "assets/page-layers/page-06-description.png",
+      "bytes": 36130
+    },
+    {
+      "file": "assets/page-layers/page-06-full.webp",
+      "bytes": 80550
+    },
+    {
+      "file": "assets/page-layers/page-07-base.webp",
+      "bytes": 204264
+    },
+    {
+      "file": "assets/page-layers/page-07-description.png",
+      "bytes": 17562
+    },
+    {
+      "file": "assets/page-layers/page-07-full.webp",
+      "bytes": 462034
+    },
+    {
+      "file": "assets/page-layers/page-08-base.webp",
+      "bytes": 123964
+    },
+    {
+      "file": "assets/page-layers/page-08-description.png",
+      "bytes": 17230
+    },
+    {
+      "file": "assets/page-layers/page-08-full.webp",
+      "bytes": 245518
+    },
+    {
+      "file": "assets/page-layers/page-09-base.webp",
+      "bytes": 184680
+    },
+    {
+      "file": "assets/page-layers/page-09-description.png",
+      "bytes": 15610
+    },
+    {
+      "file": "assets/page-layers/page-09-full.webp",
+      "bytes": 370594
+    },
+    {
+      "file": "assets/page-layers/page-10-base.webp",
+      "bytes": 185670
+    },
+    {
+      "file": "assets/page-layers/page-10-description.png",
+      "bytes": 25893
+    },
+    {
+      "file": "assets/page-layers/page-10-full.webp",
+      "bytes": 383836
+    },
+    {
+      "file": "assets/page-layers/page-11-base.webp",
+      "bytes": 103870
+    },
+    {
+      "file": "assets/page-layers/page-11-description.png",
+      "bytes": 78573
+    },
+    {
+      "file": "assets/page-layers/page-11-full.webp",
+      "bytes": 305950
+    },
+    {
+      "file": "assets/page-layers/page-12-base.webp",
+      "bytes": 77952
+    },
+    {
+      "file": "assets/page-layers/page-12-description.png",
+      "bytes": 29950
+    },
+    {
+      "file": "assets/page-layers/page-12-full.webp",
+      "bytes": 177916
+    },
+    {
+      "file": "assets/page-layers/page-13-base.webp",
+      "bytes": 127102
+    },
+    {
+      "file": "assets/page-layers/page-13-description.png",
+      "bytes": 25165
+    },
+    {
+      "file": "assets/page-layers/page-13-full.webp",
+      "bytes": 284944
+    },
+    {
+      "file": "assets/page-layers/page-14-base.webp",
+      "bytes": 206628
+    },
+    {
+      "file": "assets/page-layers/page-14-description.png",
+      "bytes": 20280
+    },
+    {
+      "file": "assets/page-layers/page-14-full.webp",
+      "bytes": 502898
+    },
+    {
+      "file": "assets/page-layers/page-15-base.webp",
+      "bytes": 188244
+    },
+    {
+      "file": "assets/page-layers/page-15-full.webp",
+      "bytes": 396354
+    },
+    {
+      "file": "assets/page-layers/page-16-base.webp",
+      "bytes": 45460
+    },
+    {
+      "file": "assets/page-layers/page-16-description.png",
+      "bytes": 22408
+    },
+    {
+      "file": "assets/page-layers/page-16-full.webp",
+      "bytes": 106452
+    },
+    {
+      "file": "assets/page-layers/page-17-base.webp",
+      "bytes": 192420
+    },
+    {
+      "file": "assets/page-layers/page-17-description.png",
+      "bytes": 33621
+    },
+    {
+      "file": "assets/page-layers/page-17-full.webp",
+      "bytes": 438804
+    },
+    {
+      "file": "assets/page-layers/page-18-base.webp",
+      "bytes": 83214
+    },
+    {
+      "file": "assets/page-layers/page-18-description.png",
+      "bytes": 90993
+    },
+    {
+      "file": "assets/page-layers/page-18-full.webp",
+      "bytes": 252522
+    },
+    {
+      "file": "assets/page-layers/page-19-base.webp",
+      "bytes": 81214
+    },
+    {
+      "file": "assets/page-layers/page-19-description.png",
+      "bytes": 80519
+    },
+    {
+      "file": "assets/page-layers/page-19-full.webp",
+      "bytes": 216498
+    },
+    {
+      "file": "assets/page-layers/page-20-base.webp",
+      "bytes": 149326
+    },
+    {
+      "file": "assets/page-layers/page-20-description.png",
+      "bytes": 23950
+    },
+    {
+      "file": "assets/page-layers/page-20-full.webp",
+      "bytes": 318386
+    },
+    {
+      "file": "assets/page-layers/page-21-base.webp",
+      "bytes": 164606
+    },
+    {
+      "file": "assets/page-layers/page-21-description.png",
+      "bytes": 29304
+    },
+    {
+      "file": "assets/page-layers/page-21-full.webp",
+      "bytes": 346480
+    },
+    {
+      "file": "assets/page-layers/page-22-base.webp",
+      "bytes": 149596
+    },
+    {
+      "file": "assets/page-layers/page-22-description.png",
+      "bytes": 18408
+    },
+    {
+      "file": "assets/page-layers/page-22-full.webp",
+      "bytes": 293158
+    },
+    {
+      "file": "assets/page-layers/page-23-base.webp",
+      "bytes": 90186
+    },
+    {
+      "file": "assets/page-layers/page-23-description.png",
+      "bytes": 23730
+    },
+    {
+      "file": "assets/page-layers/page-23-full.webp",
+      "bytes": 204900
+    },
+    {
+      "file": "assets/page-layers/page-24-base.webp",
+      "bytes": 120636
+    },
+    {
+      "file": "assets/page-layers/page-24-description.png",
+      "bytes": 21986
+    },
+    {
+      "file": "assets/page-layers/page-24-full.webp",
+      "bytes": 284510
+    },
+    {
+      "file": "assets/page-layers/page-25-base.webp",
+      "bytes": 169774
+    },
+    {
+      "file": "assets/page-layers/page-25-description.png",
+      "bytes": 77485
+    },
+    {
+      "file": "assets/page-layers/page-25-full.webp",
+      "bytes": 435710
+    },
+    {
+      "file": "assets/page-layers/page-26-base.webp",
+      "bytes": 259358
+    },
+    {
+      "file": "assets/page-layers/page-26-full.webp",
+      "bytes": 555034
+    },
+    {
+      "file": "assets/page-layers/page-27-base.webp",
+      "bytes": 241466
+    },
+    {
+      "file": "assets/page-layers/page-27-full.webp",
+      "bytes": 507904
+    },
+    {
+      "file": "assets/page-layers/page-28-base.webp",
+      "bytes": 232826
+    },
+    {
+      "file": "assets/page-layers/page-28-full.webp",
+      "bytes": 425478
+    },
+    {
+      "file": "assets/page-layers/page-29-base.webp",
+      "bytes": 46806
+    },
+    {
+      "file": "assets/page-layers/page-29-description.png",
+      "bytes": 24601
+    },
+    {
+      "file": "assets/page-layers/page-29-full.webp",
+      "bytes": 109734
+    },
+    {
+      "file": "assets/page-layers/page-30-base.webp",
+      "bytes": 235352
+    },
+    {
+      "file": "assets/page-layers/page-30-full.webp",
+      "bytes": 460252
+    },
+    {
+      "file": "assets/page-layers/page-31-base.webp",
+      "bytes": 212206
+    },
+    {
+      "file": "assets/page-layers/page-31-full.webp",
+      "bytes": 439120
+    },
+    {
+      "file": "assets/page-layers/page-32-base.webp",
+      "bytes": 185680
+    },
+    {
+      "file": "assets/page-layers/page-32-full.webp",
+      "bytes": 341956
+    },
+    {
+      "file": "assets/page-layers/page-33-base.webp",
+      "bytes": 136796
+    },
+    {
+      "file": "assets/page-layers/page-33-description.png",
+      "bytes": 54387
+    },
+    {
+      "file": "assets/page-layers/page-33-full.webp",
+      "bytes": 298094
+    },
+    {
+      "file": "assets/page-layers/page-34-base.webp",
+      "bytes": 258924
+    },
+    {
+      "file": "assets/page-layers/page-34-full.webp",
+      "bytes": 523108
+    },
+    {
+      "file": "assets/page-layers/page-35-base.webp",
+      "bytes": 229072
+    },
+    {
+      "file": "assets/page-layers/page-35-full.webp",
+      "bytes": 464820
+    },
+    {
+      "file": "assets/page-layers/page-36-base.webp",
+      "bytes": 128396
+    },
+    {
+      "file": "assets/page-layers/page-36-full.webp",
+      "bytes": 251788
+    },
+    {
+      "file": "assets/page-layers/page-37-base.webp",
+      "bytes": 159796
+    },
+    {
+      "file": "assets/page-layers/page-37-description.png",
+      "bytes": 34508
+    },
+    {
+      "file": "assets/page-layers/page-37-full.webp",
+      "bytes": 349776
+    },
+    {
+      "file": "assets/page-layers/page-38-base.webp",
+      "bytes": 80504
+    },
+    {
+      "file": "assets/page-layers/page-38-description.png",
+      "bytes": 71451
+    },
+    {
+      "file": "assets/page-layers/page-38-full.webp",
+      "bytes": 232816
+    },
+    {
+      "file": "assets/page-layers/page-39-base.webp",
+      "bytes": 70692
+    },
+    {
+      "file": "assets/page-layers/page-39-description.png",
+      "bytes": 69511
+    },
+    {
+      "file": "assets/page-layers/page-39-full.webp",
+      "bytes": 225272
+    },
+    {
+      "file": "assets/page-layers/page-40-base.webp",
+      "bytes": 111090
+    },
+    {
+      "file": "assets/page-layers/page-40-description.png",
+      "bytes": 77485
+    },
+    {
+      "file": "assets/page-layers/page-40-full.webp",
+      "bytes": 299854
+    },
+    {
+      "file": "assets/page-layers/page-41-base.webp",
+      "bytes": 332420
+    },
+    {
+      "file": "assets/page-layers/page-41-description.png",
+      "bytes": 45949
+    },
+    {
+      "file": "assets/page-layers/page-41-full.webp",
+      "bytes": 723238
+    },
+    {
+      "file": "assets/page-layers/page-42-base.webp",
+      "bytes": 128898
+    },
+    {
+      "file": "assets/page-layers/page-42-description.png",
+      "bytes": 40681
+    },
+    {
+      "file": "assets/page-layers/page-42-full.webp",
+      "bytes": 290958
+    },
+    {
+      "file": "assets/page-layers/page-43-base.webp",
+      "bytes": 99404
+    },
+    {
+      "file": "assets/page-layers/page-43-description.png",
+      "bytes": 56354
+    },
+    {
+      "file": "assets/page-layers/page-43-full.webp",
+      "bytes": 273362
+    },
+    {
+      "file": "assets/page-layers/page-44-base.webp",
+      "bytes": 75924
+    },
+    {
+      "file": "assets/page-layers/page-44-description.png",
+      "bytes": 43477
+    },
+    {
+      "file": "assets/page-layers/page-44-full.webp",
+      "bytes": 198934
+    },
+    {
+      "file": "assets/page-layers/manifest.json",
+      "bytes": 33841
+    },
+    {
       "file": "index.html",
-      "bytes": 2033
+      "bytes": 2289
     },
     {
       "file": "style.css",
@@ -178,11 +622,11 @@
     },
     {
       "file": "journey.css",
-      "bytes": 5750
+      "bytes": 7025
     },
     {
       "file": "journey.js",
-      "bytes": 10636
+      "bytes": 13309
     },
     {
       "file": "journey-scene.js",
@@ -229,6 +673,22 @@
       "bytes": 6807
     },
     {
+      "file": "ambient.js",
+      "bytes": 5806
+    },
+    {
+      "file": "ambient.css",
+      "bytes": 1305
+    },
+    {
+      "file": "page-zoom.js",
+      "bytes": 7095
+    },
+    {
+      "file": "page-zoom.css",
+      "bytes": 3063
+    },
+    {
       "file": "fonts/archivo-expanded-black.ttf",
       "bytes": 111836
     },
@@ -269,6 +729,6 @@
       "bytes": 846
     }
   ],
-  "totalBytes": 5649795,
+  "totalBytes": 26363844,
   "externalAssets": []
 }

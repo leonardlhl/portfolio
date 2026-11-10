@@ -1,0 +1,50 @@
+/* Keep the atmosphere behind the rotating geometry and every reading surface. */
+#ambient-sky {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.9;
+  transition: opacity 200ms var(--ease-out, cubic-bezier(.23, 1, .32, 1));
+}
+
+body[data-phase="reading"] #ambient-sky {
+  opacity: 0.22;
+}
+
+#ambient-toggle {
+  position: fixed;
+  z-index: 5;
+  right: 32px;
+  bottom: 54px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+  border: 0;
+  border-radius: 50%;
+  color: #737b80;
+  background: transparent;
+  cursor: pointer;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+#ambient-toggle[hidden] { display: none; }
+#ambient-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.25; }
+#ambient-toggle:focus-visible { outline: 1px solid #5e686e; outline-offset: 2px; }
+#ambient-toggle:active { color: #22292d; background: #dde1e380; }
+
+@media (hover: hover) and (pointer: fine) {
+  #ambient-toggle:hover { color: #22292d; background: #e8ebed80; }
+}
+
+@media (max-width: 700px) {
+  #ambient-toggle { right: 14px; bottom: 72px; width: 40px; height: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ambient-sky, #ambient-toggle { transition: none; }
+}
