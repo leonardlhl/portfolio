@@ -6,7 +6,7 @@ import {mountCursor} from './cursor.js?v=3';
 mountCursor();
 const $=s=>document.querySelector(s),mod=(a,b)=>(a%b+b)%b,clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{const t=clamp(v);return t*t*(3-2*t)};
-const cvResponse=await fetch('./cv.html');if(!cvResponse.ok)throw new Error('CV source unavailable');
+const cvResponse=await fetch('./cv.html?v=29');if(!cvResponse.ok)throw new Error('CV source unavailable');
 const cvDoc=new DOMParser().parseFromString(await cvResponse.text(),'text/html');
 const contactEmail=cvDoc.querySelector('a[href^="mailto:"]')?.getAttribute('href').slice(7).split('?')[0];
 mountContact({button:$('#contact-copy'),status:$('#contact-status'),email:contactEmail});
@@ -131,7 +131,7 @@ function paint(time){
  if(projectFlight){const progress=clamp((time-projectFlight.start)/650),blend=smooth(progress);sceneOrdinal=projectFlight.from+(projectFlight.to-projectFlight.from)*blend;zoom=projectFlight.zoom*(1-blend);if(progress===1){const openTarget=projectFlight.openTarget;projectFlight=null;if(openTarget!==undefined)setTarget(openTarget)}}
  const stepOffset=Math.max(0,Math.min(n-1,t-2)),stepFloor=Math.floor(stepOffset),stepNext=Math.min(n-1,stepFloor+1);
  const pageOffset=stop.steps[stepFloor].page+(stop.steps[stepNext].page-stop.steps[stepFloor].page)*(stepOffset-stepFloor),nearest=Math.round(pageOffset);
- if(activeIndex!==p.index){activeIndex=p.index;activePage=-1;document.body.dataset.stop=stop.id;warmImages(p.index);track.replaceChildren(...stop.slides);measureStage();$('#reading-title').textContent=stop.title;$('#page-enlarge').hidden=p.index===0;$('#project-list').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-current',String(i===p.index)))}
+ if(activeIndex!==p.index){activeIndex=p.index;activePage=-1;document.body.dataset.stop=stop.id;warmImages(p.index);track.replaceChildren(...stop.slides);measureStage();$('#reading-title').textContent=stop.title;$('#reading-title').hidden=p.index===0;$('#page-enlarge').hidden=p.index===0;$('#project-list').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-current',String(i===p.index)))}
  const alpha=flying?0:smooth((zoom-.25)/.75);stage.style.opacity=String(alpha);stage.style.pointerEvents=alpha>.95?'auto':'none';stage.inert=alpha<.95;stage.setAttribute('aria-hidden',String(alpha<.95));
  track.style.transform='translate3d('+(-pageOffset*100)+'%,0,0)';
  if(activePage!==nearest){activePage=nearest;stop.slides.forEach((el,i)=>{el.inert=i!==nearest;el.setAttribute('aria-hidden',String(i!==nearest))});$('#page-position').textContent=(nearest+1)+' / '+stop.slides.length}

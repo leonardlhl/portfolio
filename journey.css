@@ -41,6 +41,7 @@ footer button{font-family:BarlowCondensed,sans-serif;font-size:14px;color:#20242
 #index-toggle,#open-active{background:transparent;border-color:#8f9498;text-transform:uppercase}
 #position,#page-position{font-family:BarlowCondensed,sans-serif;font-weight:400;font-size:14px;letter-spacing:.035em;color:#26292c}
 .page-copy h1,.page-copy h2{font-weight:600;text-transform:uppercase;letter-spacing:.065em}
+.page-copy .profile .name-secondary{font-weight:400}
 .page-copy h4{font-size:19px;font-weight:600;letter-spacing:.025em}
 @media(max-width:700px){.intro{background:transparent}.intro h1{font-size:31px}.identity{font-size:17px}#reading-title{font-size:25px}}
 /* One family throughout the live interface; weight, not a different face, marks titles. */
@@ -63,7 +64,7 @@ body[data-stop=profile] #journey-stage{inset:14vh 13vw 12vh}
 .cover-column{position:absolute;inset:0;pointer-events:none}
 .journey-page .cover-column-band{position:absolute;inset:0;padding:0 1px;pointer-events:none;opacity:0;transform:perspective(1100px) rotateX(-70deg);transition:opacity 220ms var(--ease-out),transform 250ms var(--ease-out);transition-delay:0ms;backface-visibility:hidden}
 .journey-page[data-revealed=true] .cover-column-band{opacity:1;transform:perspective(1100px) rotateX(0);transition-delay:var(--band-delay,0ms)}
-.reading-tools{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.reading-tools{display:flex;align-items:center;gap:16px;flex-shrink:0;margin-left:auto}
 #page-enlarge{display:grid;place-items:center;width:44px;height:44px;padding:10px;background:transparent;border:1px solid #a2a6a9;color:#252a2d;cursor:pointer}
 #page-enlarge[hidden]{display:none}
 #page-enlarge svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round}
