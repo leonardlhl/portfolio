@@ -167,7 +167,7 @@ document.addEventListener('pointerdown',e=>{
 });
 document.addEventListener('pointermove',e=>{if(!touch||e.pointerId!==touch.id)return;const dx=e.clientX-touch.x,dy=e.clientY-touch.y;
  if(Math.hypot(e.clientX-touch.originX,e.clientY-touch.originY)>5)touch.moved=true;
- if(touch.type==='touch'){const content=e.target.closest('.cv-page-content');if(content&&content.scrollHeight>content.clientHeight+2)return;const next=target+(Math.abs(dx)>Math.abs(dy)?-dx:-dy)/400;setTarget(Math.max(touch.start-1,Math.min(touch.start+1,next)))}
+ if(touch.type==='touch'){if(projectFlight)return;const content=e.target.closest('.cv-page-content');if(content&&content.scrollHeight>content.clientHeight+2)return;const next=target+(Math.abs(dx)>Math.abs(dy)?-dx:-dy)/400;setTarget(Math.max(touch.start-1,Math.min(touch.start+1,next)))}
  else if((e.buttons&1)&&touch.moved&&document.body.dataset.phase!=='reading'){dragYaw-=dx*.006;request()}
  touch.x=e.clientX;touch.y=e.clientY;
 });
