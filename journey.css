@@ -76,5 +76,8 @@ body[data-stop=profile] #journey-stage{inset:14vh 13vw 12vh}
 #journey-stage,body[data-stop=profile] #journey-stage{top:max(14vh,126px)}
 @media(max-width:700px){#journey-stage,body[data-stop=profile] #journey-stage{top:max(14vh,118px)}}
 
+footer button,footer button:hover,footer button:active{border:0;background:transparent;box-shadow:none}
+@media(hover:hover) and (pointer:fine){footer button:hover{color:#101113;text-decoration:underline;text-underline-offset:4px}}
+
 /* The statement remains editable in the source; omit unfinished copy online. */
 .statement{display:none!important}

@@ -134,14 +134,40 @@ export function mountJourneyScene(projects){
  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();$('#loading').textContent='3D interrupted. Project pages remain available.';$('#loading').hidden=false});
  $('#loading').hidden=true;
  const raycaster=new T.Raycaster();
- return {hitProject(x,y){
-  raycaster.setFromCamera(new T.Vector2(x/width*2-1,1-y/height*2),camera);
-  const selected=slots.find(s=>s.ordinal===Math.round(ordinal));if(!selected)return false;
-  const hit=raycaster.intersectObjects(selected.g.children,false)[0];if(!hit?.uv)return false;
-  const u=hit.uv.x,v=1-hit.uv.y,rect=selected.photoRect.value;
-  if(selected.paperKey.value&&u>=rect.x&&u<=rect.z&&v>=rect.y&&v<=rect.w)return true;
-  const mask=makeHitMask(selected.mat.map);if(!mask)return false;
-  const ix=Math.min(mask.width-1,Math.max(0,Math.floor(u*mask.width))),iy=Math.min(mask.height-1,Math.max(0,Math.floor(v*mask.height))),pixel=iy*mask.width+ix;
-  return mask.alpha[pixel]>16&&(!selected.paperKey.value||mask.ink[pixel]>5);
- },update(n,z,drag=0,progress=0){ordinal=n;zoom=z;azimuth=drag;scroll=n*.5;return render()}};
+ const slotForMesh=new Map(slots.flatMap(slot=>slot.g.children.map(mesh=>[mesh,slot])));
+ const previewMeshes=[...slotForMesh.keys()];
+ function acceptsHit(slot,hit){
+  if(!hit?.uv||slot.mat.opacity<.1||!slot.g.visible)return false;
+  const u=hit.uv.x,v=1-hit.uv.y;
+  // The CV is a text group, not a set of tiny glyph-shaped targets. Include
+  // the natural spaces between its three lines so scrolling/tapping feels easy.
+  if(!slot.paperKey.value)return u>=40/900&&u<=750/900&&v>=85/560&&v<=390/560;
+  const rect=slot.photoRect.value,padding=.006;
+  if(u>=rect.x-padding&&u<=rect.z+padding&&v>=rect.y-padding&&v<=rect.w+padding)return true;
+  const mask=makeHitMask(slot.mat.map);if(!mask)return false;
+  const ix=Math.min(mask.width-1,Math.max(0,Math.floor(u*mask.width))),iy=Math.min(mask.height-1,Math.max(0,Math.floor(v*mask.height)));
+  // A one-pixel mask margin gives fine captions a small practical hit area
+  // without turning the surrounding transparent paper back into a rectangle.
+  for(let y=Math.max(0,iy-1);y<=Math.min(mask.height-1,iy+1);y++)for(let x=Math.max(0,ix-1);x<=Math.min(mask.width-1,ix+1);x++){
+   const pixel=y*mask.width+x;if(mask.alpha[pixel]>16&&mask.ink[pixel]>5)return true;
+  }
+  return false;
+ }
+ function cast(x,y,meshes){raycaster.setFromCamera(new T.Vector2(x/width*2-1,1-y/height*2),camera);return raycaster.intersectObjects(meshes,false)}
+ return {
+  hitProject(x,y){
+   const selected=slots.find(s=>s.ordinal===Math.round(ordinal));
+   return !!selected&&cast(x,y,selected.g.children).some(hit=>acceptsHit(selected,hit));
+  },
+  pickProject(x,y){
+   // Three.js sorts intersections by distance; the first valid visible preview
+   // wins, while transparent paper lets the user reach previews behind it.
+   for(const hit of cast(x,y,previewMeshes)){
+    const slot=slotForMesh.get(hit.object);
+    if(acceptsHit(slot,hit))return {index:mod(slot.ordinal,projects.length+1),ordinal:slot.ordinal};
+   }
+   return null;
+  },
+  update(n,z,drag=0,progress=0){ordinal=n;zoom=z;azimuth=drag;scroll=n*.5;return render()}
+ };
 }

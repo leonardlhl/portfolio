@@ -2,7 +2,7 @@ import {projects} from './projects.js?v=4';
 import {mountAmbientSky} from './ambient.js?v=3';
 import {mountPageZoom} from './page-zoom.js?v=2';
 import {mountContact} from './contact.js?v=1';
-import {mountCursor} from './cursor.js?v=2';
+import {mountCursor} from './cursor.js?v=3';
 mountCursor();
 const $=s=>document.querySelector(s),mod=(a,b)=>(a%b+b)%b,clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{const t=clamp(v);return t*t*(3-2*t)};
@@ -101,11 +101,26 @@ measureStage();
 function warmImages(index){for(const stop of [stops[index],stops[mod(index+1,stops.length)]])for(const slide of stop.slides)for(const img of slide.querySelectorAll('img')){img.loading='eager';img.decode().catch(()=>{})}}
 function locate(value){const round=Math.floor(value/total),local=mod(value,total);let index=stops.length-1;while(index>0&&local<starts[index])index--;return {index,ordinal:round*stops.length+index,local:local-starts[index]}}
 function setTarget(value,instant=false){clearTimeout(snapTimer);target=value;dragYaw=0;if(instant||reduced.matches){current=target;velocity=0}request()}
-function jump(index){const round=Math.floor(target/total);setTarget(round*total+starts[index]+1,true);$('#index').hidden=true;$('#index-toggle').setAttribute('aria-expanded','false')}
+function closeIndex(){$('#index').hidden=true;$('#index-toggle').setAttribute('aria-expanded','false')}
+function jump(index){projectFlight=null;wheelGesture=null;const round=Math.floor(target/total);setTarget(round*total+starts[index]+1,true);closeIndex()}
+function openProject(index,ordinal=null,immediate=false){
+ const stopOrdinal=ordinal??Math.floor(target/total)*stops.length+index;
+ const base=Math.floor(stopOrdinal/stops.length)*total+starts[index];
+ projectFlight=null;wheelGesture=null;closeIndex();
+ if(immediate||reduced.matches){setTarget(base+2,true);return}
+ if(Math.abs(lastSceneOrdinal-stopOrdinal)>.01){
+  projectFlight={from:lastSceneOrdinal,to:stopOrdinal,zoom:lastSceneZoom,start:performance.now(),openTarget:base+2};
+  setTarget(base+1,true);
+ }else{
+  if(locate(current).ordinal!==stopOrdinal||locate(current).local>2)setTarget(base+1,true);
+  setTarget(base+2);
+ }
+}
+function step(direction){projectFlight=null;wheelGesture=null;setTarget(Math.round(target)+direction,true)}
 stops.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.title;b.onclick=()=>jump(i);$('#project-list').append(b)});
 $('#index-toggle').onclick=()=>{const open=$('#index').hidden;$('#index').hidden=!open;$('#index-toggle').setAttribute('aria-expanded',String(open))};
-$('#home').onclick=()=>jump(0);
-$('#left').onclick=()=>setTarget(target-1,true);$('#right').onclick=()=>setTarget(target+1,true);
+$('#home').onclick=()=>openProject(0,null,true);
+$('#left').onclick=()=>step(-1);$('#right').onclick=()=>step(1);
 function paint(time){
  raf=0;const dt=Math.min(lastTime?(time-lastTime)/1000:1/60,.025);lastTime=time;
  if(reduced.matches){current=target;velocity=0}else{velocity+=(300*(target-current)-30*velocity)*dt;const phase=locate(current),count=stops[phase.index].steps.length;const speed=phase.local<2||phase.local>count+1?1.5:3;velocity=Math.max(-speed,Math.min(speed,velocity));current+=velocity*dt}
@@ -113,7 +128,7 @@ function paint(time){
  const travel=smooth(t);let zoom=t<2?smooth(t-1):t<n+1?1:1-smooth(t-n-1);
  let sceneOrdinal=reduced.matches?p.ordinal:p.ordinal-1+travel;
  const flying=!!projectFlight;
- if(projectFlight){const progress=clamp((time-projectFlight.start)/650),blend=smooth(progress);sceneOrdinal=projectFlight.from+(projectFlight.to-projectFlight.from)*blend;zoom=projectFlight.zoom*(1-blend);if(progress===1)projectFlight=null}
+ if(projectFlight){const progress=clamp((time-projectFlight.start)/650),blend=smooth(progress);sceneOrdinal=projectFlight.from+(projectFlight.to-projectFlight.from)*blend;zoom=projectFlight.zoom*(1-blend);if(progress===1){const openTarget=projectFlight.openTarget;projectFlight=null;if(openTarget!==undefined)setTarget(openTarget)}}
  const stepOffset=Math.max(0,Math.min(n-1,t-2)),stepFloor=Math.floor(stepOffset),stepNext=Math.min(n-1,stepFloor+1);
  const pageOffset=stop.steps[stepFloor].page+(stop.steps[stepNext].page-stop.steps[stepFloor].page)*(stepOffset-stepFloor),nearest=Math.round(pageOffset);
  if(activeIndex!==p.index){activeIndex=p.index;activePage=-1;document.body.dataset.stop=stop.id;warmImages(p.index);track.replaceChildren(...stop.slides);measureStage();$('#reading-title').textContent=stop.title;$('#page-enlarge').hidden=p.index===0;$('#project-list').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-current',String(i===p.index)))}
@@ -144,17 +159,30 @@ document.addEventListener('wheel',e=>{
  // One deliberate gesture per reading step, so opening cannot also reveal text.
  if(Math.abs(wheelGesture.distance)>=40){wheelGesture.used=true;setTarget(Math.round(target)+Math.sign(wheelGesture.distance))}
 },{passive:false});
-document.addEventListener('keydown',e=>{if(pageZoom.isOpen||e.target.closest('button,a,input,select,#index'))return;const direction=['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)?1:['ArrowLeft','ArrowUp','PageUp'].includes(e.key)?-1:0;if(direction){e.preventDefault();setTarget(target+direction,true)}if(e.key==='Escape'){const p=locate(target);setTarget(Math.floor(target/total)*total+starts[p.index]+stops[p.index].steps.length+2,true)}});
-document.addEventListener('pointerdown',e=>{if(pageZoom.isOpen||e.target.closest('button,a,#index'))return;touch={x:e.clientX,y:e.clientY,type:e.pointerType,start:target};});
-document.addEventListener('pointermove',e=>{if(!touch)return;const dx=e.clientX-touch.x,dy=e.clientY-touch.y;
+document.addEventListener('keydown',e=>{if(pageZoom.isOpen||e.target.closest('button,a,input,select,#index'))return;if(e.key==='Enter'&&e.target.id==='scene'){e.preventDefault();openProject(locate(target).index,null,true);return}const direction=['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)?1:['ArrowLeft','ArrowUp','PageUp'].includes(e.key)?-1:0;if(direction){e.preventDefault();step(direction)}if(e.key==='Escape'){projectFlight=null;const p=locate(target);setTarget(Math.floor(target/total)*total+starts[p.index]+stops[p.index].steps.length+2,true)}});
+document.addEventListener('pointerdown',e=>{
+ if(pageZoom.isOpen||e.button!==0||e.isPrimary===false||e.target.closest('button,a,input,textarea,select,#index,header,footer'))return;
+ const pick=e.target.closest('#scene')&&document.body.dataset.phase!=='reading'?scene?.pickProject(e.clientX,e.clientY):null;
+ touch={id:e.pointerId,x:e.clientX,y:e.clientY,originX:e.clientX,originY:e.clientY,type:e.pointerType,start:target,moved:false,pick};
+});
+document.addEventListener('pointermove',e=>{if(!touch||e.pointerId!==touch.id)return;const dx=e.clientX-touch.x,dy=e.clientY-touch.y;
+ if(Math.hypot(e.clientX-touch.originX,e.clientY-touch.originY)>5)touch.moved=true;
  if(touch.type==='touch'){const content=e.target.closest('.cv-page-content');if(content&&content.scrollHeight>content.clientHeight+2)return;const next=target+(Math.abs(dx)>Math.abs(dy)?-dx:-dy)/400;setTarget(Math.max(touch.start-1,Math.min(touch.start+1,next)))}
- else if(e.buttons&&document.body.dataset.phase!=='reading'){dragYaw-=dx*.006;request()}
+ else if((e.buttons&1)&&touch.moved&&document.body.dataset.phase!=='reading'){dragYaw-=dx*.006;request()}
  touch.x=e.clientX;touch.y=e.clientY;
 });
-document.addEventListener('pointerup',()=>{if(touch?.type==='touch')setTarget(Math.round(target));touch=null});document.addEventListener('pointercancel',()=>touch=null);
+document.addEventListener('pointerup',e=>{
+ if(!touch||e.pointerId!==touch.id)return;
+ const gesture=touch;touch=null;
+ if(!gesture.moved&&gesture.pick&&!pageZoom.isOpen&&document.body.dataset.phase!=='reading'){
+  openProject(gesture.pick.index,gesture.pick.ordinal);return;
+ }
+ if(gesture.type==='touch')setTarget(Math.round(target));
+});
+document.addEventListener('pointercancel',()=>touch=null);window.addEventListener('blur',()=>touch=null);
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else request()});
 window.addEventListener('resize',()=>{measureStage();request()});reduced.addEventListener('change',request);
 const sceneProjects=projects.map((project,index)=>{const copy=[...project];copy[5]=stops[index+1].slides[0].querySelector('.portfolio-image').getAttribute('src');return copy});
-try{const module=await import('./journey-scene.js?v=24');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
+try{const module=await import('./journey-scene.js?v=25');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
 request();
-document.querySelector('footer>span').textContent=sequentialTouch?'Swipe to explore every page':'Scroll background: projects · Scroll page: details';
+document.querySelector('footer>span').textContent=sequentialTouch?'Tap to open · Swipe to explore every page':'Click a preview to open · Scroll to explore';
