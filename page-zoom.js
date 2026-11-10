@@ -8,7 +8,7 @@ export function mountPageZoom({button, getPage}) {
       <div class="page-zoom-heading"><h2 id="page-zoom-title"></h2><span class="page-zoom-page"></span></div>
       <div class="page-zoom-controls" aria-label="Image zoom controls">
         <button type="button" data-zoom="out" aria-label="Zoom out" title="Zoom out">−</button>
-        <output class="page-zoom-level" aria-label="Zoom level">100%</output>
+        <output class="page-zoom-level" aria-label="Zoom level">200%</output>
         <button type="button" data-zoom="in" aria-label="Zoom in" title="Zoom in">+</button>
         <button type="button" data-zoom="fit" aria-label="Fit the whole page">Fit</button>
         <button type="button" class="page-zoom-close" aria-label="Close enlarged page" autofocus>Close <span aria-hidden="true">×</span></button>
@@ -47,7 +47,7 @@ export function mountPageZoom({button, getPage}) {
   function close(){if(dialog.open)dialog.close()}
   async function open() {
     const page=getPage();if(!page||!page.src)return;
-    const token=++generation;zoom=1;drag=null;
+    const token=++generation;zoom=2;drag=null;
     $('#page-zoom-title').textContent=page.title||'Portfolio';
     $('.page-zoom-page').textContent=page.pageLabel||'';
     image.alt=[page.title,page.pageLabel].filter(Boolean).join(' — ');

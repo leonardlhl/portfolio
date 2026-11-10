@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-10T13:58:01.915Z",
+  "generatedAt": "2026-11-10T14:12:23.240Z",
   "projects": 13,
   "projectPages": 40,
-  "images": 150,
+  "images": 176,
   "files": [
     {
       "file": "assets/pages/page-05.jpg",
@@ -13,6 +13,14 @@
       "bytes": 41529
     },
     {
+      "file": "assets/pages/page-08.jpg",
+      "bytes": 99568
+    },
+    {
+      "file": "assets/pages/page-07.jpg",
+      "bytes": 114153
+    },
+    {
       "file": "assets/pages/page-10.jpg",
       "bytes": 110644
     },
@@ -21,20 +29,20 @@
       "bytes": 120932
     },
     {
-      "file": "assets/pages/page-07.jpg",
-      "bytes": 114153
-    },
-    {
-      "file": "assets/pages/page-08.jpg",
-      "bytes": 99568
-    },
-    {
       "file": "assets/pages/page-11.jpg",
       "bytes": 88737
     },
     {
+      "file": "assets/pages/page-14.jpg",
+      "bytes": 116564
+    },
+    {
       "file": "assets/pages/page-13.jpg",
       "bytes": 85883
+    },
+    {
+      "file": "assets/pages/page-15.jpg",
+      "bytes": 86168
     },
     {
       "file": "assets/pages/page-12.jpg",
@@ -45,16 +53,8 @@
       "bytes": 46876
     },
     {
-      "file": "assets/pages/page-14.jpg",
-      "bytes": 116564
-    },
-    {
       "file": "assets/pages/page-17.jpg",
       "bytes": 125445
-    },
-    {
-      "file": "assets/pages/page-15.jpg",
-      "bytes": 86168
     },
     {
       "file": "assets/pages/page-18.jpg",
@@ -65,24 +65,24 @@
       "bytes": 79184
     },
     {
-      "file": "assets/pages/page-20.jpg",
-      "bytes": 98364
+      "file": "assets/pages/page-23.jpg",
+      "bytes": 66175
     },
     {
       "file": "assets/pages/page-21.jpg",
       "bytes": 102721
     },
     {
-      "file": "assets/pages/page-24.jpg",
-      "bytes": 77688
+      "file": "assets/pages/page-20.jpg",
+      "bytes": 98364
     },
     {
       "file": "assets/pages/page-22.jpg",
       "bytes": 80001
     },
     {
-      "file": "assets/pages/page-23.jpg",
-      "bytes": 66175
+      "file": "assets/pages/page-24.jpg",
+      "bytes": 77688
     },
     {
       "file": "assets/pages/page-33.jpg",
@@ -105,10 +105,6 @@
       "bytes": 121616
     },
     {
-      "file": "assets/pages/page-27.jpg",
-      "bytes": 124420
-    },
-    {
       "file": "assets/pages/page-26.jpg",
       "bytes": 130426
     },
@@ -119,6 +115,10 @@
     {
       "file": "assets/pages/page-28.jpg",
       "bytes": 139252
+    },
+    {
+      "file": "assets/pages/page-27.jpg",
+      "bytes": 124420
     },
     {
       "file": "assets/pages/page-30.jpg",
@@ -179,6 +179,14 @@
     {
       "file": "assets/page-layers/page-05-full.webp",
       "bytes": 286686
+    },
+    {
+      "file": "assets/page-layers/page-05-cover-base.webp",
+      "bytes": 83430
+    },
+    {
+      "file": "assets/page-layers/page-05-cover-column.png",
+      "bytes": 116244
     },
     {
       "file": "assets/page-layers/page-06-base.webp",
@@ -251,6 +259,14 @@
     {
       "file": "assets/page-layers/page-11-full.webp",
       "bytes": 305950
+    },
+    {
+      "file": "assets/page-layers/page-11-cover-base.webp",
+      "bytes": 94700
+    },
+    {
+      "file": "assets/page-layers/page-11-cover-column.png",
+      "bytes": 104994
     },
     {
       "file": "assets/page-layers/page-12-base.webp",
@@ -331,6 +347,14 @@
     {
       "file": "assets/page-layers/page-18-full.webp",
       "bytes": 252522
+    },
+    {
+      "file": "assets/page-layers/page-18-cover-base.webp",
+      "bytes": 71050
+    },
+    {
+      "file": "assets/page-layers/page-18-cover-column.png",
+      "bytes": 116759
     },
     {
       "file": "assets/page-layers/page-19-base.webp",
@@ -417,6 +441,14 @@
       "bytes": 435710
     },
     {
+      "file": "assets/page-layers/page-25-cover-base.webp",
+      "bytes": 150526
+    },
+    {
+      "file": "assets/page-layers/page-25-cover-column.png",
+      "bytes": 124035
+    },
+    {
       "file": "assets/page-layers/page-26-base.webp",
       "bytes": 259358
     },
@@ -489,6 +521,14 @@
       "bytes": 298094
     },
     {
+      "file": "assets/page-layers/page-33-cover-base.webp",
+      "bytes": 126504
+    },
+    {
+      "file": "assets/page-layers/page-33-cover-column.png",
+      "bytes": 69446
+    },
+    {
       "file": "assets/page-layers/page-34-base.webp",
       "bytes": 258924
     },
@@ -525,6 +565,14 @@
       "bytes": 349776
     },
     {
+      "file": "assets/page-layers/page-37-cover-base.webp",
+      "bytes": 146620
+    },
+    {
+      "file": "assets/page-layers/page-37-cover-column.png",
+      "bytes": 53599
+    },
+    {
       "file": "assets/page-layers/page-38-base.webp",
       "bytes": 80504
     },
@@ -535,6 +583,14 @@
     {
       "file": "assets/page-layers/page-38-full.webp",
       "bytes": 232816
+    },
+    {
+      "file": "assets/page-layers/page-38-cover-base.webp",
+      "bytes": 71450
+    },
+    {
+      "file": "assets/page-layers/page-38-cover-column.png",
+      "bytes": 94202
     },
     {
       "file": "assets/page-layers/page-39-base.webp",
@@ -549,6 +605,14 @@
       "bytes": 225272
     },
     {
+      "file": "assets/page-layers/page-39-cover-base.webp",
+      "bytes": 63192
+    },
+    {
+      "file": "assets/page-layers/page-39-cover-column.png",
+      "bytes": 90236
+    },
+    {
       "file": "assets/page-layers/page-40-base.webp",
       "bytes": 111090
     },
@@ -559,6 +623,14 @@
     {
       "file": "assets/page-layers/page-40-full.webp",
       "bytes": 299854
+    },
+    {
+      "file": "assets/page-layers/page-40-cover-base.webp",
+      "bytes": 97988
+    },
+    {
+      "file": "assets/page-layers/page-40-cover-column.png",
+      "bytes": 107763
     },
     {
       "file": "assets/page-layers/page-41-base.webp",
@@ -573,6 +645,14 @@
       "bytes": 723238
     },
     {
+      "file": "assets/page-layers/page-41-cover-base.webp",
+      "bytes": 319668
+    },
+    {
+      "file": "assets/page-layers/page-41-cover-column.png",
+      "bytes": 69247
+    },
+    {
       "file": "assets/page-layers/page-42-base.webp",
       "bytes": 128898
     },
@@ -583,6 +663,14 @@
     {
       "file": "assets/page-layers/page-42-full.webp",
       "bytes": 290958
+    },
+    {
+      "file": "assets/page-layers/page-42-cover-base.webp",
+      "bytes": 118450
+    },
+    {
+      "file": "assets/page-layers/page-42-cover-column.png",
+      "bytes": 61315
     },
     {
       "file": "assets/page-layers/page-43-base.webp",
@@ -597,6 +685,14 @@
       "bytes": 273362
     },
     {
+      "file": "assets/page-layers/page-43-cover-base.webp",
+      "bytes": 89476
+    },
+    {
+      "file": "assets/page-layers/page-43-cover-column.png",
+      "bytes": 77912
+    },
+    {
       "file": "assets/page-layers/page-44-base.webp",
       "bytes": 75924
     },
@@ -609,12 +705,20 @@
       "bytes": 198934
     },
     {
+      "file": "assets/page-layers/page-44-cover-base.webp",
+      "bytes": 68056
+    },
+    {
+      "file": "assets/page-layers/page-44-cover-column.png",
+      "bytes": 64016
+    },
+    {
       "file": "assets/page-layers/manifest.json",
-      "bytes": 33841
+      "bytes": 57074
     },
     {
       "file": "index.html",
-      "bytes": 2289
+      "bytes": 2545
     },
     {
       "file": "style.css",
@@ -622,11 +726,11 @@
     },
     {
       "file": "journey.css",
-      "bytes": 7025
+      "bytes": 7094
     },
     {
       "file": "journey.js",
-      "bytes": 13309
+      "bytes": 14885
     },
     {
       "file": "journey-scene.js",
@@ -689,6 +793,14 @@
       "bytes": 3063
     },
     {
+      "file": "contact.js",
+      "bytes": 2720
+    },
+    {
+      "file": "contact.css",
+      "bytes": 1672
+    },
+    {
       "file": "fonts/archivo-expanded-black.ttf",
       "bytes": 111836
     },
@@ -729,6 +841,6 @@
       "bytes": 846
     }
   ],
-  "totalBytes": 26363844,
+  "totalBytes": 29044248,
   "externalAssets": []
 }
