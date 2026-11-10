@@ -72,5 +72,9 @@ body[data-stop=profile] #journey-stage{inset:14vh 13vw 12vh}
 @media(max-width:700px){.reading-head{gap:12px}.reading-tools{gap:9px}#reading-title{font-size:clamp(18px,4.4vw,25px)}}
 @media(prefers-reduced-motion:reduce){.journey-page .cover-column-band{transition:none;transform:none}}
 
+/* Leave room for the compact Contact button beneath the identity. */
+#journey-stage,body[data-stop=profile] #journey-stage{top:max(14vh,126px)}
+@media(max-width:700px){#journey-stage,body[data-stop=profile] #journey-stage{top:max(14vh,118px)}}
+
 /* The statement remains editable in the source; omit unfinished copy online. */
 .statement{display:none!important}

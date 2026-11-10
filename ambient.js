@@ -36,11 +36,15 @@ export function mountAmbientSky() {
   let nextMeteor = 0;
   let frame = 0;
   let previousTime = 0;
+  let previousDrawTime = 0;
+  let hasShownMeteor = false;
   let destroyed = false;
 
   const random = (min, max) => min + Math.random() * (max - min);
   const canAnimate = () => !destroyed && !paused && !reducedMotion.matches && !document.hidden;
-  const scheduleMeteor = (now) => { nextMeteor = now + random(15000, 28000); };
+  const scheduleMeteor = (now) => {
+    nextMeteor = now + (hasShownMeteor ? random(12000, 22000) : random(4000, 7000));
+  };
 
   function updateToggle() {
     toggle.setAttribute('aria-pressed', String(!paused));
@@ -59,17 +63,22 @@ export function mountAmbientSky() {
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const count = width <= 700 ? 20 : 45;
+    const count = width <= 700 ? 35 : 84;
     // Normalized coordinates preserve the constellation when the window changes.
     if (stars.length !== count) {
-      stars = Array.from({ length: count }, () => ({
-        x: Math.random(),
-        y: Math.random(),
-        radius: random(0.45, 0.95),
-        opacity: random(0.075, 0.145),
-        vx: random(-0.9, 0.9),
-        vy: random(-1.5, -0.45),
-      }));
+      stars = Array.from({ length: count }, () => {
+        const direction = random(0, Math.PI * 2);
+        const speed = random(3, 6);
+        const larger = Math.random() < 0.28;
+        return {
+          x: Math.random(),
+          y: Math.random(),
+          radius: larger ? random(1.1, 1.5) : random(0.7, 1.05),
+          opacity: larger ? random(0.24, 0.32) : random(0.18, 0.27),
+          vx: Math.cos(direction) * speed,
+          vy: Math.sin(direction) * speed,
+        };
+      });
     }
     meteor = null;
     draw(performance.now());
@@ -93,16 +102,20 @@ export function mountAmbientSky() {
     const y = meteor.y + meteor.dy * progress;
     const tailX = x - meteor.dx * 0.38;
     const tailY = y - meteor.dy * 0.38;
-    const opacity = 0.14 * Math.sin(progress * Math.PI);
+    const opacity = 0.36 * Math.sin(progress * Math.PI);
     const trail = context.createLinearGradient(tailX, tailY, x, y);
     trail.addColorStop(0, `rgba(${INK}, 0)`);
     trail.addColorStop(1, `rgba(${INK}, ${opacity})`);
     context.beginPath();
     context.moveTo(tailX, tailY);
     context.lineTo(x, y);
-    context.lineWidth = 0.65;
+    context.lineWidth = 0.9;
     context.strokeStyle = trail;
     context.stroke();
+    context.beginPath();
+    context.arc(x, y, 0.85, 0, Math.PI * 2);
+    context.fillStyle = `rgba(${INK}, ${opacity})`;
+    context.fill();
   }
 
   function tick(now) {
@@ -114,7 +127,8 @@ export function mountAmbientSky() {
     const elapsed = now - previousTime;
     if (elapsed < FRAME_MS) return;
     previousTime = now - (elapsed % FRAME_MS);
-    const seconds = Math.min(elapsed / 1000, 0.075);
+    const seconds = Math.min((now - previousDrawTime) / 1000, 0.075);
+    previousDrawTime = now;
     for (const star of stars) {
       star.x = (star.x + star.vx * seconds / width + 1) % 1;
       star.y = (star.y + star.vy * seconds / height + 1) % 1;
@@ -125,9 +139,10 @@ export function mountAmbientSky() {
         y: random(height * 0.08, height * 0.55),
         dx: Math.min(width * 0.2, random(150, 230)),
         dy: random(65, 105),
-        duration: random(1300, 1800),
+        duration: random(1200, 1600),
         started: now,
       };
+      hasShownMeteor = true;
       scheduleMeteor(now);
     }
     draw(now);
@@ -139,6 +154,7 @@ export function mountAmbientSky() {
     meteor = null;
     const now = performance.now();
     previousTime = now;
+    previousDrawTime = now;
     scheduleMeteor(now);
     updateToggle();
     draw(now);

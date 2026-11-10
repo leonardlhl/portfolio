@@ -1,7 +1,9 @@
 import {projects} from './projects.js?v=4';
-import {mountAmbientSky} from './ambient.js?v=1';
+import {mountAmbientSky} from './ambient.js?v=2';
 import {mountPageZoom} from './page-zoom.js?v=2';
 import {mountContact} from './contact.js?v=1';
+import {mountCursor} from './cursor.js?v=1';
+mountCursor();
 const $=s=>document.querySelector(s),mod=(a,b)=>(a%b+b)%b,clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{const t=clamp(v);return t*t*(3-2*t)};
 const cvResponse=await fetch('./cv.html');if(!cvResponse.ok)throw new Error('CV source unavailable');
@@ -96,7 +98,6 @@ stops.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.t
 $('#index-toggle').onclick=()=>{const open=$('#index').hidden;$('#index').hidden=!open;$('#index-toggle').setAttribute('aria-expanded',String(open))};
 $('#home').onclick=()=>jump(0);
 $('#left').onclick=()=>setTarget(target-1,true);$('#right').onclick=()=>setTarget(target+1,true);
-$('#open-active').onclick=()=>{const p=locate(target);setTarget(Math.floor(target/total)*total+starts[p.index]+2)};
 function paint(time){
  raf=0;const dt=Math.min(lastTime?(time-lastTime)/1000:1/60,.025);lastTime=time;
  if(reduced.matches){current=target;velocity=0}else{velocity+=(300*(target-current)-30*velocity)*dt;const phase=locate(current),count=stops[phase.index].steps.length;const speed=phase.local<2||phase.local>count+1?1.5:3;velocity=Math.max(-speed,Math.min(speed,velocity));current+=velocity*dt}
@@ -107,13 +108,11 @@ function paint(time){
  if(projectFlight){const progress=clamp((time-projectFlight.start)/650),blend=smooth(progress);sceneOrdinal=projectFlight.from+(projectFlight.to-projectFlight.from)*blend;zoom=projectFlight.zoom*(1-blend);if(progress===1)projectFlight=null}
  const stepOffset=Math.max(0,Math.min(n-1,t-2)),stepFloor=Math.floor(stepOffset),stepNext=Math.min(n-1,stepFloor+1);
  const pageOffset=stop.steps[stepFloor].page+(stop.steps[stepNext].page-stop.steps[stepFloor].page)*(stepOffset-stepFloor),nearest=Math.round(pageOffset);
- if(activeIndex!==p.index){activeIndex=p.index;activePage=-1;document.body.dataset.stop=stop.id;warmImages(p.index);track.replaceChildren(...stop.slides);measureStage();$('#reading-title').textContent=stop.title;$('#page-enlarge').hidden=p.index===0;$('#open-active').setAttribute('aria-label','Explore '+stop.title);$('#project-list').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-current',String(i===p.index)))}
+ if(activeIndex!==p.index){activeIndex=p.index;activePage=-1;document.body.dataset.stop=stop.id;warmImages(p.index);track.replaceChildren(...stop.slides);measureStage();$('#reading-title').textContent=stop.title;$('#page-enlarge').hidden=p.index===0;$('#project-list').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-current',String(i===p.index)))}
  const alpha=flying?0:smooth((zoom-.25)/.75);stage.style.opacity=String(alpha);stage.style.pointerEvents=alpha>.95?'auto':'none';stage.inert=alpha<.95;stage.setAttribute('aria-hidden',String(alpha<.95));
  track.style.transform='translate3d('+(-pageOffset*100)+'%,0,0)';
  if(activePage!==nearest){activePage=nearest;stop.slides.forEach((el,i)=>{el.inert=i!==nearest;el.setAttribute('aria-hidden',String(i!==nearest))});$('#page-position').textContent=(nearest+1)+' / '+stop.slides.length}
  for(const slide of stop.slides){if(slide.revealStep!==undefined){const revealed=stepOffset>=slide.revealStep-.5;slide.dataset.revealed=String(revealed);slide.querySelector('.cover-column')?.setAttribute('aria-hidden',String(!revealed))}}
- $('.intro').style.opacity=String(1-alpha);$('.intro').style.pointerEvents=alpha>.8?'none':'auto';
- $('.intro').setAttribute('aria-hidden',String(alpha>.8));$('.intro').inert=alpha>.8;
  $('#scene').style.opacity=String(1-.88*alpha);
  lastSceneOrdinal=sceneOrdinal;lastSceneZoom=zoom;
  const origin=scene?.update(sceneOrdinal,reduced.matches?0:zoom,dragYaw,reduced.matches?0:current);

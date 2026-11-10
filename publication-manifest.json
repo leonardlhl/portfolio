@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-11-10T14:12:23.240Z",
+  "generatedAt": "2026-11-10T14:32:09.636Z",
   "projects": 13,
   "projectPages": 40,
-  "images": 176,
+  "images": 179,
   "files": [
     {
       "file": "assets/pages/page-05.jpg",
@@ -17,16 +17,16 @@
       "bytes": 99568
     },
     {
+      "file": "assets/pages/page-09.jpg",
+      "bytes": 120932
+    },
+    {
       "file": "assets/pages/page-07.jpg",
       "bytes": 114153
     },
     {
       "file": "assets/pages/page-10.jpg",
       "bytes": 110644
-    },
-    {
-      "file": "assets/pages/page-09.jpg",
-      "bytes": 120932
     },
     {
       "file": "assets/pages/page-11.jpg",
@@ -37,20 +37,20 @@
       "bytes": 116564
     },
     {
-      "file": "assets/pages/page-13.jpg",
-      "bytes": 85883
-    },
-    {
-      "file": "assets/pages/page-15.jpg",
-      "bytes": 86168
-    },
-    {
       "file": "assets/pages/page-12.jpg",
       "bytes": 61607
     },
     {
       "file": "assets/pages/page-16.jpg",
       "bytes": 46876
+    },
+    {
+      "file": "assets/pages/page-13.jpg",
+      "bytes": 85883
+    },
+    {
+      "file": "assets/pages/page-15.jpg",
+      "bytes": 86168
     },
     {
       "file": "assets/pages/page-17.jpg",
@@ -65,14 +65,6 @@
       "bytes": 79184
     },
     {
-      "file": "assets/pages/page-23.jpg",
-      "bytes": 66175
-    },
-    {
-      "file": "assets/pages/page-21.jpg",
-      "bytes": 102721
-    },
-    {
       "file": "assets/pages/page-20.jpg",
       "bytes": 98364
     },
@@ -81,20 +73,28 @@
       "bytes": 80001
     },
     {
+      "file": "assets/pages/page-21.jpg",
+      "bytes": 102721
+    },
+    {
       "file": "assets/pages/page-24.jpg",
       "bytes": 77688
+    },
+    {
+      "file": "assets/pages/page-23.jpg",
+      "bytes": 66175
     },
     {
       "file": "assets/pages/page-33.jpg",
       "bytes": 108011
     },
     {
-      "file": "assets/pages/page-34.jpg",
-      "bytes": 142252
-    },
-    {
       "file": "assets/pages/page-35.jpg",
       "bytes": 131292
+    },
+    {
+      "file": "assets/pages/page-34.jpg",
+      "bytes": 142252
     },
     {
       "file": "assets/pages/page-36.jpg",
@@ -105,28 +105,28 @@
       "bytes": 121616
     },
     {
-      "file": "assets/pages/page-26.jpg",
-      "bytes": 130426
-    },
-    {
       "file": "assets/pages/page-29.jpg",
       "bytes": 46644
-    },
-    {
-      "file": "assets/pages/page-28.jpg",
-      "bytes": 139252
     },
     {
       "file": "assets/pages/page-27.jpg",
       "bytes": 124420
     },
     {
-      "file": "assets/pages/page-30.jpg",
-      "bytes": 148545
+      "file": "assets/pages/page-26.jpg",
+      "bytes": 130426
+    },
+    {
+      "file": "assets/pages/page-28.jpg",
+      "bytes": 139252
     },
     {
       "file": "assets/pages/page-31.jpg",
       "bytes": 125742
+    },
+    {
+      "file": "assets/pages/page-30.jpg",
+      "bytes": 148545
     },
     {
       "file": "assets/pages/page-32.jpg",
@@ -718,7 +718,7 @@
     },
     {
       "file": "index.html",
-      "bytes": 2545
+      "bytes": 2510
     },
     {
       "file": "style.css",
@@ -726,11 +726,11 @@
     },
     {
       "file": "journey.css",
-      "bytes": 7094
+      "bytes": 7340
     },
     {
       "file": "journey.js",
-      "bytes": 14885
+      "bytes": 14577
     },
     {
       "file": "journey-scene.js",
@@ -778,7 +778,7 @@
     },
     {
       "file": "ambient.js",
-      "bytes": 5806
+      "bytes": 6395
     },
     {
       "file": "ambient.css",
@@ -798,7 +798,15 @@
     },
     {
       "file": "contact.css",
-      "bytes": 1672
+      "bytes": 1650
+    },
+    {
+      "file": "cursor.js",
+      "bytes": 3428
+    },
+    {
+      "file": "cursor.css",
+      "bytes": 995
     },
     {
       "file": "fonts/archivo-expanded-black.ttf",
@@ -821,6 +829,18 @@
       "bytes": 4388
     },
     {
+      "file": "assets/cursors/normal.svg",
+      "bytes": 446
+    },
+    {
+      "file": "assets/cursors/pressed.svg",
+      "bytes": 449
+    },
+    {
+      "file": "assets/cursors/drag.svg",
+      "bytes": 525
+    },
+    {
       "file": "vendor/three.module.js",
       "bytes": 1272972
     },
@@ -841,6 +861,6 @@
       "bytes": 846
     }
   ],
-  "totalBytes": 29044248,
+  "totalBytes": 29050561,
   "externalAssets": []
 }
