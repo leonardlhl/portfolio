@@ -1,4 +1,5 @@
 import * as T from './vendor/three.module.js';
+import {coverPhotoRectangle} from './cover-paper-masks.js';
 
 // Reference-led approximation from the visible Reel, not the original site's asset.
 // Cloud Dancer is the colour direction; these RGB values are screen approximations.
@@ -56,13 +57,57 @@ export function mountJourneyScene(projects){
  }
  const structures=[sculpture,sculpture.clone(),sculpture.clone()];scene.add(structures[1],structures[2]);
  const landscape=new T.Group();scene.add(landscape);structures.forEach(s=>landscape.add(s));landscape.matrixAutoUpdate=false;
- const loader=new T.TextureLoader(),textures=projects.map(p=>loader.load(p[5]||(typeof p[3][0]==='number'?'./assets/pages/page-'+String(p[3][0]).padStart(2,'0')+'.jpg':p[3][0]),()=>render()));
- const cvCanvas=document.createElement('canvas');cvCanvas.width=900;cvCanvas.height=560;const ctx=cvCanvas.getContext('2d');ctx.fillStyle='#eeeeec';ctx.fillRect(0,0,900,560);ctx.fillStyle='#252a2b';ctx.font='bold 64px sans-serif';ctx.fillText('LEONARD LO',65,155);ctx.font='28px sans-serif';ctx.fillText('PROFILE / CV',65,235);ctx.font='22px sans-serif';ctx.fillText('Architecture · Awards · Experience',65,350);
+ const hitMasks=new WeakMap();
+ // A small coverage mask keeps invisible paper from capturing background scroll.
+ // It is sampled only on pointer gestures, never during the animation render.
+ function makeHitMask(texture){
+  if(hitMasks.has(texture))return hitMasks.get(texture);
+  const image=texture.image;if(!image?.width||!image?.height)return null;
+  const canvas=document.createElement('canvas');canvas.width=320;canvas.height=Math.max(1,Math.round(image.height/image.width*320));
+  const context=canvas.getContext('2d',{willReadFrequently:true});
+  try{
+   context.drawImage(image,0,0,canvas.width,canvas.height);
+   const pixels=context.getImageData(0,0,canvas.width,canvas.height).data;
+   const alpha=new Uint8Array(canvas.width*canvas.height),ink=new Uint8Array(alpha.length);
+   for(let i=0;i<alpha.length;i++){const p=i*4;alpha[i]=pixels[p+3];ink[i]=255-Math.min(pixels[p],pixels[p+1],pixels[p+2])}
+   const mask={width:canvas.width,height:canvas.height,alpha,ink};hitMasks.set(texture,mask);return mask;
+  }catch{return null}
+ }
+ const loader=new T.TextureLoader(),textures=projects.map(p=>loader.load(p[5]||(typeof p[3][0]==='number'?'./assets/pages/page-'+String(p[3][0]).padStart(2,'0')+'.jpg':p[3][0]),texture=>{makeHitMask(texture);render()}));
+ const cvCanvas=document.createElement('canvas');cvCanvas.width=900;cvCanvas.height=560;const ctx=cvCanvas.getContext('2d');ctx.clearRect(0,0,900,560);ctx.fillStyle='#252a2b';ctx.font='bold 64px sans-serif';ctx.fillText('LEONARD LO',65,155);ctx.font='28px sans-serif';ctx.fillText('PROFILE / CV',65,235);ctx.font='22px sans-serif';ctx.fillText('Architecture · Awards · Experience',65,350);
  const cvTexture=new T.CanvasTexture(cvCanvas);cvTexture.colorSpace=T.SRGBColorSpace;
- const slots=Array.from({length:7},()=>{const g=new T.Group(),mat=new T.MeshBasicMaterial({side:T.DoubleSide,color:'#ffffff',toneMapped:false,fog:false}),mesh=new T.Mesh(new T.PlaneGeometry(3.7,2.38),mat);g.add(mesh);scene.add(g);return {g,mat,ordinal:null}});
+ const slots=Array.from({length:7},()=>{const g=new T.Group(),mat=new T.MeshBasicMaterial({side:T.DoubleSide,color:'#ffffff',toneMapped:false,fog:false,transparent:true,depthWrite:false,alphaTest:.005}),mesh=new T.Mesh(new T.PlaneGeometry(3.7,2.38),mat);g.add(mesh);scene.add(g);return {g,mat,ordinal:null}});
  let ordinal=0,zoom=0,azimuth=0,scroll=0,width=innerWidth,height=innerHeight,ready=false;
  const mod=(a,b)=>(a%b+b)%b;
- slots.forEach(slot=>{slot.saturation={value:.15};slot.mat.transparent=true;slot.mat.onBeforeCompile=shader=>{shader.uniforms.archiveSaturation=slot.saturation;shader.fragmentShader='uniform float archiveSaturation;\n'+shader.fragmentShader;shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\nfloat grey=dot(diffuseColor.rgb,vec3(0.2126,0.7152,0.0722)); diffuseColor.rgb=mix(vec3(grey),diffuseColor.rgb,archiveSaturation);')};});
+ slots.forEach(slot=>{
+  slot.saturation={value:.15};slot.paperKey={value:0};slot.photoRect={value:new T.Vector4(0,0,1,1)};
+  slot.mat.onBeforeCompile=shader=>{
+   shader.uniforms.archiveSaturation=slot.saturation;
+   shader.uniforms.archivePaperKey=slot.paperKey;
+   shader.uniforms.archivePhotoRect=slot.photoRect;
+   shader.fragmentShader='uniform float archiveSaturation;\nuniform float archivePaperKey;\nuniform vec4 archivePhotoRect;\n'+shader.fragmentShader;
+   shader.fragmentShader=shader.fragmentShader.replace('#include <colorspace_fragment>',`#include <colorspace_fragment>
+    #ifdef USE_MAP
+    if(archivePaperKey>0.5){
+     vec2 paperUv=vec2(vMapUv.x,1.0-vMapUv.y);
+     float edge=0.0006;
+     vec2 nearEdge=smoothstep(archivePhotoRect.xy-vec2(edge),archivePhotoRect.xy+vec2(edge),paperUv);
+     vec2 farEdge=vec2(1.0)-smoothstep(archivePhotoRect.zw-vec2(edge),archivePhotoRect.zw+vec2(edge),paperUv);
+     float photograph=nearEdge.x*nearEdge.y*farEdge.x*farEdge.y;
+     // Unmatte after output colour conversion: the canvas blends in displayed
+     // sRGB. Doing this on linear texture values would darken the pale lettering.
+     // Protected photograph pixels pass through with their original colour.
+     float inkAlpha=1.0-min(gl_FragColor.r,min(gl_FragColor.g,gl_FragColor.b));
+     float paperAlpha=mix(inkAlpha,1.0,photograph);
+     gl_FragColor.rgb=clamp((gl_FragColor.rgb-vec3(1.0-paperAlpha))/max(paperAlpha,0.0001),0.0,1.0);
+     gl_FragColor.a*=paperAlpha;
+     if(gl_FragColor.a<0.005)discard;
+    }
+    #endif`);
+   shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\nfloat grey=dot(diffuseColor.rgb,vec3(0.2126,0.7152,0.0722)); diffuseColor.rgb=mix(vec3(grey),diffuseColor.rgb,archiveSaturation);');
+  };
+  slot.mat.customProgramCacheKey=()=> 'archive-paper-matte-v2';
+ });
  function render(){
   if(!ready)return;
   const viewAngle=ordinal*3.25/turnPitch*Math.PI*2-scroll*.18-.36*(1-zoom)+azimuth;
@@ -76,7 +121,7 @@ export function mountJourneyScene(projects){
   slots.forEach((slot,j)=>{const n=center+j-3,index=mod(n,projects.length+1),a=n*3.25/turnPitch*Math.PI*2-scroll*.18;
    slot.g.rotation.y=Math.PI/2-a;slot.g.position.copy(anchor(n)).add(new T.Vector3(1.85,0,0).applyAxisAngle(new T.Vector3(0,1,0),slot.g.rotation.y));
    const selected=n===center;slot.saturation.value=selected?1:.12;slot.mat.opacity=selected?1-(()=>{const t=Math.max(0,Math.min(1,(zoom-.25)/.75));return t*t*(3-2*t)})():.72;
-   if(slot.ordinal!==n){slot.ordinal=n;slot.mat.map=index===0?cvTexture:textures[index-1];if(slot.mat.map)slot.mat.map.colorSpace=T.SRGBColorSpace;slot.mat.needsUpdate=true}
+   if(slot.ordinal!==n){slot.ordinal=n;slot.mat.map=index===0?cvTexture:textures[index-1];slot.paperKey.value=index===0?0:1;slot.photoRect.value.fromArray(index===0?[0,0,1,1]:coverPhotoRectangle(projects[index-1][0]));if(slot.mat.map)slot.mat.map.colorSpace=T.SRGBColorSpace;slot.mat.needsUpdate=true}
   });
   const d=(width<700?17:12.8)-zoom*1.8,yaw=angle-.36*(1-zoom)+azimuth;
   const cardCenter=focus.clone().add(new T.Vector3(1.85,0,0).applyAxisAngle(new T.Vector3(0,1,0),Math.PI/2-angle));
@@ -89,5 +134,14 @@ export function mountJourneyScene(projects){
  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();$('#loading').textContent='3D interrupted. Project pages remain available.';$('#loading').hidden=false});
  $('#loading').hidden=true;
  const raycaster=new T.Raycaster();
- return {hitProject(x,y){raycaster.setFromCamera(new T.Vector2(x/width*2-1,1-y/height*2),camera);const selected=slots.find(s=>s.ordinal===Math.round(ordinal));return !!selected&&raycaster.intersectObjects(selected.g.children,false).length>0},update(n,z,drag=0,progress=0){ordinal=n;zoom=z;azimuth=drag;scroll=n*.5;return render()}};
+ return {hitProject(x,y){
+  raycaster.setFromCamera(new T.Vector2(x/width*2-1,1-y/height*2),camera);
+  const selected=slots.find(s=>s.ordinal===Math.round(ordinal));if(!selected)return false;
+  const hit=raycaster.intersectObjects(selected.g.children,false)[0];if(!hit?.uv)return false;
+  const u=hit.uv.x,v=1-hit.uv.y,rect=selected.photoRect.value;
+  if(selected.paperKey.value&&u>=rect.x&&u<=rect.z&&v>=rect.y&&v<=rect.w)return true;
+  const mask=makeHitMask(selected.mat.map);if(!mask)return false;
+  const ix=Math.min(mask.width-1,Math.max(0,Math.floor(u*mask.width))),iy=Math.min(mask.height-1,Math.max(0,Math.floor(v*mask.height))),pixel=iy*mask.width+ix;
+  return mask.alpha[pixel]>16&&(!selected.paperKey.value||mask.ink[pixel]>5);
+ },update(n,z,drag=0,progress=0){ordinal=n;zoom=z;azimuth=drag;scroll=n*.5;return render()}};
 }

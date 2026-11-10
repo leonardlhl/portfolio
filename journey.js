@@ -1,8 +1,8 @@
 import {projects} from './projects.js?v=4';
-import {mountAmbientSky} from './ambient.js?v=2';
+import {mountAmbientSky} from './ambient.js?v=3';
 import {mountPageZoom} from './page-zoom.js?v=2';
 import {mountContact} from './contact.js?v=1';
-import {mountCursor} from './cursor.js?v=1';
+import {mountCursor} from './cursor.js?v=2';
 mountCursor();
 const $=s=>document.querySelector(s),mod=(a,b)=>(a%b+b)%b,clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{const t=clamp(v);return t*t*(3-2*t)};
@@ -11,7 +11,15 @@ const cvDoc=new DOMParser().parseFromString(await cvResponse.text(),'text/html')
 const contactEmail=cvDoc.querySelector('a[href^="mailto:"]')?.getAttribute('href').slice(7).split('?')[0];
 mountContact({button:$('#contact-copy'),status:$('#contact-status'),email:contactEmail});
 const cvSlides=[];
-function cvSlide(title,nodes){const el=document.createElement('article');el.className='journey-page cv-page-content';const inner=document.createElement('div');inner.className='page-copy';if(title){const h=document.createElement('h2');h.textContent=title;inner.append(h)}for(const node of nodes)inner.append(node.cloneNode(true));inner.querySelectorAll('.eyebrow,.section-label>span,.archive-link').forEach(n=>n.remove());el.append(inner);cvSlides.push(el)}
+function cvSlide(title,nodes){
+ const el=document.createElement('article');el.className='journey-page cv-page-content';
+ const inner=document.createElement('div');inner.className='page-copy';
+ if(title){const h=document.createElement('h2');h.textContent=title;inner.append(h)}
+ for(const node of nodes)inner.append(node.cloneNode(true));
+ inner.querySelectorAll('.eyebrow,.section-label>span,.archive-link').forEach(n=>n.remove());
+ for(const label of inner.querySelectorAll('.section-label'))if(label.querySelector('h2')?.textContent.trim().toLowerCase()===title.toLowerCase())label.remove();
+ el.append(inner);cvSlides.push(el);
+}
 const cvSections=[...cvDoc.querySelectorAll('.cv-section')];
 cvSlide('',[cvDoc.querySelector('.profile')]);
 cvSlide('Background',[cvSections[0],cvSections[1]]);
@@ -147,6 +155,6 @@ document.addEventListener('pointerup',()=>{if(touch?.type==='touch')setTarget(Ma
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else request()});
 window.addEventListener('resize',()=>{measureStage();request()});reduced.addEventListener('change',request);
 const sceneProjects=projects.map((project,index)=>{const copy=[...project];copy[5]=stops[index+1].slides[0].querySelector('.portfolio-image').getAttribute('src');return copy});
-try{const module=await import('./journey-scene.js?v=23');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
+try{const module=await import('./journey-scene.js?v=24');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
 request();
 document.querySelector('footer>span').textContent=sequentialTouch?'Swipe to explore every page':'Scroll background: projects · Scroll page: details';

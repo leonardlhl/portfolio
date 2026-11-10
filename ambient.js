@@ -43,7 +43,7 @@ export function mountAmbientSky() {
   const random = (min, max) => min + Math.random() * (max - min);
   const canAnimate = () => !destroyed && !paused && !reducedMotion.matches && !document.hidden;
   const scheduleMeteor = (now) => {
-    nextMeteor = now + (hasShownMeteor ? random(12000, 22000) : random(4000, 7000));
+    nextMeteor = now + (hasShownMeteor ? random(6000, 11000) : random(2000, 3500));
   };
 
   function updateToggle() {
@@ -63,12 +63,12 @@ export function mountAmbientSky() {
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const count = width <= 700 ? 35 : 84;
+    const count = width <= 700 ? 70 : 168;
     // Normalized coordinates preserve the constellation when the window changes.
     if (stars.length !== count) {
       stars = Array.from({ length: count }, () => {
         const direction = random(0, Math.PI * 2);
-        const speed = random(3, 6);
+        const speed = random(6, 12);
         const larger = Math.random() < 0.28;
         return {
           x: Math.random(),

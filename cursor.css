@@ -2,15 +2,15 @@
 @media (any-pointer: fine) and (any-hover: hover) {
   html[data-cursor-enabled="true"],
   html[data-cursor-enabled="true"] * {
-    cursor: url('./assets/cursors/normal.svg') 13 13, auto !important;
+    cursor: url('./assets/cursors/normal.svg?v=2') 5 5, auto !important;
   }
   html[data-cursor-enabled="true"][data-cursor="pressed"],
   html[data-cursor-enabled="true"][data-cursor="pressed"] * {
-    cursor: url('./assets/cursors/pressed.svg') 13 13, pointer !important;
+    cursor: url('./assets/cursors/pressed.svg?v=2') 5 5, pointer !important;
   }
   html[data-cursor-enabled="true"][data-cursor="drag"],
   html[data-cursor-enabled="true"][data-cursor="drag"] * {
-    cursor: url('./assets/cursors/drag.svg') 13 13, grabbing !important;
+    cursor: url('./assets/cursors/drag.svg?v=2') 5 5, grabbing !important;
   }
   html[data-cursor-enabled="true"] :is(textarea, input:not([type]), input[type="text"], input[type="search"], input[type="email"], input[type="password"], input[type="tel"], input[type="url"], input[type="number"], [contenteditable=""], [contenteditable="true"], [contenteditable="true"] *) {
     cursor: text !important;

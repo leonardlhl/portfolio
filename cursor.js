@@ -1,4 +1,4 @@
-// Reference-led outline, filled press, and ripple drag cursors.
+// Compact charcoal arrow, blue click rays, and blue ripple drag cursors.
 let mounted = null;
 
 export function mountCursor() {
@@ -40,7 +40,7 @@ export function mountCursor() {
   // Decode once before the first press so changing state does not wait on a fetch.
   const images = ['normal', 'pressed', 'drag'].map(name => {
     const image = new Image();
-    image.src = new URL('./assets/cursors/' + name + '.svg', import.meta.url).href;
+    image.src = new URL('./assets/cursors/' + name + '.svg?v=2', import.meta.url).href;
     image.decode().catch(() => {});
     return image;
   });
