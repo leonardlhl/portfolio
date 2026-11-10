@@ -2,7 +2,7 @@ import {projects} from './projects.js?v=4';
 import {mountAmbientSky} from './ambient.js?v=3';
 import {mountPageZoom} from './page-zoom.js?v=2';
 import {mountContact} from './contact.js?v=1';
-import {mountCursor} from './cursor.js?v=3';
+import {mountCursor} from './cursor.js?v=4';
 mountCursor();
 const $=s=>document.querySelector(s),mod=(a,b)=>(a%b+b)%b,clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{const t=clamp(v);return t*t*(3-2*t)};
@@ -57,8 +57,9 @@ stops.forEach(s=>{
  s.steps=[];s.slides.forEach((slide,page)=>{s.steps.push({page,reveal:false});if(slide.dataset.description==='true'){slide.revealStep=s.steps.length;s.steps.push({page,reveal:true})}});
  starts.push(total);s.duration=s.steps.length+3;total+=s.duration;
 });
-let target=1,current=1,velocity=0,raf=0,lastTime=0,activeIndex=-1,activePage=-1,dragYaw=0,touch=null,scene,snapTimer;
+let target=1,current=1,velocity=0,raf=0,lastTime=0,activeIndex=-1,activePage=-1,dragYaw=0,touch=null,hoverPointer=null,scene,snapTimer;
 const reduced=matchMedia('(prefers-reduced-motion: reduce)'),stage=$('#journey-stage'),track=$('#journey-track');
+const finePointer=matchMedia('(any-pointer: fine) and (any-hover: hover)');
 mountAmbientSky();
 const pageZoom=mountPageZoom({button:$('#page-enlarge'),getPage:()=>{
  const stop=stops[activeIndex],page=stop?.slides[activePage];
@@ -68,6 +69,12 @@ const pageZoom=mountPageZoom({button:$('#page-enlarge'),getPage:()=>{
 let stageBox;
 const sequentialTouch=matchMedia('(pointer: coarse)').matches||(/iPad/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1));
 let projectFlight=null,lastSceneOrdinal=0,lastSceneZoom=0,wheelGesture=null;
+function syncPreviewHover(){
+ const available=finePointer.matches&&hoverPointer&&!pageZoom.isOpen&&$('#index').hidden&&!projectFlight&&!touch?.moved&&lastSceneZoom<.001;
+ const hit=available?scene?.pickProject(hoverPointer.x,hoverPointer.y):null;
+ if(scene?.setHover(hit?.ordinal??null,reduced.matches))request();
+ const next=String(Boolean(hit));if(document.documentElement.dataset.cursorHover!==next)document.documentElement.dataset.cursorHover=next;
+}
 function onContent(x,y){
  if(Number(stage.style.opacity)>.8){
   const page=stops[activeIndex]?.slides[activePage],el=page?.querySelector('img')||page;
@@ -141,7 +148,8 @@ function paint(time){
  const origin=scene?.update(sceneOrdinal,reduced.matches?0:zoom,dragYaw,reduced.matches?0:current);
  if(origin&&!reduced.matches){const {cx,cy,width}=stageBox;const startScale=Math.min(1,origin.width/width);stage.style.transform='translate3d('+((origin.x-cx)*(1-zoom))+'px,'+((origin.y-cy)*(1-zoom))+'px,0) scale('+(startScale+(1-startScale)*zoom)+')'}else stage.style.transform='none';
  document.body.dataset.stop=stop.id;document.body.dataset.page=String(nearest+1);document.body.dataset.phase=alpha>.8?'reading':t<1?'travel':zoom>0?'zoom':'tree';
- if(projectFlight||Math.abs(target-current)+Math.abs(velocity)>.001)request();else lastTime=0;
+ syncPreviewHover();
+ if(projectFlight||scene?.isAnimating||Math.abs(target-current)+Math.abs(velocity)>.001)request();else lastTime=0;
 }
 function request(){if(!raf&&!document.hidden)raf=requestAnimationFrame(paint)}
 document.addEventListener('wheel',e=>{
@@ -165,10 +173,14 @@ document.addEventListener('pointerdown',e=>{
  const pick=e.target.closest('#scene')&&document.body.dataset.phase!=='reading'?scene?.pickProject(e.clientX,e.clientY):null;
  touch={id:e.pointerId,x:e.clientX,y:e.clientY,originX:e.clientX,originY:e.clientY,type:e.pointerType,start:target,moved:false,pick};
 });
-document.addEventListener('pointermove',e=>{if(!touch||e.pointerId!==touch.id)return;const dx=e.clientX-touch.x,dy=e.clientY-touch.y;
+document.addEventListener('pointermove',e=>{
+ if(e.pointerType==='mouse'){hoverPointer=e.target.closest('#scene')?{x:e.clientX,y:e.clientY}:null;syncPreviewHover()}
+ else{hoverPointer=null;syncPreviewHover()}
+ if(!touch||e.pointerId!==touch.id)return;const dx=e.clientX-touch.x,dy=e.clientY-touch.y;
  if(Math.hypot(e.clientX-touch.originX,e.clientY-touch.originY)>5)touch.moved=true;
+ if(touch.moved)syncPreviewHover();
  if(touch.type==='touch'){if(projectFlight)return;const content=e.target.closest('.cv-page-content');if(content&&content.scrollHeight>content.clientHeight+2)return;const next=target+(Math.abs(dx)>Math.abs(dy)?-dx:-dy)/400;setTarget(Math.max(touch.start-1,Math.min(touch.start+1,next)))}
- else if((e.buttons&1)&&touch.moved&&document.body.dataset.phase!=='reading'){dragYaw-=dx*.006;request()}
+ else if((e.buttons&1)&&touch.moved&&document.body.dataset.phase!=='reading'){dragYaw+=dx*.006;request()}
  touch.x=e.clientX;touch.y=e.clientY;
 });
 document.addEventListener('pointerup',e=>{
@@ -178,11 +190,15 @@ document.addEventListener('pointerup',e=>{
   openProject(gesture.pick.index,gesture.pick.ordinal);return;
  }
  if(gesture.type==='touch')setTarget(Math.round(target));
+ syncPreviewHover();
 });
-document.addEventListener('pointercancel',()=>touch=null);window.addEventListener('blur',()=>touch=null);
+document.addEventListener('pointercancel',()=>{touch=null;hoverPointer=null;syncPreviewHover()});
+document.addEventListener('pointerout',e=>{if(!e.relatedTarget){hoverPointer=null;syncPreviewHover()}});
+window.addEventListener('blur',()=>{touch=null;hoverPointer=null;syncPreviewHover()});
+finePointer.addEventListener('change',()=>{hoverPointer=null;syncPreviewHover()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else request()});
 window.addEventListener('resize',()=>{measureStage();request()});reduced.addEventListener('change',request);
 const sceneProjects=projects.map((project,index)=>{const copy=[...project];copy[5]=stops[index+1].slides[0].querySelector('.portfolio-image').getAttribute('src');return copy});
-try{const module=await import('./journey-scene.js?v=25');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
+try{const module=await import('./journey-scene.js?v=26');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
 request();
 document.querySelector('footer>span').textContent=sequentialTouch?'Tap to open · Swipe to explore every page':'Click a preview to open · Scroll to explore';

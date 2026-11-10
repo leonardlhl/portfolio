@@ -78,6 +78,32 @@ export function mountJourneyScene(projects){
  const cvTexture=new T.CanvasTexture(cvCanvas);cvTexture.colorSpace=T.SRGBColorSpace;
  const slots=Array.from({length:7},()=>{const g=new T.Group(),mat=new T.MeshBasicMaterial({side:T.DoubleSide,color:'#ffffff',toneMapped:false,fog:false,transparent:true,depthWrite:false,alphaTest:.005}),mesh=new T.Mesh(new T.PlaneGeometry(3.7,2.38),mat);g.add(mesh);scene.add(g);return {g,mat,ordinal:null}});
  let ordinal=0,zoom=0,azimuth=0,scroll=0,width=innerWidth,height=innerHeight,ready=false;
+ const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+ const HOVER_SCALE=1.06,HOVER_DURATION=200;
+ let hoverOrdinal=null;
+ // Same ease-out curve as the interface token: cubic-bezier(.23,1,.32,1).
+ // Solve its x coordinate, then evaluate y; interpolation stays within 1..1.06.
+ function hoverEase(progress){
+  if(progress<=0)return 0;if(progress>=1)return 1;
+  let low=0,high=1,t=progress;
+  for(let i=0;i<12;i++){const inverse=1-t,x=3*.23*inverse*inverse*t+3*.32*inverse*t*t+t*t*t;if(x<progress)low=t;else high=t;t=(low+high)/2}
+  return 1-Math.pow(1-t,3);
+ }
+ function sampleHover(state,now){
+  if(state.value===state.to)return;
+  const progress=Math.max(0,Math.min(1,(now-state.started)/HOVER_DURATION));
+  state.value=progress===1?state.to:state.from+(state.to-state.from)*hoverEase(progress);
+ }
+ function syncHover(slot,n,now,immediate=false){
+  // Slots recycle as the continuous tree moves. Never transfer an enlarged
+  // state from an old project to the new project occupying the same slot.
+  if(!slot.hover||slot.hover.ordinal!==n)slot.hover={ordinal:n,value:1,from:1,to:1,started:now};
+  const state=slot.hover;sampleHover(state,now);
+  const destination=n===hoverOrdinal?HOVER_SCALE:1;
+  if(state.to!==destination){state.from=state.value;state.to=destination;state.started=now}
+  if(immediate||reducedMotion.matches)state.value=state.to;
+  slot.g.scale.setScalar(state.value);
+ }
  const mod=(a,b)=>(a%b+b)%b;
  slots.forEach(slot=>{
   slot.saturation={value:.15};slot.paperKey={value:0};slot.photoRect={value:new T.Vector4(0,0,1,1)};
@@ -110,6 +136,7 @@ export function mountJourneyScene(projects){
  });
  function render(){
   if(!ready)return;
+  const now=performance.now();
   const viewAngle=ordinal*3.25/turnPitch*Math.PI*2-scroll*.18-.36*(1-zoom)+azimuth;
   const spread=width<800?1:Math.min(2.6,1+(width/height-1)*1.25),right=new T.Vector3(Math.sin(viewAngle),0,-Math.cos(viewAngle));
   function widen(v){return v.addScaledVector(right,v.dot(right)*(spread-1))}
@@ -119,6 +146,7 @@ export function mountJourneyScene(projects){
   structures.forEach((s,i)=>{s.position.y=(base+i-1)*period+scroll*.3;s.rotation.y=-scroll*.18});
   const center=Math.round(ordinal);
   slots.forEach((slot,j)=>{const n=center+j-3,index=mod(n,projects.length+1),a=n*3.25/turnPitch*Math.PI*2-scroll*.18;
+   syncHover(slot,n,now);
    slot.g.rotation.y=Math.PI/2-a;slot.g.position.copy(anchor(n)).add(new T.Vector3(1.85,0,0).applyAxisAngle(new T.Vector3(0,1,0),slot.g.rotation.y));
    const selected=n===center;slot.saturation.value=selected?1:.12;slot.mat.opacity=selected?1-(()=>{const t=Math.max(0,Math.min(1,(zoom-.25)/.75));return t*t*(3-2*t)})():.72;
    if(slot.ordinal!==n){slot.ordinal=n;slot.mat.map=index===0?cvTexture:textures[index-1];slot.paperKey.value=index===0?0:1;slot.photoRect.value.fromArray(index===0?[0,0,1,1]:coverPhotoRectangle(projects[index-1][0]));if(slot.mat.map)slot.mat.map.colorSpace=T.SRGBColorSpace;slot.mat.needsUpdate=true}
@@ -131,14 +159,14 @@ export function mountJourneyScene(projects){
  }
  function resize(){width=innerWidth;height=innerHeight;renderer.setSize(width,height);render()}
  ready=true;resize();window.addEventListener('resize',resize);
+ reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches){const now=performance.now();slots.forEach(slot=>syncHover(slot,slot.ordinal,now,true));render()}});
  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();$('#loading').textContent='3D interrupted. Project pages remain available.';$('#loading').hidden=false});
  $('#loading').hidden=true;
  const raycaster=new T.Raycaster();
  const slotForMesh=new Map(slots.flatMap(slot=>slot.g.children.map(mesh=>[mesh,slot])));
  const previewMeshes=[...slotForMesh.keys()];
- function acceptsHit(slot,hit){
-  if(!hit?.uv||slot.mat.opacity<.1||!slot.g.visible)return false;
-  const u=hit.uv.x,v=1-hit.uv.y;
+ function acceptsUv(slot,u,v){
+  if(u<0||u>1||v<0||v>1)return false;
   // The CV is a text group, not a set of tiny glyph-shaped targets. Include
   // the natural spaces between its three lines so scrolling/tapping feels easy.
   if(!slot.paperKey.value)return u>=40/900&&u<=750/900&&v>=85/560&&v<=390/560;
@@ -153,8 +181,32 @@ export function mountJourneyScene(projects){
   }
   return false;
  }
+ function acceptsHit(slot,hit){
+  if(!hit?.uv||slot.mat.opacity<.1||!slot.g.visible)return false;
+  const u=hit.uv.x,v=1-hit.uv.y,scale=slot.g.scale.x;
+  if(scale<=1)return acceptsUv(slot,u,v);
+  // Keep the original ink target reachable as that ink moves during scaling.
+  // Without this union, a stationary pointer over fine captions can repeatedly
+  // lose its moving glyph, shrink the preview, then reacquire it forever.
+  const originalHit=acceptsUv(slot,.5+(u-.5)*scale,.5+(v-.5)*scale);
+  if(slot.ordinal===hoverOrdinal)return originalHit||acceptsUv(slot,u,v);
+  // An outgoing preview must not be reacquired merely because its fading-scale
+  // glyphs sweep across a pointer which has already left the original target.
+  return originalHit;
+ }
  function cast(x,y,meshes){raycaster.setFromCamera(new T.Vector2(x/width*2-1,1-y/height*2),camera);return raycaster.intersectObjects(meshes,false)}
  return {
+  setHover(value,immediate=false){
+   const next=Number.isInteger(value)&&slots.some(slot=>slot.ordinal===value&&slot.mat.opacity>=.1)?value:null;
+   let changed=next!==hoverOrdinal;hoverOrdinal=next;
+   const now=performance.now();
+   for(const slot of slots){
+    const previous=slot.hover?.value;syncHover(slot,slot.ordinal,now,immediate);
+    if((immediate||reducedMotion.matches)&&previous!==slot.hover.value)changed=true;
+   }
+   return changed;
+  },
+  get isAnimating(){return slots.some(slot=>slot.hover&&slot.hover.value!==slot.hover.to)},
   hitProject(x,y){
    const selected=slots.find(s=>s.ordinal===Math.round(ordinal));
    return !!selected&&cast(x,y,selected.g.children).some(hit=>acceptsHit(selected,hit));
