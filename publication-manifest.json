@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-11T15:10:38.305Z",
+  "generatedAt": "2026-11-11T15:39:18.071Z",
   "projects": 12,
   "projectPages": 47,
   "images": 122,
@@ -9,12 +9,16 @@
       "bytes": 224992
     },
     {
+      "file": "assets/page-layers/2026-page-08-preview.webp",
+      "bytes": 138782
+    },
+    {
       "file": "assets/page-layers/2026-page-06-preview.webp",
       "bytes": 48614
     },
     {
-      "file": "assets/page-layers/2026-page-08-preview.webp",
-      "bytes": 138782
+      "file": "assets/page-layers/2026-page-09-preview.webp",
+      "bytes": 189550
     },
     {
       "file": "assets/page-layers/2026-page-07-preview.webp",
@@ -25,24 +29,16 @@
       "bytes": 201568
     },
     {
-      "file": "assets/page-layers/2026-page-09-preview.webp",
-      "bytes": 189550
-    },
-    {
       "file": "assets/page-layers/2026-page-11-preview.webp",
       "bytes": 151046
-    },
-    {
-      "file": "assets/page-layers/2026-page-13-preview.webp",
-      "bytes": 139216
     },
     {
       "file": "assets/page-layers/2026-page-12-preview.webp",
       "bytes": 97048
     },
     {
-      "file": "assets/page-layers/2026-page-16-preview.webp",
-      "bytes": 60712
+      "file": "assets/page-layers/2026-page-13-preview.webp",
+      "bytes": 139216
     },
     {
       "file": "assets/page-layers/2026-page-14-preview.webp",
@@ -51,6 +47,10 @@
     {
       "file": "assets/page-layers/2026-page-15-preview.webp",
       "bytes": 189596
+    },
+    {
+      "file": "assets/page-layers/2026-page-16-preview.webp",
+      "bytes": 60712
     },
     {
       "file": "assets/page-layers/2026-page-17-preview.webp",
@@ -65,6 +65,10 @@
       "bytes": 131286
     },
     {
+      "file": "assets/page-layers/2026-page-20-preview.webp",
+      "bytes": 114160
+    },
+    {
       "file": "assets/page-layers/2026-page-21-preview.webp",
       "bytes": 168094
     },
@@ -73,16 +77,12 @@
       "bytes": 170724
     },
     {
-      "file": "assets/page-layers/2026-page-20-preview.webp",
-      "bytes": 114160
+      "file": "assets/page-layers/2026-page-23-preview.webp",
+      "bytes": 155400
     },
     {
       "file": "assets/page-layers/2026-page-24-preview.webp",
       "bytes": 106366
-    },
-    {
-      "file": "assets/page-layers/2026-page-23-preview.webp",
-      "bytes": 155400
     },
     {
       "file": "assets/page-layers/2026-page-25-preview.webp",
@@ -93,32 +93,32 @@
       "bytes": 215616
     },
     {
-      "file": "assets/page-layers/2026-page-29-preview.webp",
-      "bytes": 229360
-    },
-    {
       "file": "assets/page-layers/2026-page-28-preview.webp",
       "bytes": 240386
-    },
-    {
-      "file": "assets/page-layers/2026-page-30-preview.webp",
-      "bytes": 64780
-    },
-    {
-      "file": "assets/page-layers/2026-page-33-preview.webp",
-      "bytes": 185708
     },
     {
       "file": "assets/page-layers/2026-page-27-preview.webp",
       "bytes": 258134
     },
     {
-      "file": "assets/page-layers/2026-page-31-preview.webp",
-      "bytes": 236904
+      "file": "assets/page-layers/2026-page-29-preview.webp",
+      "bytes": 229360
+    },
+    {
+      "file": "assets/page-layers/2026-page-30-preview.webp",
+      "bytes": 64780
     },
     {
       "file": "assets/page-layers/2026-page-32-preview.webp",
       "bytes": 213270
+    },
+    {
+      "file": "assets/page-layers/2026-page-33-preview.webp",
+      "bytes": 185708
+    },
+    {
+      "file": "assets/page-layers/2026-page-31-preview.webp",
+      "bytes": 236904
     },
     {
       "file": "assets/page-layers/2026-page-34-preview.webp",
@@ -129,12 +129,12 @@
       "bytes": 255754
     },
     {
-      "file": "assets/page-layers/2026-page-36-preview.webp",
-      "bytes": 230722
-    },
-    {
       "file": "assets/page-layers/2026-page-37-preview.webp",
       "bytes": 133918
+    },
+    {
+      "file": "assets/page-layers/2026-page-36-preview.webp",
+      "bytes": 230722
     },
     {
       "file": "assets/page-layers/2026-page-38-preview.webp",
@@ -169,12 +169,12 @@
       "bytes": 153450
     },
     {
-      "file": "assets/page-layers/2026-page-47-preview.webp",
-      "bytes": 170452
-    },
-    {
       "file": "assets/page-layers/2026-page-46-preview.webp",
       "bytes": 195032
+    },
+    {
+      "file": "assets/page-layers/2026-page-47-preview.webp",
+      "bytes": 170452
     },
     {
       "file": "assets/page-layers/2026-page-48-preview.webp",
@@ -494,11 +494,11 @@
     },
     {
       "file": "journey.css",
-      "bytes": 7525
+      "bytes": 7663
     },
     {
       "file": "journey.js",
-      "bytes": 19666
+      "bytes": 22157
     },
     {
       "file": "journey-scene.js",
@@ -637,6 +637,6 @@
       "bytes": 846
     }
   ],
-  "totalBytes": 28964027,
+  "totalBytes": 28966656,
   "externalAssets": []
 }

@@ -11,7 +11,7 @@
 #journey-track{height:100%;display:flex;width:100%;will-change:transform}
 .journey-page{flex:0 0 100%;height:100%;min-width:0;display:flex;align-items:center;justify-content:center;padding:0 1px;touch-action:none}
 .journey-page img{width:100%;height:100%;object-fit:contain}
-.journey-page.cv-page-content{display:block;overflow-y:auto;touch-action:pan-y;padding:15px max(20px,8vw) 30px}
+.journey-page.cv-page-content{display:block;overflow-y:auto;touch-action:none;overscroll-behavior:contain;padding:15px max(20px,8vw) 30px}
 .page-copy{max-width:900px;margin:auto;font-size:15px;line-height:1.55}
 .page-copy h1{font-size:clamp(28px,4vw,50px);line-height:1.1;margin:0 0 25px}
 .page-copy h2{font-size:clamp(23px,3vw,35px);font-weight:650;margin:0 0 25px}
@@ -79,3 +79,5 @@ body[data-stop=profile] #journey-stage{inset:14vh 13vw 12vh}
 
 footer button,footer button:hover,footer button:active{border:0;background:transparent;box-shadow:none}
 @media(hover:hover) and (pointer:fine){footer button:hover{color:#101113;text-decoration:underline;text-underline-offset:4px}}
+/* App gestures also work from the reading header and blank page margins. */
+#journey-stage{touch-action:none}
