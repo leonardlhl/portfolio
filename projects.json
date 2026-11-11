@@ -3,136 +3,139 @@
     "id": "01-oct-kunming",
     "title": "OCT Second Headquarters",
     "category": "Kunming / Mixed use",
+    "cover": "./assets/page-layers/2026-page-05-preview.webp",
     "pages": [
-      6,
-      7,
-      8,
-      9,
-      10
+      "./assets/page-layers/2026-page-06-preview.webp",
+      "./assets/page-layers/2026-page-07-preview.webp",
+      "./assets/page-layers/2026-page-08-preview.webp",
+      "./assets/page-layers/2026-page-09-preview.webp",
+      "./assets/page-layers/2026-page-10-preview.webp"
     ],
-    "description": "Shared sky platforms and spaces between towers.",
-    "cover": "./assets/pages/page-05.jpg"
+    "description": "Shared sky platforms and spaces between towers."
   },
   {
     "id": "02-huawai-school",
     "title": "Huawai Tongman School",
     "category": "Guangzhou / Education",
+    "cover": "./assets/page-layers/2026-page-11-preview.webp",
     "pages": [
-      12,
-      13,
-      14,
-      15,
-      16,
-      17
+      "./assets/page-layers/2026-page-12-preview.webp",
+      "./assets/page-layers/2026-page-13-preview.webp",
+      "./assets/page-layers/2026-page-14-preview.webp",
+      "./assets/page-layers/2026-page-15-preview.webp",
+      "./assets/page-layers/2026-page-16-preview.webp",
+      "./assets/page-layers/2026-page-17-preview.webp",
+      "./assets/page-layers/2026-page-18-preview.webp"
     ],
-    "description": "An elevated volume connects learning and shared campus life.",
-    "cover": "./assets/pages/page-11.jpg"
+    "description": "An elevated volume connects learning and shared campus life."
   },
   {
     "id": "03-greater-bay",
     "title": "Greater Bay Science Forum",
     "category": "Guangzhou / Cultural",
+    "cover": "./assets/page-layers/2026-page-19-preview.webp",
     "pages": [
-      19,
-      20,
-      21,
-      22,
-      23,
-      24
+      "./assets/page-layers/2026-page-20-preview.webp",
+      "./assets/page-layers/2026-page-21-preview.webp",
+      "./assets/page-layers/2026-page-22-preview.webp",
+      "./assets/page-layers/2026-page-23-preview.webp",
+      "./assets/page-layers/2026-page-24-preview.webp",
+      "./assets/page-layers/2026-page-25-preview.webp"
     ],
-    "description": "Courtyards, entrances and roofs organise public activity.",
-    "cover": "./assets/pages/page-18.jpg"
-  },
-  {
-    "id": "05-hk-museums",
-    "title": "History & Science Museums",
-    "category": "Hong Kong / Cultural",
-    "pages": [
-      34,
-      35,
-      36
-    ],
-    "description": "New additions and the continuity of existing cultural spaces.",
-    "cover": "./assets/pages/page-33.jpg"
+    "description": "Courtyards, entrances and roofs organise public activity."
   },
   {
     "id": "04-essence",
     "title": "Essence Headquarters",
     "category": "Shenzhen / Office",
+    "cover": "./assets/page-layers/2026-page-26-preview.webp",
     "pages": [
-      26,
-      27,
-      28,
-      29,
-      30,
-      31,
-      32
+      "./assets/page-layers/2026-page-27-preview.webp",
+      "./assets/page-layers/2026-page-28-preview.webp",
+      "./assets/page-layers/2026-page-29-preview.webp",
+      "./assets/page-layers/2026-page-30-preview.webp",
+      "./assets/page-layers/2026-page-31-preview.webp",
+      "./assets/page-layers/2026-page-32-preview.webp",
+      "./assets/page-layers/2026-page-33-preview.webp"
     ],
-    "description": "From open ground and atria to facade detailing.",
-    "cover": "./assets/pages/page-25.jpg"
+    "description": "From open ground and atria to facade detailing."
+  },
+  {
+    "id": "05-hk-museums",
+    "title": "History & Science Museums",
+    "category": "Hong Kong / Cultural",
+    "cover": "./assets/page-layers/2026-page-34-preview.webp",
+    "pages": [
+      "./assets/page-layers/2026-page-35-preview.webp",
+      "./assets/page-layers/2026-page-36-preview.webp",
+      "./assets/page-layers/2026-page-37-preview.webp"
+    ],
+    "description": "New additions and the continuity of existing cultural spaces."
   },
   {
     "id": "06-shanghai-ai",
     "title": "Shanghai AI Center",
     "category": "Shanghai / Mixed use",
-    "pages": [],
-    "description": "Connections between complementary programmes and volumes.",
-    "cover": "./assets/pages/page-37.jpg"
+    "cover": "./assets/page-layers/2026-page-38-preview.webp",
+    "pages": [
+      "./assets/page-layers/2026-page-39-preview.webp",
+      "./assets/page-layers/2026-page-40-preview.webp",
+      "./assets/page-layers/2026-page-41-preview.webp"
+    ],
+    "description": "Connections between complementary programmes and volumes."
   },
   {
-    "id": "07-oct-performance",
-    "title": "OCT Performance Center",
-    "category": "Shenzhen / Cultural",
-    "pages": [],
-    "description": "A performance venue and its urban interface.",
-    "cover": "./assets/pages/page-38.jpg"
-  },
-  {
-    "id": "08-xili",
-    "title": "Xili Cultural & Sports Center",
-    "category": "Shenzhen / Cultural & sports",
-    "pages": [],
-    "description": "Public space for cultural and sporting activities.",
-    "cover": "./assets/pages/page-39.jpg"
+    "id": "14-xiongan-science-museum",
+    "title": "XiongAn Science Museum",
+    "category": "XiongAn / Cultural",
+    "cover": "./assets/page-layers/2026-page-42-preview.webp",
+    "pages": [
+      "./assets/page-layers/2026-page-43-preview.webp",
+      "./assets/page-layers/2026-page-44-preview.webp"
+    ],
+    "description": "The Ship of Knowledge: a science museum in XiongAn."
   },
   {
     "id": "09-sct",
     "title": "Shenchengtou Headquarters",
     "category": "Shenzhen / Office",
-    "pages": [],
-    "description": "Vertical volumes and connecting spaces.",
-    "cover": "./assets/pages/page-40.jpg"
+    "cover": "./assets/page-layers/2026-page-45-preview.webp",
+    "pages": [
+      "./assets/page-layers/2026-page-46-preview.webp",
+      "./assets/page-layers/2026-page-47-preview.webp"
+    ],
+    "description": "Vertical volumes and connecting spaces."
   },
   {
     "id": "10-hengyu",
     "title": "Hengyu · Shenzhen",
     "category": "Shenzhen / Mixed use",
+    "cover": "./assets/page-layers/2026-page-48-preview.webp",
     "pages": [],
-    "description": "Tower composition and urban presence.",
-    "cover": "./assets/pages/page-41.jpg"
+    "description": "Tower composition and urban presence."
   },
   {
     "id": "11-pingan",
     "title": "Ping’an · Shenzhen",
     "category": "Shenzhen / Office",
+    "cover": "./assets/page-layers/2026-page-49-preview.webp",
     "pages": [],
-    "description": "A tower and its relationship to the surrounding district.",
-    "cover": "./assets/pages/page-42.jpg"
-  },
-  {
-    "id": "12-urban-ambition",
-    "title": "Urban Ambition",
-    "category": "Shenzhen / Competition",
-    "pages": [],
-    "description": "Exploring massing within a dense urban context.",
-    "cover": "./assets/pages/page-43.jpg"
+    "description": "A tower and its relationship to the surrounding district."
   },
   {
     "id": "13-kwg",
     "title": "KWG · Guangzhou",
     "category": "Guangzhou / Office",
+    "cover": "./assets/page-layers/2026-page-50-preview.webp",
     "pages": [],
-    "description": "High-rise silhouettes and facade expression.",
-    "cover": "./assets/pages/page-44.jpg"
+    "description": "High-rise silhouettes and facade expression."
+  },
+  {
+    "id": "08-xili",
+    "title": "Xili Cultural & Sports Center",
+    "category": "Shenzhen / Cultural & sports",
+    "cover": "./assets/page-layers/2026-page-51-preview.webp",
+    "pages": [],
+    "description": "Public space for cultural and sporting activities."
   }
 ]

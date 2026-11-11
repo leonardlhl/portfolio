@@ -1,4 +1,4 @@
-import {projects} from './projects.js?v=4';
+import {projects} from './projects.js?v=2026';
 import {mountAmbientSky} from './ambient.js?v=3';
 import {mountPageZoom} from './page-zoom.js?v=2';
 import {mountContact} from './contact.js?v=1';
@@ -6,7 +6,7 @@ import {mountCursor} from './cursor.js?v=4';
 mountCursor();
 const $=s=>document.querySelector(s),mod=(a,b)=>(a%b+b)%b,clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{const t=clamp(v);return t*t*(3-2*t)};
-const cvResponse=await fetch('./cv.html?v=29');if(!cvResponse.ok)throw new Error('CV source unavailable');
+const cvResponse=await fetch('./cv.html?v=2026');if(!cvResponse.ok)throw new Error('CV source unavailable');
 const cvDoc=new DOMParser().parseFromString(await cvResponse.text(),'text/html');
 const contactEmail=cvDoc.querySelector('a[href^="mailto:"]')?.getAttribute('href').slice(7).split('?')[0];
 mountContact({button:$('#contact-copy'),status:$('#contact-status'),email:contactEmail});
@@ -26,7 +26,7 @@ cvSlide('Background',[cvSections[0],cvSections[1]]);
 cvSlide('Awards & recognition',[cvSections[2],cvSections[3]]);
 for(const slide of cvSlides){const link=document.createElement('a');link.className='cv-detail-link';link.href='./cv-detail.html';link.target='_blank';link.rel='noopener';link.textContent='View full CV & project experience — opens new tab';slide.querySelector('.page-copy').append(link)}
 // These layers come directly from the original PDF, including its typography.
-const layerResponse=await fetch('./assets/page-layers/manifest.json?v=25');
+const layerResponse=await fetch('./assets/page-layers/manifest.json?v=2026');
 if(!layerResponse.ok)throw new Error('Portfolio page layers unavailable');
 const layers=await layerResponse.json(),layerURL=name=>'./assets/page-layers/'+name;
 function projectPage(project,value,isCover){
@@ -37,8 +37,8 @@ function projectPage(project,value,isCover){
  const revealColumn=isCover&&layer?.coverBase&&layer?.coverOverlay&&layer?.coverBands?.length;
  page.dataset.source=original;page.dataset.full=layer?.full?layerURL(layer.full):original;
  page.dataset.cover=String(isCover);
- img.className='portfolio-image';img.src=revealColumn?layerURL(layer.coverBase):layer?.full?layerURL(layer.full):original;
- img.width=layer?.width||1100;img.height=layer?.height||619;img.alt=project[1]+', portfolio page '+(number||'');img.decoding='async';img.loading='lazy';page.append(img);
+ img.className='portfolio-image';img.src=revealColumn?layerURL(layer.coverBase):layer?.preview?layerURL(layer.preview):layer?.full?layerURL(layer.full):original;
+ img.width=layer?.width||1100;img.height=layer?.height||619;img.alt=project[1]+', portfolio page '+(layer?.sourcePage||number||'');img.decoding='async';img.loading='lazy';page.append(img);
  if(revealColumn){
   const column=document.createElement('div');column.className='cover-column';column.setAttribute('role','img');column.setAttribute('aria-label',layer.coverText||'Project introduction and information');column.setAttribute('aria-hidden','true');
   layer.coverBands.forEach((band,index)=>{
@@ -68,11 +68,11 @@ const pageZoom=mountPageZoom({button:$('#page-enlarge'),getPage:()=>{
 }});
 let stageBox;
 const sequentialTouch=matchMedia('(pointer: coarse)').matches||(/iPad/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1));
-let projectFlight=null,lastSceneOrdinal=0,lastSceneZoom=0,wheelGesture=null;
+let projectFlight=null,lastSceneOrdinal=0,lastSceneZoom=0,wheelGesture=null,lastSceneFrame=null,lastSceneOrigin=null;
 function syncPreviewHover(){
  const available=finePointer.matches&&hoverPointer&&!pageZoom.isOpen&&$('#index').hidden&&!projectFlight&&!touch?.moved&&lastSceneZoom<.001;
  const hit=available?scene?.pickProject(hoverPointer.x,hoverPointer.y):null;
- if(scene?.setHover(hit?.ordinal??null,reduced.matches))request();
+ if(scene?.setHover(hit?.ordinal??null,reduced.matches)){lastSceneFrame=null;request()}
  const next=String(Boolean(hit));if(document.documentElement.dataset.cursorHover!==next)document.documentElement.dataset.cursorHover=next;
 }
 function onContent(x,y){
@@ -105,7 +105,15 @@ function measureCoverBands(){
 }
 function measureStage(){stageBox={width:stage.offsetWidth,cx:stage.offsetLeft+stage.offsetWidth/2,cy:stage.offsetTop+stage.offsetHeight/2};measureCoverBands()}
 measureStage();
-function warmImages(index){for(const stop of [stops[index],stops[mod(index+1,stops.length)]])for(const slide of stop.slides)for(const img of slide.querySelectorAll('img')){img.loading='eager';img.decode().catch(()=>{})}}
+const warmedImages=new WeakSet();
+function warmImages(index,page=0){
+ const stop=stops[index],nearby=stop.slides.slice(Math.max(0,page-1),page+2);
+ if(page>=stop.slides.length-2)nearby.push(stops[mod(index+1,stops.length)].slides[0]);
+ for(const slide of nearby)for(const img of slide.querySelectorAll('img')){
+  if(warmedImages.has(img))continue;
+  warmedImages.add(img);img.loading='eager';img.decode().catch(()=>warmedImages.delete(img));
+ }
+}
 function locate(value){const round=Math.floor(value/total),local=mod(value,total);let index=stops.length-1;while(index>0&&local<starts[index])index--;return {index,ordinal:round*stops.length+index,local:local-starts[index]}}
 function setTarget(value,instant=false){clearTimeout(snapTimer);target=value;dragYaw=0;if(instant||reduced.matches){current=target;velocity=0}request()}
 function closeIndex(){$('#index').hidden=true;$('#index-toggle').setAttribute('aria-expanded','false')}
@@ -129,8 +137,20 @@ $('#index-toggle').onclick=()=>{const open=$('#index').hidden;$('#index').hidden
 $('#home').onclick=()=>openProject(0,null,true);
 $('#left').onclick=()=>step(-1);$('#right').onclick=()=>step(1);
 function paint(time){
- raf=0;const dt=Math.min(lastTime?(time-lastTime)/1000:1/60,.025);lastTime=time;
- if(reduced.matches){current=target;velocity=0}else{velocity+=(300*(target-current)-30*velocity)*dt;const phase=locate(current),count=stops[phase.index].steps.length;const speed=phase.local<2||phase.local>count+1?1.5:3;velocity=Math.max(-speed,Math.min(speed,velocity));current+=velocity*dt}
+ raf=0;const elapsed=Math.min(lastTime?(time-lastTime)/1000:1/60,.08);lastTime=time;
+ if(reduced.matches){current=target;velocity=0}else{
+  const phase=locate(current),destination=locate(target),count=stops[phase.index].steps.length;
+  const readingStep=!sequentialTouch&&!touch&&!projectFlight&&phase.ordinal===destination.ordinal&&phase.local>=2&&phase.local<=count+1&&destination.local>=2&&destination.local<=count+1;
+  if(readingStep){
+   // Solve the existing stiffness-300 spring at critical damping. Unlike the
+   // old velocity clamp, this preserves elapsed time and decelerates smoothly.
+   const omega=Math.sqrt(300),offset=current-target,impulse=velocity+omega*offset,decay=Math.exp(-omega*elapsed);
+   current=target+(offset+impulse*elapsed)*decay;velocity=(velocity-omega*impulse*elapsed)*decay;
+  }else{
+   const dt=Math.min(elapsed,.025),speed=phase.local<2||phase.local>count+1?1.5:3;
+   velocity+=(300*(target-current)-30*velocity)*dt;velocity=Math.max(-speed,Math.min(speed,velocity));current+=velocity*dt;
+  }
+ }
  const p=locate(current),stop=stops[p.index],n=stop.steps.length,t=p.local;
  const travel=smooth(t);let zoom=t<2?smooth(t-1):t<n+1?1:1-smooth(t-n-1);
  let sceneOrdinal=reduced.matches?p.ordinal:p.ordinal-1+travel;
@@ -141,13 +161,21 @@ function paint(time){
  if(activeIndex!==p.index){activeIndex=p.index;activePage=-1;document.body.dataset.stop=stop.id;warmImages(p.index);track.replaceChildren(...stop.slides);measureStage();$('#reading-title').textContent=stop.title;$('#reading-title').hidden=p.index===0;$('#page-enlarge').hidden=p.index===0;$('#project-list').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-current',String(i===p.index)))}
  const alpha=flying?0:smooth((zoom-.25)/.75);stage.style.opacity=String(alpha);stage.style.pointerEvents=alpha>.95?'auto':'none';stage.inert=alpha<.95;stage.setAttribute('aria-hidden',String(alpha<.95));
  track.style.transform='translate3d('+(-pageOffset*100)+'%,0,0)';
- if(activePage!==nearest){activePage=nearest;stop.slides.forEach((el,i)=>{el.inert=i!==nearest;el.setAttribute('aria-hidden',String(i!==nearest))});$('#page-position').textContent=(nearest+1)+' / '+stop.slides.length}
- for(const slide of stop.slides){if(slide.revealStep!==undefined){const revealed=stepOffset>=slide.revealStep-.5;slide.dataset.revealed=String(revealed);slide.querySelector('.cover-column')?.setAttribute('aria-hidden',String(!revealed))}}
+ if(activePage!==nearest){activePage=nearest;warmImages(p.index,nearest);stop.slides.forEach((el,i)=>{el.inert=i!==nearest;el.setAttribute('aria-hidden',String(i!==nearest))});$('#page-position').textContent=(nearest+1)+' / '+stop.slides.length}
+ for(const slide of stop.slides){if(slide.revealStep!==undefined){const revealed=stepOffset>=slide.revealStep-.5;if(slide.dataset.revealed!==String(revealed)){slide.dataset.revealed=String(revealed);slide.querySelector('.cover-column')?.setAttribute('aria-hidden',String(!revealed))}}}
  $('#scene').style.opacity=String(1-.88*alpha);
  lastSceneOrdinal=sceneOrdinal;lastSceneZoom=zoom;
- const origin=scene?.update(sceneOrdinal,reduced.matches?0:zoom,dragYaw,reduced.matches?0:current);
+ const sceneFrame=[sceneOrdinal,reduced.matches?0:zoom,dragYaw,innerWidth,innerHeight];
+ // Horizontal pages do not move the tree. Keep its last frame instead of
+ // redrawing the full helix on every compositor-only page translation.
+ if(scene&&(!lastSceneFrame||sceneFrame.some((value,i)=>value!==lastSceneFrame[i])||scene.isAnimating)){
+  lastSceneOrigin=scene.update(sceneFrame[0],sceneFrame[1],dragYaw,reduced.matches?0:current);lastSceneFrame=sceneFrame;
+ }
+ const origin=lastSceneOrigin;
  if(origin&&!reduced.matches){const {cx,cy,width}=stageBox;const startScale=Math.min(1,origin.width/width);stage.style.transform='translate3d('+((origin.x-cx)*(1-zoom))+'px,'+((origin.y-cy)*(1-zoom))+'px,0) scale('+(startScale+(1-startScale)*zoom)+')'}else stage.style.transform='none';
- document.body.dataset.stop=stop.id;document.body.dataset.page=String(nearest+1);document.body.dataset.phase=alpha>.8?'reading':t<1?'travel':zoom>0?'zoom':'tree';
+ if(document.body.dataset.stop!==stop.id)document.body.dataset.stop=stop.id;
+ if(document.body.dataset.page!==String(nearest+1))document.body.dataset.page=String(nearest+1);
+ const phaseName=alpha>.8?'reading':t<1?'travel':zoom>0?'zoom':'tree';if(document.body.dataset.phase!==phaseName)document.body.dataset.phase=phaseName;
  syncPreviewHover();
  if(projectFlight||scene?.isAnimating||Math.abs(target-current)+Math.abs(velocity)>.001)request();else lastTime=0;
 }
@@ -158,13 +186,16 @@ document.addEventListener('wheel',e=>{
  if(text&&text.scrollHeight>text.clientHeight+2&&((e.deltaY>0&&text.scrollTop+text.clientHeight<text.scrollHeight-2)||(e.deltaY<0&&text.scrollTop>2)))return;
  e.preventDefault();const delta=(Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY)*(e.deltaMode===1?16:e.deltaMode===2?innerHeight:1);
  if(!delta)return;
- const now=performance.now();
- if(!wheelGesture||now-wheelGesture.time>260)wheelGesture={time:now,content:sequentialTouch||onContent(e.clientX,e.clientY),used:false,distance:0};
- wheelGesture.time=now;
+ const now=e.timeStamp||performance.now(),magnitude=Math.abs(delta),direction=Math.sign(delta),gap=wheelGesture?now-wheelGesture.time:Infinity;
+ const previous=wheelGesture;
+ const freshReadingIntent=previous?.content&&(direction!==previous.direction||(gap>=80&&magnitude>=60&&magnitude>=previous.magnitude*.8));
+ if(!previous||gap>(previous.content?150:260)||freshReadingIntent)wheelGesture={time:now,content:sequentialTouch||onContent(e.clientX,e.clientY),used:false,distance:0,direction,magnitude};
+ wheelGesture.time=now;wheelGesture.magnitude=magnitude;
  if(!wheelGesture.content){if(!wheelGesture.used&&!projectFlight){wheelGesture.used=true;selectAdjacent(Math.sign(delta))}return}
  if(projectFlight||wheelGesture.used)return;
  wheelGesture.distance+=delta;
- // One deliberate gesture per reading step, so opening cannot also reveal text.
+ // A trackpad stroke (including its momentum tail) remains one reading step.
+ // Fresh wheel detents and direction changes re-arm without an idle lockout.
  if(Math.abs(wheelGesture.distance)>=40){wheelGesture.used=true;setTarget(Math.round(target)+Math.sign(wheelGesture.distance))}
 },{passive:false});
 document.addEventListener('keydown',e=>{if(pageZoom.isOpen||e.target.closest('button,a,input,select,#index'))return;if(e.key==='Enter'&&e.target.id==='scene'){e.preventDefault();openProject(locate(target).index,null,true);return}const direction=['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)?1:['ArrowLeft','ArrowUp','PageUp'].includes(e.key)?-1:0;if(direction){e.preventDefault();step(direction)}if(e.key==='Escape'){projectFlight=null;const p=locate(target);setTarget(Math.floor(target/total)*total+starts[p.index]+stops[p.index].steps.length+2,true)}});
@@ -199,6 +230,6 @@ finePointer.addEventListener('change',()=>{hoverPointer=null;syncPreviewHover()}
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else request()});
 window.addEventListener('resize',()=>{measureStage();request()});reduced.addEventListener('change',request);
 const sceneProjects=projects.map((project,index)=>{const copy=[...project];copy[5]=stops[index+1].slides[0].querySelector('.portfolio-image').getAttribute('src');return copy});
-try{const module=await import('./journey-scene.js?v=26');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
+try{const module=await import('./journey-scene.js?v=2026');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
 request();
 document.querySelector('footer>span').textContent=sequentialTouch?'Tap to open · Swipe to explore every page':'Click a preview to open · Scroll to explore';

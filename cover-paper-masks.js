@@ -1,27 +1,77 @@
-// Main photograph rectangles measured from the original 2025 portfolio PDF.
-// Coordinates use the PDF's top-left origin. Protect these areas so white sky,
-// facade panels and pale rendering details remain opaque; only the surrounding
-// paper is removed in the tree preview. The hidden right information columns
-// deliberately have no protected area.
-const PAGE_WIDTH=1190.550048828125,PAGE_HEIGHT=668.9760131835938;
-const photographs={
- '01-oct-kunming':[218.740112,87.785126,876.614075,581.190613],
- '02-huawai-school':[218.740112,122.686615,971.810974,546.289001],
- '03-greater-bay':[262.086578,105.389801,928.464478,581.850037],
- '05-hk-museums':[218.739990,106.830170,971.810852,521.190674],
- '04-essence':[313.937012,45.226196,781.417358,581.850037],
- '06-shanghai-ai':[265.713348,114.230896,929.090332,583.648682],
- '07-oct-performance':[262.086609,137.612823,971.810913,581.190552],
- '08-xili':[218.740234,116.335419,971.811096,540.190552],
- '09-sct':[409.133789,45.145996,782.453491,582.190918],
- '10-hengyu':[218.740112,79.558044,971.810974,581.190613],
- '11-pingan':[364.251984,45.177795,831.968506,581.190674],
- '12-urban-ambition':[363.657501,28.345398,832.562866,640.513184],
- '13-kwg':[447.263733,45.036560,743.287476,584.694580],
+// Protected photograph extents from the reviewed 2026 portfolio.
+const photographs = {
+  "01-oct-kunming": [
+    0.18373029552180226,
+    0.1312231290844955,
+    0.7363101413249235,
+    0.8687764603504055
+  ],
+  "02-huawai-school": [
+    0.18373029552180226,
+    0.18339463982629264,
+    0.8162705760061585,
+    0.8166047671352309
+  ],
+  "03-greater-bay": [
+    0.22013906817870957,
+    0.15753898338424796,
+    0.7798617777160759,
+    0.8697621815349168
+  ],
+  "04-essence": [
+    0.2636907302030373,
+    0.06760510899910342,
+    0.6563498604427404,
+    0.8697621815349168
+  ],
+  "05-hk-museums": [
+    0.18373019298910098,
+    0.15969207800043483,
+    0.8162704734734573,
+    0.7790872371459594
+  ],
+  "06-shanghai-ai": [
+    0.22371048722924447,
+    0.17167410108824385,
+    0.7807786251308061,
+    0.872007607680049
+  ],
+  "14-xiongan-science-museum": [
+    0.1837303980545035,
+    0.1558818057893876,
+    0.7372672840912516,
+    0.8018539842560145
+  ],
+  "09-sct": [
+    0.3436510623515711,
+    0.06748522399017637,
+    0.6572201580110952,
+    0.8702717384412011
+  ],
+  "10-hengyu": [
+    0.18373029552180226,
+    0.11892510772543924,
+    0.8162705760061585,
+    0.8687764603504055
+  ],
+  "11-pingan": [
+    0.3059526846444771,
+    0.06753275830497925,
+    0.6988101900279565,
+    0.8687765515870941
+  ],
+  "13-kwg": [
+    0.3756782281857064,
+    0.06732163660737103,
+    0.6243227458749556,
+    0.8740142674109026
+  ],
+  "08-xili": [
+    0.1837303980545035,
+    0.17390073247550775,
+    0.8162706785388598,
+    0.8074886709122747
+  ]
 };
 
-export function coverPhotoRectangle(projectId){
- const box=photographs[projectId];
- // New user-supplied images stay intact until their photograph extent is known.
- return box?[box[0]/PAGE_WIDTH,box[1]/PAGE_HEIGHT,box[2]/PAGE_WIDTH,box[3]/PAGE_HEIGHT]:[0,0,1,1];
-}
+export function coverPhotoRectangle(projectId){return photographs[projectId]||[0,0,1,1]}

@@ -1,4 +1,4 @@
-// Selected works transcribed from pages 2–3 of the supplied 2025 CV.
+// Selected works transcribed from pages 3–4 of the supplied 2026 portfolio.
 // “Present” and project status refer to that source, not a live employment update.
 export const experience=[
 ['Cultural',[
@@ -42,10 +42,10 @@ export const experience=[
 ['09/2013','Yongning International Medical-Healthy City','Public-building design, visualisation coordination and presentation preparation.','Zhubo Design'],
 ['04/2013','Haitang Bay Headquarters, Sanya','Scheme design and visualisation coordination.','Zhubo Design'],
 ['10/2012','Renminbei Road Urban Renewal','Public-building design, visualisation coordination and presentation preparation.','Zhubo Design'],
-['05/2012','Hongshancun K6, Wuhan','Scheme design.','Zhubo Design'],
 ['01/2012','Beiwaitan, Xi’an','Scheme and masterplan design; presentation preparation.','Zhubo Design'],
 ['01/2014','Xiuying Bay, Hainan','Scheme design and visualisation coordination.','Zhubo Design'],
 ['05/2021','CBD North Part, Jinan','Masterplan and scheme design; visualisation coordination.'],
+['08/2025','Qianhai Shenzhen-Hong Kong International Service City','Masterplan and scheme design; visualisation coordination.'],
 ['11/2018','Union City, Yangon, Myanmar','Masterplan and scheme design; visualisation coordination.']]],
 ['Renovation & urban renewal',[
 ['09/2012–04/2013','Nanwan Industrial Area, Shenzhen','Organisation and leadership of scheme design, visualisation coordination, presentation preparation and design development.','Zhubo Design'],
@@ -53,6 +53,5 @@ export const experience=[
 ['11/2023','Hetao International Collaborative Innovation Zone, Phase I, Plot 05','Scheme design.'],
 ['08/2022','Hetao Science & Technology Innovation Cooperation Zone','Oversight of old-district redevelopment within the chief-architect project.']]],
 ['Other projects',[
-['06/2014','QX-10-B Commercial Center, Huizhou','Massing, plan and elevation design.'],
 ['06/2022','Shanghai AI Center','Scheme design.']]]
 ];
