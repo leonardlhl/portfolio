@@ -4,4 +4,20 @@
 <main><div id="scene" tabindex="0" aria-label="3D project tree. Click or scroll a preview to open it. Drag to orbit. Use arrow keys to explore, or Enter to open the selected project."></div><p id="loading" role="status">Loading projects…</p><aside id="index" hidden><h2>Projects</h2><div id="project-list"></div></aside></main>
 <footer><span>Scroll to explore · Drag to orbit</span><div><button id="left" aria-label="Previous step">Previous</button><button id="home">CV</button><button id="right" aria-label="Next step">Next</button></div><a class="edition-link" href="./m/">Mobile version</a></footer>
 <section id="journey-stage" aria-label="Portfolio pages" aria-hidden="true" inert><div class="reading-head"><h2 id="reading-title"></h2><div class="reading-tools"><span id="page-position" role="status" aria-live="polite"></span><button id="page-enlarge" type="button" aria-label="Enlarge this portfolio page" title="Enlarge page" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M7.5 10.5h6m-3-3v6"/></svg></button></div></div><div class="journey-window"><div id="journey-track"></div></div></section>
-<script type="module">if (!document.documentElement.dataset.mobileRedirect) import("./journey.js?v=35");</script></body></html>
+<script type="module">
+// WebKit resolves a relative inline import from the document URL rather than
+// its <base>. Resolve explicitly so /m/ loads the same root journey as desktop.
+if (!document.documentElement.dataset.mobileRedirect) {
+ import(new URL('./journey.js?v=36', document.baseURI).href).catch(error => {
+  const loading = document.getElementById('loading');
+  loading.hidden = false;
+  loading.textContent = 'The portfolio could not load. ';
+  const retry = document.createElement('button');
+  retry.type = 'button';
+  retry.textContent = 'Try again';
+  retry.addEventListener('click', () => location.reload());
+  loading.append(retry);
+  console.error('Portfolio startup failed:', error);
+ });
+}
+</script></body></html>
