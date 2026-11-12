@@ -93,3 +93,8 @@ footer button,footer button:hover,footer button:active{border:0;background:trans
  footer .edition-link{display:inline-flex;align-items:center}
  #journey-stage,body[data-stop=profile] #journey-stage{bottom:max(13vh,104px)}
 }
+/* Keep navigation in a stable bottom row as the touch hint changes. */
+@media(max-width:700px) and (pointer:coarse){
+ footer>span{flex-basis:100%}
+ body #ambient-toggle{bottom:calc(max(14px,env(safe-area-inset-bottom)) + 58px)}
+}
