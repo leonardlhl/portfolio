@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T14:04:25.458Z",
+  "generatedAt": "2026-11-12T15:17:39.964Z",
   "projects": 13,
   "projectPages": 49,
   "videoPages": 1,
@@ -10,6 +10,10 @@
       "bytes": 224992
     },
     {
+      "file": "assets/page-layers/2026-page-06-preview.webp",
+      "bytes": 48614
+    },
+    {
       "file": "assets/page-layers/2026-page-07-preview.webp",
       "bytes": 253338
     },
@@ -18,32 +22,24 @@
       "bytes": 189550
     },
     {
-      "file": "assets/page-layers/2026-page-10-preview.webp",
-      "bytes": 201568
-    },
-    {
       "file": "assets/page-layers/2026-page-08-preview.webp",
       "bytes": 138782
     },
     {
-      "file": "assets/page-layers/2026-page-06-preview.webp",
-      "bytes": 48614
+      "file": "assets/page-layers/2026-page-10-preview.webp",
+      "bytes": 201568
     },
     {
       "file": "assets/page-layers/2026-page-11-preview.webp",
       "bytes": 151046
     },
     {
-      "file": "assets/page-layers/2026-page-16-preview.webp",
-      "bytes": 60712
+      "file": "assets/page-layers/2026-page-13-preview.webp",
+      "bytes": 139216
     },
     {
       "file": "assets/page-layers/2026-page-12-preview.webp",
       "bytes": 97048
-    },
-    {
-      "file": "assets/page-layers/2026-page-13-preview.webp",
-      "bytes": 139216
     },
     {
       "file": "assets/page-layers/2026-page-14-preview.webp",
@@ -54,12 +50,16 @@
       "bytes": 189596
     },
     {
-      "file": "assets/page-layers/2026-page-17-preview.webp",
-      "bytes": 196734
+      "file": "assets/page-layers/2026-page-16-preview.webp",
+      "bytes": 60712
     },
     {
       "file": "assets/page-layers/2026-page-18-preview.webp",
       "bytes": 219372
+    },
+    {
+      "file": "assets/page-layers/2026-page-17-preview.webp",
+      "bytes": 196734
     },
     {
       "file": "assets/page-layers/2026-page-19-preview.webp",
@@ -70,72 +70,72 @@
       "bytes": 114160
     },
     {
-      "file": "assets/page-layers/2026-page-23-preview.webp",
-      "bytes": 155400
-    },
-    {
       "file": "assets/page-layers/2026-page-21-preview.webp",
       "bytes": 168094
-    },
-    {
-      "file": "assets/page-layers/2026-page-24-preview.webp",
-      "bytes": 106366
     },
     {
       "file": "assets/page-layers/2026-v11-page-22-preview.webp",
       "bytes": 170788
     },
     {
+      "file": "assets/page-layers/2026-page-24-preview.webp",
+      "bytes": 106366
+    },
+    {
       "file": "assets/page-layers/2026-v11-page-25-preview.webp",
       "bytes": 130718
+    },
+    {
+      "file": "assets/page-layers/2026-page-23-preview.webp",
+      "bytes": 155400
     },
     {
       "file": "assets/page-layers/2026-page-26-preview.webp",
       "bytes": 215616
     },
     {
-      "file": "assets/page-layers/2026-page-30-preview.webp",
-      "bytes": 64780
-    },
-    {
-      "file": "assets/page-layers/2026-page-29-preview.webp",
-      "bytes": 229360
+      "file": "assets/page-layers/2026-page-27-preview.webp",
+      "bytes": 258134
     },
     {
       "file": "assets/page-layers/2026-page-28-preview.webp",
       "bytes": 240386
     },
     {
-      "file": "assets/page-layers/2026-page-27-preview.webp",
-      "bytes": 258134
-    },
-    {
       "file": "assets/page-layers/2026-page-31-preview.webp",
       "bytes": 236904
     },
     {
-      "file": "assets/page-layers/2026-page-33-preview.webp",
-      "bytes": 185708
+      "file": "assets/page-layers/2026-page-29-preview.webp",
+      "bytes": 229360
+    },
+    {
+      "file": "assets/page-layers/2026-page-30-preview.webp",
+      "bytes": 64780
     },
     {
       "file": "assets/page-layers/2026-page-32-preview.webp",
       "bytes": 213270
     },
     {
+      "file": "assets/page-layers/2026-page-33-preview.webp",
+      "bytes": 185708
+    },
+    {
       "file": "assets/page-layers/2026-page-34-preview.webp",
       "bytes": 167486
     },
     {
-      "file": "assets/page-layers/2026-page-37-preview.webp",
-      "bytes": 133918
+      "file": "assets/page-layers/2026-page-35-preview.webp",
+      "bytes": 255754
     },
     {
       "file": "assets/page-layers/2026-page-36-preview.webp",
       "bytes": 230722
     },
     {
-      "file": "assets/page-layers/2026-page-35-preview.webp",
-      "bytes": 255754
+      "file": "assets/page-layers/2026-page-37-preview.webp",
+      "bytes": 133918
     },
     {
       "file": "assets/page-layers/2026-page-38-preview.webp",
@@ -158,24 +158,24 @@
       "bytes": 122324
     },
     {
-      "file": "assets/page-layers/2026-page-44-preview.webp",
-      "bytes": 173220
-    },
-    {
       "file": "assets/page-layers/2026-page-43-preview.webp",
       "bytes": 197612
+    },
+    {
+      "file": "assets/page-layers/2026-page-44-preview.webp",
+      "bytes": 173220
     },
     {
       "file": "assets/page-layers/2026-page-45-preview.webp",
       "bytes": 153450
     },
     {
-      "file": "assets/page-layers/2026-page-47-preview.webp",
-      "bytes": 170452
-    },
-    {
       "file": "assets/page-layers/2026-page-46-preview.webp",
       "bytes": 195032
+    },
+    {
+      "file": "assets/page-layers/2026-page-47-preview.webp",
+      "bytes": 170452
     },
     {
       "file": "assets/page-layers/2026-page-48-preview.webp",
@@ -202,24 +202,24 @@
       "bytes": 2071937
     },
     {
-      "file": "assets/toolkit/02-wrap-facade.mp4",
-      "bytes": 2736539
-    },
-    {
       "file": "assets/toolkit/03-wrap-facade.mp4",
       "bytes": 2503137
     },
     {
-      "file": "assets/toolkit/02-wrap-facade.webp",
-      "bytes": 81854
+      "file": "assets/toolkit/01-area.webp",
+      "bytes": 115280
+    },
+    {
+      "file": "assets/toolkit/02-wrap-facade.mp4",
+      "bytes": 2736539
     },
     {
       "file": "assets/toolkit/03-wrap-facade.webp",
       "bytes": 38642
     },
     {
-      "file": "assets/toolkit/01-area.webp",
-      "bytes": 115280
+      "file": "assets/toolkit/02-wrap-facade.webp",
+      "bytes": 81854
     },
     {
       "file": "projects.json",
@@ -527,7 +527,7 @@
     },
     {
       "file": "index.html",
-      "bytes": 2685
+      "bytes": 2704
     },
     {
       "file": "style.css",
@@ -535,7 +535,7 @@
     },
     {
       "file": "journey.css",
-      "bytes": 7922
+      "bytes": 8624
     },
     {
       "file": "journey.js",
@@ -627,11 +627,11 @@
     },
     {
       "file": "device-route.js",
-      "bytes": 938
+      "bytes": 998
     },
     {
       "file": "m/index.html",
-      "bytes": 3085
+      "bytes": 2755
     },
     {
       "file": "m/mobile.js",
@@ -694,6 +694,10 @@
       "bytes": 0
     },
     {
+      "file": "CNAME",
+      "bytes": 14
+    },
+    {
       "file": "robots.txt",
       "bytes": 26
     },
@@ -702,6 +706,6 @@
       "bytes": 846
     }
   ],
-  "totalBytes": 36947401,
+  "totalBytes": 36947866,
   "externalAssets": []
 }

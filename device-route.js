@@ -1,6 +1,7 @@
-// Route touch devices before downloading the desktop scene. Both editions share
-// content, and a deliberate Desktop version choice lasts for this tab session.
+// Both addresses use the same rotating helix and journey. The mobile entry has
+// a root asset base and must never redirect to a nested /m/m/ address.
 (() => {
+  if (document.documentElement.dataset.edition === 'mobile') return;
   const params = new URLSearchParams(location.search);
   let choice = params.get('view');
   try {

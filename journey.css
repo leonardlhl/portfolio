@@ -83,3 +83,13 @@ footer button,footer button:hover,footer button:active{border:0;background:trans
 #journey-stage{touch-action:none}
 
 .edition-link{color:inherit;text-decoration:none;opacity:.7}.edition-link:hover,.edition-link:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:.25em}
+
+/* The same helix on touch devices, with reachable controls and safe-area room. */
+.edition-link{pointer-events:auto}
+@media(pointer:coarse){
+ header{padding-top:max(20px,env(safe-area-inset-top));padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+ footer{padding-bottom:max(14px,env(safe-area-inset-bottom));padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
+ footer button,footer .edition-link,#index-toggle,#project-list button{min-height:44px}
+ footer .edition-link{display:inline-flex;align-items:center}
+ #journey-stage,body[data-stop=profile] #journey-stage{bottom:max(13vh,104px)}
+}
