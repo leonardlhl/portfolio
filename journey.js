@@ -145,11 +145,19 @@ function openProject(index,ordinal=null,immediate=false){
   setTarget(base+2);
  }
 }
+function closeReading(){
+ // Use the displayed stop, not a queued scroll target, and retain its loop cycle.
+ const ordinal=locate(current).ordinal;
+ cancelPointer();projectFlight=null;treeDragOrdinal=null;wheelGesture=null;
+ closeIndex();setTarget(treeTarget(ordinal),true);
+ $('#scene').focus({preventScroll:true});
+}
 function step(direction){projectFlight=null;wheelGesture=null;setTarget(Math.round(target)+direction,true)}
 stops.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.title;b.onclick=()=>jump(i);$('#project-list').append(b)});
 $('#index-toggle').onclick=()=>{const open=$('#index').hidden;$('#index').hidden=!open;$('#index-toggle').setAttribute('aria-expanded',String(open))};
 $('#home').onclick=()=>openProject(0,null,true);
 $('#left').onclick=()=>step(-1);$('#right').onclick=()=>step(1);
+$('#reading-close').onclick=closeReading;
 function paint(time){
  raf=0;const elapsed=Math.min(lastTime?(time-lastTime)/1000:1/60,.08);lastTime=time;
  if(reduced.matches){current=target;velocity=0}else{
