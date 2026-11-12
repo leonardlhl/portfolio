@@ -248,16 +248,6 @@
     "sourcePage": 21,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-22-preview.webp": {
-    "preview": "2026-page-22-preview.webp",
-    "full": "2026-page-22-full.webp",
-    "width": 1600,
-    "height": 900,
-    "fullWidth": 2600,
-    "fullHeight": 1461,
-    "sourcePage": 22,
-    "edition": 2026
-  },
   "assets/page-layers/2026-page-23-preview.webp": {
     "preview": "2026-page-23-preview.webp",
     "full": "2026-page-23-full.webp",
@@ -276,16 +266,6 @@
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 24,
-    "edition": 2026
-  },
-  "assets/page-layers/2026-page-25-preview.webp": {
-    "preview": "2026-page-25-preview.webp",
-    "full": "2026-page-25-full.webp",
-    "width": 1600,
-    "height": 900,
-    "fullWidth": 2600,
-    "fullHeight": 1461,
-    "sourcePage": 25,
     "edition": 2026
   },
   "assets/page-layers/2026-page-26-preview.webp": {
@@ -768,5 +748,56 @@
       }
     ],
     "coverText": "SZ gov| Shenzhen\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nSZ gov\n42,000sqm\n100,000sqm \n50m\n-\nTheatre\nSport Center\nAlthough we did not emerge as winners in the \ncompetition, this particular challenge provided me with \nthe opportunity to broaden my understanding of sports \narchitecture. It became evident that theaters and sports \ncenters are two distinct entities, each with its own \ndistinct emotional ambiance, contextual requirements, \nand operational strategies. To address this dichotomy, a \ndecision was made to physically separate these functions \nin the design.\nIn this architectural masterpiece, characterized by its \nstriking Rococo features, the connecting platform that \nspans between the theater and the sports center takes \non a unique role. It serves as a dynamic stage, not only \nfacilitating the seamless transition between these \ncontrasting spaces but also creating a vibrant urban \nexperience. The platform becomes a nexus, where \nspectators and participants can gather, interact, and \nimmerse themselves in the energy of the city. It symbolizes \nthe harmonious coexistence of art and athleticism, \nblending the elegance of theater with the dynamism of \nsports.\nPersonal Reflections\n|51·"
+  },
+  "assets/page-layers/2026-v11-page-22-preview.webp": {
+    "preview": "2026-v11-page-22-preview.webp",
+    "full": "2026-v11-page-22-full.webp",
+    "width": 1600,
+    "height": 900,
+    "fullWidth": 2600,
+    "fullHeight": 1461,
+    "sourcePage": 22,
+    "edition": 2026
+  },
+  "assets/page-layers/2026-v11-page-25-preview.webp": {
+    "preview": "2026-v11-page-25-preview.webp",
+    "full": "2026-v11-page-25-full.webp",
+    "width": 1600,
+    "height": 900,
+    "fullWidth": 2600,
+    "fullHeight": 1461,
+    "sourcePage": 25,
+    "edition": 2026
+  },
+  "assets/page-layers/2026-v11-page-52-preview.webp": {
+    "preview": "2026-v11-page-52-preview.webp",
+    "full": "2026-v11-page-52-full.webp",
+    "width": 1600,
+    "height": 900,
+    "fullWidth": 2600,
+    "fullHeight": 1461,
+    "sourcePage": 52,
+    "edition": 2026,
+    "coverBase": "2026-v11-page-52-cover-base.webp",
+    "coverOverlay": "2026-v11-page-52-cover-column.png",
+    "coverBands": [
+      {
+        "top": 0.17222222222222222,
+        "bottom": 0.2688888888888889
+      },
+      {
+        "top": 0.2688888888888889,
+        "bottom": 0.3788888888888889
+      },
+      {
+        "top": 0.3788888888888889,
+        "bottom": 0.5133333333333333
+      },
+      {
+        "top": 0.5133333333333333,
+        "bottom": 0.9011111111111111
+      }
+    ],
+    "coverText": "Personal Design Toolkit\nI have built a custom suite of AI-driven tools tailored to my \ndesign process. These tools have gradually evolved into a \ncomprehensive, systematic library that spans the full design \nworkflow — from brief analysis to detailed execution.\nThe library is highly adaptable: it can respond to the specific \ndemands of different projects at different stages, allowing me \nto quickly create or customize tools suited to each particular \ntask. Key capabilities include automatically translating the \nSchedule of Accommodation into massing studies, one-click \nfacade generation and application systems, and specialized \ntools for creating diagram bases. Additional utilities further \nsupport various stages of design development.\nIn periods of limited manpower, this personalized tool \nlibrary functions as my private design assistant, substantially \nimproving efficiency and consistency.\nPersonal Reflections\n|52·"
   }
 }

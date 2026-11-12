@@ -1,5 +1,5 @@
 import * as T from './vendor/three.module.js';
-import {coverPhotoRectangle} from './cover-paper-masks.js?v=2026';
+import {coverPhotoRectangle} from './cover-paper-masks.js?v=2026-v11';
 
 // Reference-led approximation from the visible Reel, not the original site's asset.
 // Cloud Dancer is the colour direction; these RGB values are screen approximations.

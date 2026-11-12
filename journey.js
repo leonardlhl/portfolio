@@ -1,4 +1,5 @@
-import {projects} from './projects.js?v=2026';
+import {projects} from './projects.js?v=2026-v11';
+import {createVideoPage} from './toolkit-video.js?v=1';
 import {mountAmbientSky} from './ambient.js?v=3';
 import {mountPageZoom} from './page-zoom.js?v=2';
 import {mountContact} from './contact.js?v=1';
@@ -6,7 +7,7 @@ import {mountCursor} from './cursor.js?v=4';
 mountCursor();
 const $=s=>document.querySelector(s),mod=(a,b)=>(a%b+b)%b,clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{const t=clamp(v);return t*t*(3-2*t)};
-const cvResponse=await fetch('./cv.html?v=2026');if(!cvResponse.ok)throw new Error('CV source unavailable');
+const cvResponse=await fetch('./cv.html?v=2026-v11');if(!cvResponse.ok)throw new Error('CV source unavailable');
 const cvDoc=new DOMParser().parseFromString(await cvResponse.text(),'text/html');
 const contactEmail=cvDoc.querySelector('a[href^="mailto:"]')?.getAttribute('href').slice(7).split('?')[0];
 mountContact({button:$('#contact-copy'),status:$('#contact-status'),email:contactEmail});
@@ -26,7 +27,7 @@ cvSlide('Background',[cvSections[0],cvSections[1]]);
 cvSlide('Awards & recognition',[cvSections[2],cvSections[3]]);
 for(const slide of cvSlides){const link=document.createElement('a');link.className='cv-detail-link';link.href='./cv-detail.html';link.target='_blank';link.rel='noopener';link.textContent='View full CV & project experience — opens new tab';slide.querySelector('.page-copy').append(link)}
 // These layers come directly from the original PDF, including its typography.
-const layerResponse=await fetch('./assets/page-layers/manifest.json?v=2026');
+const layerResponse=await fetch('./assets/page-layers/manifest.json?v=2026-v11');
 if(!layerResponse.ok)throw new Error('Portfolio page layers unavailable');
 const layers=await layerResponse.json(),layerURL=name=>'./assets/page-layers/'+name;
 function projectPage(project,value,isCover){
@@ -51,7 +52,8 @@ function projectPage(project,value,isCover){
  img.onerror=()=>{img.onerror=null;img.src=original;page.querySelector('.cover-column')?.remove();page.dataset.description='false'};
  return page;
 }
-const stops=[{id:'profile',title:'Leonard Lo',meta:'Profile / CV',slides:cvSlides},...projects.map(p=>({id:p[0],title:p[1],meta:p[2],slides:[...(p[5]?[p[5]]:[]),...p[3].filter(n=>n!==p[5])].map((n,i)=>projectPage(p,n,i===0))}))];
+const stops=[{id:'profile',title:'Leonard Lo',meta:'Profile / CV',slides:cvSlides},...projects.map(p=>({id:p[0],title:p[1],meta:p[2],slides:[...[...(p[5]?[p[5]]:[]),...p[3].filter(n=>n!==p[5])].map((n,i)=>projectPage(p,n,i===0)),...(p[6]?[createVideoPage(p[6])]:[])]}))];
+const videoPages=stops.flatMap(stop=>stop.slides.filter(page=>typeof page.syncActive==='function'));
 const starts=[];let total=0;
 stops.forEach(s=>{
  s.steps=[];s.slides.forEach((slide,page)=>{s.steps.push({page,reveal:false});if(slide.dataset.description==='true'){slide.revealStep=s.steps.length;s.steps.push({page,reveal:true})}});
@@ -161,7 +163,8 @@ function paint(time){
  if(activeIndex!==p.index){activeIndex=p.index;activePage=-1;document.body.dataset.stop=stop.id;warmImages(p.index);track.replaceChildren(...stop.slides);measureStage();$('#reading-title').textContent=stop.title;$('#reading-title').hidden=p.index===0;$('#page-enlarge').hidden=p.index===0;$('#project-list').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-current',String(i===p.index)))}
  const alpha=flying?0:smooth((zoom-.25)/.75);stage.style.opacity=String(alpha);stage.style.pointerEvents=alpha>.95?'auto':'none';stage.inert=alpha<.95;stage.setAttribute('aria-hidden',String(alpha<.95));
  track.style.transform='translate3d('+(-pageOffset*100)+'%,0,0)';
- if(activePage!==nearest){activePage=nearest;warmImages(p.index,nearest);stop.slides.forEach((el,i)=>{el.inert=i!==nearest;el.setAttribute('aria-hidden',String(i!==nearest))});$('#page-position').textContent=(nearest+1)+' / '+stop.slides.length}
+ if(activePage!==nearest){activePage=nearest;warmImages(p.index,nearest);stop.slides.forEach((el,i)=>{el.inert=i!==nearest;el.setAttribute('aria-hidden',String(i!==nearest))});$('#page-position').textContent=(nearest+1)+' / '+stop.slides.length;$('#page-enlarge').hidden=!stop.slides[nearest].dataset.full}
+ for(const page of videoPages)page.syncActive(page===stop.slides[nearest]&&alpha>.95&&Math.abs(pageOffset-nearest)<.02&&!flying&&!pageZoom.isOpen);
  for(const slide of stop.slides){if(slide.revealStep!==undefined){const revealed=stepOffset>=slide.revealStep-.5;if(slide.dataset.revealed!==String(revealed)){slide.dataset.revealed=String(revealed);slide.querySelector('.cover-column')?.setAttribute('aria-hidden',String(!revealed))}}}
  $('#scene').style.opacity=String(1-.88*alpha);
  lastSceneOrdinal=sceneOrdinal;lastSceneZoom=zoom;
@@ -266,6 +269,6 @@ finePointer.addEventListener('change',()=>{hoverPointer=null;syncPreviewHover()}
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else request()});
 window.addEventListener('resize',()=>{measureStage();request()});reduced.addEventListener('change',request);
 const sceneProjects=projects.map((project,index)=>{const copy=[...project];copy[5]=stops[index+1].slides[0].querySelector('.portfolio-image').getAttribute('src');return copy});
-try{const module=await import('./journey-scene.js?v=2026');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
+try{const module=await import('./journey-scene.js?v=2026-v11');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
 request();
 document.querySelector('footer>span').textContent=sequentialTouch?'Tap to open · Swipe to explore every page':'Click a preview to open · Scroll to explore';

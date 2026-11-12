@@ -37,10 +37,10 @@
     "pages": [
       "./assets/page-layers/2026-page-20-preview.webp",
       "./assets/page-layers/2026-page-21-preview.webp",
-      "./assets/page-layers/2026-page-22-preview.webp",
+      "./assets/page-layers/2026-v11-page-22-preview.webp",
       "./assets/page-layers/2026-page-23-preview.webp",
       "./assets/page-layers/2026-page-24-preview.webp",
-      "./assets/page-layers/2026-page-25-preview.webp"
+      "./assets/page-layers/2026-v11-page-25-preview.webp"
     ],
     "description": "Courtyards, entrances and roofs organise public activity."
   },
@@ -137,5 +137,33 @@
     "cover": "./assets/page-layers/2026-page-51-preview.webp",
     "pages": [],
     "description": "Public space for cultural and sporting activities."
+  },
+  {
+    "id": "15-personal-design-toolkit",
+    "title": "Personal Design Toolkit",
+    "category": "Custom tools / Design workflow",
+    "cover": "./assets/page-layers/2026-v11-page-52-preview.webp",
+    "pages": [],
+    "description": "A self-developed library of adaptable tools for the architectural design workflow.",
+    "videoPage": {
+      "title": "Tools in motion",
+      "clips": [
+        {
+          "src": "./assets/toolkit/01-area.mp4",
+          "poster": "./assets/toolkit/01-area.webp",
+          "label": "Area analysis"
+        },
+        {
+          "src": "./assets/toolkit/02-wrap-facade.mp4",
+          "poster": "./assets/toolkit/02-wrap-facade.webp",
+          "label": "Facade wrapping · 01"
+        },
+        {
+          "src": "./assets/toolkit/03-wrap-facade.mp4",
+          "poster": "./assets/toolkit/03-wrap-facade.webp",
+          "label": "Facade wrapping · 02"
+        }
+      ]
+    }
   }
 ]
