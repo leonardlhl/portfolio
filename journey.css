@@ -81,3 +81,5 @@ footer button,footer button:hover,footer button:active{border:0;background:trans
 @media(hover:hover) and (pointer:fine){footer button:hover{color:#101113;text-decoration:underline;text-underline-offset:4px}}
 /* App gestures also work from the reading header and blank page margins. */
 #journey-stage{touch-action:none}
+
+.edition-link{color:inherit;text-decoration:none;opacity:.7}.edition-link:hover,.edition-link:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:.25em}

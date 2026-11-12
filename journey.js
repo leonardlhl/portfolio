@@ -1,5 +1,5 @@
 import {projects} from './projects.js?v=2026-v11';
-import {createVideoPage} from './toolkit-video.js?v=1';
+import {createVideoPage} from './toolkit-video.js?v=2';
 import {mountAmbientSky} from './ambient.js?v=3';
 import {mountPageZoom} from './page-zoom.js?v=2';
 import {mountContact} from './contact.js?v=1';
@@ -88,7 +88,10 @@ function onContent(x,y){
  return scene?.hitProject(x,y)||false;
 }
 function selectAdjacent(direction){
- const p=locate(target),ordinal=p.ordinal+direction,index=mod(ordinal,stops.length);
+ // A page-wheel burst can queue the next stop before the outgoing sheet has
+ // faded. Background navigation must advance from the tree actually on screen,
+ // otherwise that first unseen stop is skipped when the hit region changes.
+ const ordinal=Math.round(lastSceneOrdinal)+direction,index=mod(ordinal,stops.length);
  const destination=Math.floor(ordinal/stops.length)*total+starts[index]+1;
  projectFlight=reduced.matches?null:{from:lastSceneOrdinal,to:ordinal,zoom:lastSceneZoom,start:performance.now()};
  setTarget(destination,true);
