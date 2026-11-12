@@ -4,7 +4,6 @@ import {mountAmbientSky} from './ambient.js?v=3';
 import {mountPageZoom} from './page-zoom.js?v=2';
 import {mountContact} from './contact.js?v=1';
 import {mountCursor} from './cursor.js?v=4';
-import {paintPageWipe} from './page-wipe.js?v=1';
 mountCursor();
 const $=s=>document.querySelector(s),mod=(a,b)=>(a%b+b)%b,clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{const t=clamp(v);return t*t*(3-2*t)};
@@ -146,12 +145,7 @@ function openProject(index,ordinal=null,immediate=false){
   setTarget(base+2);
  }
 }
-function step(direction,instant=false){
- projectFlight=null;wheelGesture=null;
- const destination=Math.round(target)+direction,from=locate(current),to=locate(destination);
- const reading=from.ordinal===to.ordinal&&from.local>=2&&to.local>=2&&from.local<=stops[from.index].steps.length+1&&to.local<=stops[to.index].steps.length+1;
- setTarget(destination,instant||!reading);
-}
+function step(direction){projectFlight=null;wheelGesture=null;setTarget(Math.round(target)+direction,true)}
 stops.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.title;b.onclick=()=>jump(i);$('#project-list').append(b)});
 $('#index-toggle').onclick=()=>{const open=$('#index').hidden;$('#index').hidden=!open;$('#index-toggle').setAttribute('aria-expanded',String(open))};
 $('#home').onclick=()=>openProject(0,null,true);
@@ -181,7 +175,7 @@ function paint(time){
  const pageOffset=stop.steps[stepFloor].page+(stop.steps[stepNext].page-stop.steps[stepFloor].page)*(stepOffset-stepFloor),nearest=Math.round(pageOffset);
  if(activeIndex!==p.index){activeIndex=p.index;activePage=-1;document.body.dataset.stop=stop.id;warmImages(p.index);track.replaceChildren(...stop.slides);measureStage();$('#reading-title').textContent=stop.title;$('#reading-title').hidden=p.index===0;$('#page-enlarge').hidden=p.index===0;$('#project-list').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-current',String(i===p.index)))}
  const alpha=flying?0:smooth((zoom-.25)/.75);stage.style.opacity=String(alpha);stage.style.pointerEvents=alpha>.95?'auto':'none';stage.inert=alpha<.95;stage.setAttribute('aria-hidden',String(alpha<.95));
- paintPageWipe(stop.slides,pageOffset,reduced.matches);
+ track.style.transform='translate3d('+(-pageOffset*100)+'%,0,0)';
  if(activePage!==nearest){activePage=nearest;warmImages(p.index,nearest);stop.slides.forEach((el,i)=>{el.inert=i!==nearest;el.setAttribute('aria-hidden',String(i!==nearest))});$('#page-position').textContent=(nearest+1)+' / '+stop.slides.length;$('#page-enlarge').hidden=!stop.slides[nearest].dataset.full}
  for(const page of videoPages)page.syncActive(page===stop.slides[nearest]&&alpha>.95&&Math.abs(pageOffset-nearest)<.02&&!flying&&!pageZoom.isOpen);
  for(const slide of stop.slides){if(slide.revealStep!==undefined){const revealed=stepOffset>=slide.revealStep-.5;if(slide.dataset.revealed!==String(revealed)){slide.dataset.revealed=String(revealed);slide.querySelector('.cover-column')?.setAttribute('aria-hidden',String(!revealed))}}}
@@ -189,7 +183,7 @@ function paint(time){
  lastSceneOrdinal=sceneOrdinal;lastSceneZoom=zoom;
  const sceneFrame=[sceneOrdinal,reduced.matches?0:zoom,dragYaw,innerWidth,innerHeight];
  // Horizontal pages do not move the tree. Keep its last frame instead of
- // redrawing the full helix on every page-wipe frame.
+ // redrawing the full helix on every compositor-only page translation.
  if(scene&&(!lastSceneFrame||sceneFrame.some((value,i)=>value!==lastSceneFrame[i])||scene.isAnimating)){
   lastSceneOrigin=scene.update(sceneFrame[0],sceneFrame[1],dragYaw,reduced.matches?0:current);lastSceneFrame=sceneFrame;
  }
@@ -198,7 +192,7 @@ function paint(time){
  if(document.body.dataset.stop!==stop.id)document.body.dataset.stop=stop.id;
  if(document.body.dataset.page!==String(nearest+1))document.body.dataset.page=String(nearest+1);
  const phaseName=alpha>.8?'reading':t<1?'travel':zoom>0?'zoom':'tree';
- if(document.body.dataset.phase!==phaseName){document.body.dataset.phase=phaseName;if(sequentialTouch)document.querySelector('footer>span').textContent=phaseName==='reading'?'Swipe to turn pages':'Drag to explore · Tap a project to open'}
+ if(document.body.dataset.phase!==phaseName){document.body.dataset.phase=phaseName;if(sequentialTouch)document.querySelector('footer>span').textContent=phaseName==='reading'?'Swipe to turn pages':'Drag sideways · Tap a project to open'}
  syncPreviewHover();
  if(projectFlight||scene?.isAnimating||Math.abs(target-current)+Math.abs(velocity)>.001)request();else lastTime=0;
 }
@@ -221,7 +215,7 @@ document.addEventListener('wheel',e=>{
  // Fresh wheel detents and direction changes re-arm without an idle lockout.
  if(Math.abs(wheelGesture.distance)>=40){wheelGesture.used=true;setTarget(Math.round(target)+Math.sign(wheelGesture.distance))}
 },{passive:false});
-document.addEventListener('keydown',e=>{if(pageZoom.isOpen||e.target.closest('button,a,input,select,#index'))return;if(e.key==='Enter'&&e.target.id==='scene'){e.preventDefault();openProject(locate(target).index,null,true);return}const direction=['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)?1:['ArrowLeft','ArrowUp','PageUp'].includes(e.key)?-1:0;if(direction){e.preventDefault();step(direction,true)}if(e.key==='Escape'){projectFlight=null;const p=locate(target);setTarget(Math.floor(target/total)*total+starts[p.index]+stops[p.index].steps.length+2,true)}});
+document.addEventListener('keydown',e=>{if(pageZoom.isOpen||e.target.closest('button,a,input,select,#index'))return;if(e.key==='Enter'&&e.target.id==='scene'){e.preventDefault();openProject(locate(target).index,null,true);return}const direction=['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)?1:['ArrowLeft','ArrowUp','PageUp'].includes(e.key)?-1:0;if(direction){e.preventDefault();step(direction)}if(e.key==='Escape'){projectFlight=null;const p=locate(target);setTarget(Math.floor(target/total)*total+starts[p.index]+stops[p.index].steps.length+2,true)}});
 let swipedLink=null;
 document.addEventListener('pointerdown',e=>{
  if(e.pointerType==='touch'&&e.isPrimary===false){cancelPointer();return}
@@ -256,12 +250,12 @@ document.addEventListener('pointermove',e=>{
    touch.mode=touch.tree?'tree':canScroll?'text':'page';
   }
   if(touch.mode==='tree'){
-   // Direct manipulation belongs to the homepage. A held finger never walks
-   // through a project's reading steps or opens a page on release.
-   if(touch.axis==='x')dragYaw=touch.startYaw+totalX*.006;
-   else{
-    const span=Math.max(160,Math.min(320,innerHeight*.35));
-    treeDragOrdinal=touch.sceneOrdinal+totalY/span;
+   // One sideways gesture follows the helix: right moves the structure down
+   // while turning it; left reverses both. Its scene ordinal already couples
+   // rotation and height, so no separate orbit or vertical swipe is needed.
+   if(touch.axis==='x'){
+    const span=Math.max(180,Math.min(320,innerWidth*.58));
+    treeDragOrdinal=touch.sceneOrdinal+totalX/span;
     setTreeStop(Math.round(treeDragOrdinal));
    }
    request();
@@ -311,4 +305,4 @@ window.addEventListener('resize',()=>{measureStage();request()});reduced.addEven
 const sceneProjects=projects.map((project,index)=>{const copy=[...project];copy[5]=stops[index+1].slides[0].querySelector('.portfolio-image').getAttribute('src');return copy});
 try{const module=await import('./journey-scene.js?v=2026-v11');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
 request();
-document.querySelector('footer>span').textContent=sequentialTouch?'Drag to explore · Tap a project to open':'Click a preview to open · Scroll to explore';
+document.querySelector('footer>span').textContent=sequentialTouch?'Drag sideways · Tap a project to open':'Click a preview to open · Scroll to explore';
