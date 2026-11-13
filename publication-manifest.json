@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T14:56:29.890Z",
+  "generatedAt": "2026-11-13T15:13:00.398Z",
   "projects": 13,
   "projectPages": 49,
   "videoPages": 1,
@@ -14,40 +14,32 @@
       "bytes": 138782
     },
     {
-      "file": "assets/page-layers/2026-page-07-preview.webp",
-      "bytes": 253338
-    },
-    {
       "file": "assets/page-layers/2026-page-06-preview.webp",
       "bytes": 48614
     },
     {
-      "file": "assets/page-layers/2026-page-09-preview.webp",
-      "bytes": 189550
+      "file": "assets/page-layers/2026-page-07-preview.webp",
+      "bytes": 253338
     },
     {
       "file": "assets/page-layers/2026-page-10-preview.webp",
       "bytes": 201568
     },
     {
-      "file": "assets/page-layers/2026-v12-page-11-preview.webp",
-      "bytes": 151112
+      "file": "assets/page-layers/2026-page-09-preview.webp",
+      "bytes": 189550
     },
     {
-      "file": "assets/page-layers/2026-page-13-preview.webp",
-      "bytes": 139216
+      "file": "assets/page-layers/2026-v12-page-11-preview.webp",
+      "bytes": 151112
     },
     {
       "file": "assets/page-layers/2026-page-12-preview.webp",
       "bytes": 97048
     },
     {
-      "file": "assets/page-layers/2026-page-16-preview.webp",
-      "bytes": 60712
-    },
-    {
-      "file": "assets/page-layers/2026-page-17-preview.webp",
-      "bytes": 196734
+      "file": "assets/page-layers/2026-page-13-preview.webp",
+      "bytes": 139216
     },
     {
       "file": "assets/page-layers/2026-page-15-preview.webp",
@@ -58,12 +50,24 @@
       "bytes": 266418
     },
     {
+      "file": "assets/page-layers/2026-page-16-preview.webp",
+      "bytes": 60712
+    },
+    {
+      "file": "assets/page-layers/2026-page-17-preview.webp",
+      "bytes": 196734
+    },
+    {
       "file": "assets/page-layers/2026-page-18-preview.webp",
       "bytes": 219372
     },
     {
       "file": "assets/page-layers/2026-v12-page-19-preview.webp",
       "bytes": 131576
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-22-preview.webp",
+      "bytes": 170716
     },
     {
       "file": "assets/page-layers/2026-v12-page-20-preview.webp",
@@ -74,32 +78,32 @@
       "bytes": 168094
     },
     {
-      "file": "assets/page-layers/2026-v11-page-25-preview.webp",
-      "bytes": 130718
+      "file": "assets/page-layers/2026-page-23-preview.webp",
+      "bytes": 155400
     },
     {
-      "file": "assets/page-layers/2026-v12-page-22-preview.webp",
-      "bytes": 170716
+      "file": "assets/page-layers/2026-v11-page-25-preview.webp",
+      "bytes": 130718
     },
     {
       "file": "assets/page-layers/2026-page-24-preview.webp",
       "bytes": 106366
     },
     {
-      "file": "assets/page-layers/2026-page-23-preview.webp",
-      "bytes": 155400
-    },
-    {
       "file": "assets/page-layers/2026-v12-page-26-preview.webp",
       "bytes": 217012
     },
     {
-      "file": "assets/page-layers/2026-page-27-preview.webp",
-      "bytes": 258134
+      "file": "assets/page-layers/2026-page-30-preview.webp",
+      "bytes": 64780
     },
     {
       "file": "assets/page-layers/2026-page-29-preview.webp",
       "bytes": 229360
+    },
+    {
+      "file": "assets/page-layers/2026-page-27-preview.webp",
+      "bytes": 258134
     },
     {
       "file": "assets/page-layers/2026-page-31-preview.webp",
@@ -116,10 +120,6 @@
     {
       "file": "assets/page-layers/2026-page-33-preview.webp",
       "bytes": 185708
-    },
-    {
-      "file": "assets/page-layers/2026-page-30-preview.webp",
-      "bytes": 64780
     },
     {
       "file": "assets/page-layers/2026-v12-page-34-preview.webp",
@@ -146,12 +146,12 @@
       "bytes": 66126
     },
     {
-      "file": "assets/page-layers/2026-page-41-preview.webp",
-      "bytes": 185296
-    },
-    {
       "file": "assets/page-layers/2026-page-40-preview.webp",
       "bytes": 260602
+    },
+    {
+      "file": "assets/page-layers/2026-page-41-preview.webp",
+      "bytes": 185296
     },
     {
       "file": "assets/page-layers/2026-page-42-preview.webp",
@@ -214,12 +214,12 @@
       "bytes": 115280
     },
     {
-      "file": "assets/toolkit/03-wrap-facade.webp",
-      "bytes": 38642
-    },
-    {
       "file": "assets/toolkit/02-wrap-facade.webp",
       "bytes": 81854
+    },
+    {
+      "file": "assets/toolkit/03-wrap-facade.webp",
+      "bytes": 38642
     },
     {
       "file": "projects.json",
@@ -527,7 +527,7 @@
     },
     {
       "file": "index.html",
-      "bytes": 3521
+      "bytes": 3578
     },
     {
       "file": "style.css",
@@ -551,7 +551,7 @@
     },
     {
       "file": "cv.html",
-      "bytes": 6570
+      "bytes": 6627
     },
     {
       "file": "cv.css",
@@ -559,7 +559,7 @@
     },
     {
       "file": "cv-detail.html",
-      "bytes": 1587
+      "bytes": 1644
     },
     {
       "file": "cv-detail.css",
@@ -618,6 +618,10 @@
       "bytes": 1856
     },
     {
+      "file": "analytics.js",
+      "bytes": 842
+    },
+    {
       "file": "cursor.js",
       "bytes": 4377
     },
@@ -639,7 +643,7 @@
     },
     {
       "file": "m/index.html",
-      "bytes": 3572
+      "bytes": 3629
     },
     {
       "file": "m/mobile.js",
@@ -714,6 +718,6 @@
       "bytes": 846
     }
   ],
-  "totalBytes": 36974229,
+  "totalBytes": 36975299,
   "externalAssets": []
 }
