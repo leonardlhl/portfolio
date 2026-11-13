@@ -1,7 +1,7 @@
 import {experience} from './cv-experience.js?v=2026';
 const host=document.querySelector('#detail-content'),status=document.querySelector('#detail-status');
 try{
- const response=await fetch('./cv.html?v=2026-v11');if(!response.ok)throw Error('CV could not load. Refresh to retry.');
+ const response=await fetch('./cv.html?v=41');if(!response.ok)throw Error('CV could not load. Refresh to retry.');
  const doc=new DOMParser().parseFromString(await response.text(),'text/html');
  for(const child of doc.querySelector('.cv-content').children)host.append(child.cloneNode(true));
  const section=document.createElement('section');section.id='experience';
