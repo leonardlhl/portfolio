@@ -98,3 +98,7 @@ footer button,footer button:hover,footer button:active{border:0;background:trans
  footer>span{flex-basis:100%}
  body #ambient-toggle{bottom:calc(max(14px,env(safe-area-inset-bottom)) + 58px)}
 }
+
+/* Source CV skills remain separate, readable points in the shared profile. */
+.professional-skills-list{font-size:17px;line-height:1.55;margin:12px 0 0;padding-left:1.1em}
+.professional-skills-list li{padding-left:.1em;margin:5px 0}

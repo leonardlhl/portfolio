@@ -7,7 +7,7 @@ import {mountCursor} from './cursor.js?v=4';
 mountCursor();
 const $=s=>document.querySelector(s),mod=(a,b)=>(a%b+b)%b,clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{const t=clamp(v);return t*t*(3-2*t)};
-const cvResponse=await fetch('./cv.html?v=42');if(!cvResponse.ok)throw new Error('CV source unavailable');
+const cvResponse=await fetch('./cv.html?v=43');if(!cvResponse.ok)throw new Error('CV source unavailable');
 const cvDoc=new DOMParser().parseFromString(await cvResponse.text(),'text/html');
 const contactEmail=cvDoc.querySelector('a[href^="mailto:"]')?.getAttribute('href').slice(7).split('?')[0];
 mountContact({button:$('#contact-copy'),status:$('#contact-status'),email:contactEmail});
@@ -22,8 +22,8 @@ function cvSlide(title,nodes){
  el.append(inner);cvSlides.push(el);
 }
 const cvSections=[...cvDoc.querySelectorAll('.cv-section')];
-cvSlide('',[cvDoc.querySelector('.profile')]);
-cvSlide('Background',[cvSections[0],cvSections[1]]);
+cvSlide('',[cvDoc.querySelector('.profile'),cvSections[0]]);
+cvSlide('Background',[cvSections[1]]);
 cvSlide('Awards & recognition',[cvSections[2],cvSections[3]]);
 for(const slide of cvSlides){const link=document.createElement('a');link.className='cv-detail-link';link.href='./cv-detail.html';link.target='_blank';link.rel='noopener';link.textContent='View full CV & project experience — opens new tab';slide.querySelector('.page-copy').append(link)}
 // These layers come directly from the original PDF, including its typography.
