@@ -3,7 +3,7 @@
     "id": "01-oct-kunming",
     "title": "OCT Second Headquarters",
     "category": "Kunming / Mixed use",
-    "cover": "./assets/page-layers/2026-page-05-preview.webp",
+    "cover": "./assets/page-layers/2026-v12-page-05-preview.webp",
     "pages": [
       "./assets/page-layers/2026-page-06-preview.webp",
       "./assets/page-layers/2026-page-07-preview.webp",
@@ -17,7 +17,7 @@
     "id": "02-huawai-school",
     "title": "Huawai Tongman School",
     "category": "Guangzhou / Education",
-    "cover": "./assets/page-layers/2026-page-11-preview.webp",
+    "cover": "./assets/page-layers/2026-v12-page-11-preview.webp",
     "pages": [
       "./assets/page-layers/2026-page-12-preview.webp",
       "./assets/page-layers/2026-page-13-preview.webp",
@@ -33,11 +33,11 @@
     "id": "03-greater-bay",
     "title": "Greater Bay Science Forum",
     "category": "Guangzhou / Cultural",
-    "cover": "./assets/page-layers/2026-page-19-preview.webp",
+    "cover": "./assets/page-layers/2026-v12-page-19-preview.webp",
     "pages": [
-      "./assets/page-layers/2026-page-20-preview.webp",
+      "./assets/page-layers/2026-v12-page-20-preview.webp",
       "./assets/page-layers/2026-page-21-preview.webp",
-      "./assets/page-layers/2026-v11-page-22-preview.webp",
+      "./assets/page-layers/2026-v12-page-22-preview.webp",
       "./assets/page-layers/2026-page-23-preview.webp",
       "./assets/page-layers/2026-page-24-preview.webp",
       "./assets/page-layers/2026-v11-page-25-preview.webp"
@@ -48,7 +48,7 @@
     "id": "04-essence",
     "title": "Essence Headquarters",
     "category": "Shenzhen / Office",
-    "cover": "./assets/page-layers/2026-page-26-preview.webp",
+    "cover": "./assets/page-layers/2026-v12-page-26-preview.webp",
     "pages": [
       "./assets/page-layers/2026-page-27-preview.webp",
       "./assets/page-layers/2026-page-28-preview.webp",
@@ -64,7 +64,7 @@
     "id": "05-hk-museums",
     "title": "History & Science Museums",
     "category": "Hong Kong / Cultural",
-    "cover": "./assets/page-layers/2026-page-34-preview.webp",
+    "cover": "./assets/page-layers/2026-v12-page-34-preview.webp",
     "pages": [
       "./assets/page-layers/2026-page-35-preview.webp",
       "./assets/page-layers/2026-page-36-preview.webp",
@@ -76,7 +76,7 @@
     "id": "06-shanghai-ai",
     "title": "Shanghai AI Center",
     "category": "Shanghai / Mixed use",
-    "cover": "./assets/page-layers/2026-page-38-preview.webp",
+    "cover": "./assets/page-layers/2026-v12-page-38-preview.webp",
     "pages": [
       "./assets/page-layers/2026-page-39-preview.webp",
       "./assets/page-layers/2026-page-40-preview.webp",
@@ -99,7 +99,7 @@
     "id": "09-sct",
     "title": "Shenchengtou Headquarters",
     "category": "Shenzhen / Office",
-    "cover": "./assets/page-layers/2026-page-45-preview.webp",
+    "cover": "./assets/page-layers/2026-v12-page-45-preview.webp",
     "pages": [
       "./assets/page-layers/2026-page-46-preview.webp",
       "./assets/page-layers/2026-page-47-preview.webp"
@@ -110,7 +110,7 @@
     "id": "10-hengyu",
     "title": "Hengyu · Shenzhen",
     "category": "Shenzhen / Mixed use",
-    "cover": "./assets/page-layers/2026-page-48-preview.webp",
+    "cover": "./assets/page-layers/2026-v12-page-48-preview.webp",
     "pages": [],
     "description": "Tower composition and urban presence."
   },
@@ -118,7 +118,7 @@
     "id": "11-pingan",
     "title": "Ping’an · Shenzhen",
     "category": "Shenzhen / Office",
-    "cover": "./assets/page-layers/2026-page-49-preview.webp",
+    "cover": "./assets/page-layers/2026-v12-page-49-preview.webp",
     "pages": [],
     "description": "A tower and its relationship to the surrounding district."
   },
@@ -126,7 +126,7 @@
     "id": "13-kwg",
     "title": "KWG · Guangzhou",
     "category": "Guangzhou / Office",
-    "cover": "./assets/page-layers/2026-page-50-preview.webp",
+    "cover": "./assets/page-layers/2026-v12-page-50-preview.webp",
     "pages": [],
     "description": "High-rise silhouettes and facade expression."
   },
@@ -134,7 +134,7 @@
     "id": "08-xili",
     "title": "Xili Cultural & Sports Center",
     "category": "Shenzhen / Cultural & sports",
-    "cover": "./assets/page-layers/2026-page-51-preview.webp",
+    "cover": "./assets/page-layers/2026-v12-page-51-preview.webp",
     "pages": [],
     "description": "Public space for cultural and sporting activities."
   },

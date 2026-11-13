@@ -1,21 +1,17 @@
 {
-  "generatedAt": "2026-11-12T16:31:22.930Z",
+  "generatedAt": "2026-11-13T14:25:19.302Z",
   "projects": 13,
   "projectPages": 49,
   "videoPages": 1,
   "images": 129,
   "files": [
     {
-      "file": "assets/page-layers/2026-page-05-preview.webp",
-      "bytes": 224992
+      "file": "assets/page-layers/2026-v12-page-05-preview.webp",
+      "bytes": 224880
     },
     {
       "file": "assets/page-layers/2026-page-06-preview.webp",
       "bytes": 48614
-    },
-    {
-      "file": "assets/page-layers/2026-page-07-preview.webp",
-      "bytes": 253338
     },
     {
       "file": "assets/page-layers/2026-page-08-preview.webp",
@@ -26,32 +22,36 @@
       "bytes": 189550
     },
     {
+      "file": "assets/page-layers/2026-page-07-preview.webp",
+      "bytes": 253338
+    },
+    {
       "file": "assets/page-layers/2026-page-10-preview.webp",
       "bytes": 201568
     },
     {
-      "file": "assets/page-layers/2026-page-11-preview.webp",
-      "bytes": 151046
+      "file": "assets/page-layers/2026-v12-page-11-preview.webp",
+      "bytes": 151112
+    },
+    {
+      "file": "assets/page-layers/2026-page-15-preview.webp",
+      "bytes": 189596
     },
     {
       "file": "assets/page-layers/2026-page-12-preview.webp",
       "bytes": 97048
     },
     {
-      "file": "assets/page-layers/2026-page-14-preview.webp",
-      "bytes": 266418
-    },
-    {
       "file": "assets/page-layers/2026-page-13-preview.webp",
       "bytes": 139216
     },
     {
-      "file": "assets/page-layers/2026-page-16-preview.webp",
-      "bytes": 60712
+      "file": "assets/page-layers/2026-page-14-preview.webp",
+      "bytes": 266418
     },
     {
-      "file": "assets/page-layers/2026-page-15-preview.webp",
-      "bytes": 189596
+      "file": "assets/page-layers/2026-page-16-preview.webp",
+      "bytes": 60712
     },
     {
       "file": "assets/page-layers/2026-page-17-preview.webp",
@@ -62,84 +62,84 @@
       "bytes": 219372
     },
     {
-      "file": "assets/page-layers/2026-page-19-preview.webp",
-      "bytes": 131286
+      "file": "assets/page-layers/2026-v12-page-19-preview.webp",
+      "bytes": 131576
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-20-preview.webp",
+      "bytes": 114176
     },
     {
       "file": "assets/page-layers/2026-page-21-preview.webp",
       "bytes": 168094
     },
     {
-      "file": "assets/page-layers/2026-page-20-preview.webp",
-      "bytes": 114160
-    },
-    {
       "file": "assets/page-layers/2026-page-23-preview.webp",
       "bytes": 155400
     },
     {
-      "file": "assets/page-layers/2026-v11-page-22-preview.webp",
-      "bytes": 170788
-    },
-    {
-      "file": "assets/page-layers/2026-v11-page-25-preview.webp",
-      "bytes": 130718
+      "file": "assets/page-layers/2026-v12-page-22-preview.webp",
+      "bytes": 170716
     },
     {
       "file": "assets/page-layers/2026-page-24-preview.webp",
       "bytes": 106366
     },
     {
-      "file": "assets/page-layers/2026-page-26-preview.webp",
-      "bytes": 215616
+      "file": "assets/page-layers/2026-v11-page-25-preview.webp",
+      "bytes": 130718
     },
     {
-      "file": "assets/page-layers/2026-page-30-preview.webp",
-      "bytes": 64780
-    },
-    {
-      "file": "assets/page-layers/2026-page-29-preview.webp",
-      "bytes": 229360
-    },
-    {
-      "file": "assets/page-layers/2026-page-27-preview.webp",
-      "bytes": 258134
+      "file": "assets/page-layers/2026-v12-page-26-preview.webp",
+      "bytes": 217012
     },
     {
       "file": "assets/page-layers/2026-page-28-preview.webp",
       "bytes": 240386
     },
     {
-      "file": "assets/page-layers/2026-page-32-preview.webp",
-      "bytes": 213270
+      "file": "assets/page-layers/2026-page-29-preview.webp",
+      "bytes": 229360
     },
     {
-      "file": "assets/page-layers/2026-page-33-preview.webp",
-      "bytes": 185708
+      "file": "assets/page-layers/2026-page-30-preview.webp",
+      "bytes": 64780
+    },
+    {
+      "file": "assets/page-layers/2026-page-27-preview.webp",
+      "bytes": 258134
     },
     {
       "file": "assets/page-layers/2026-page-31-preview.webp",
       "bytes": 236904
     },
     {
-      "file": "assets/page-layers/2026-page-34-preview.webp",
-      "bytes": 167486
+      "file": "assets/page-layers/2026-page-33-preview.webp",
+      "bytes": 185708
+    },
+    {
+      "file": "assets/page-layers/2026-page-32-preview.webp",
+      "bytes": 213270
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-34-preview.webp",
+      "bytes": 167770
     },
     {
       "file": "assets/page-layers/2026-page-35-preview.webp",
       "bytes": 255754
     },
     {
-      "file": "assets/page-layers/2026-page-37-preview.webp",
-      "bytes": 133918
-    },
-    {
       "file": "assets/page-layers/2026-page-36-preview.webp",
       "bytes": 230722
     },
     {
-      "file": "assets/page-layers/2026-page-38-preview.webp",
-      "bytes": 191728
+      "file": "assets/page-layers/2026-page-37-preview.webp",
+      "bytes": 133918
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-38-preview.webp",
+      "bytes": 191874
     },
     {
       "file": "assets/page-layers/2026-page-39-preview.webp",
@@ -166,8 +166,8 @@
       "bytes": 173220
     },
     {
-      "file": "assets/page-layers/2026-page-45-preview.webp",
-      "bytes": 153450
+      "file": "assets/page-layers/2026-v12-page-45-preview.webp",
+      "bytes": 153608
     },
     {
       "file": "assets/page-layers/2026-page-46-preview.webp",
@@ -178,20 +178,20 @@
       "bytes": 170452
     },
     {
-      "file": "assets/page-layers/2026-page-48-preview.webp",
-      "bytes": 355866
+      "file": "assets/page-layers/2026-v12-page-48-preview.webp",
+      "bytes": 355980
     },
     {
-      "file": "assets/page-layers/2026-page-49-preview.webp",
-      "bytes": 145944
+      "file": "assets/page-layers/2026-v12-page-49-preview.webp",
+      "bytes": 146098
     },
     {
-      "file": "assets/page-layers/2026-page-50-preview.webp",
-      "bytes": 93568
+      "file": "assets/page-layers/2026-v12-page-50-preview.webp",
+      "bytes": 93904
     },
     {
-      "file": "assets/page-layers/2026-page-51-preview.webp",
-      "bytes": 116640
+      "file": "assets/page-layers/2026-v12-page-51-preview.webp",
+      "bytes": 116988
     },
     {
       "file": "assets/page-layers/2026-v11-page-52-preview.webp",
@@ -210,12 +210,12 @@
       "bytes": 2736539
     },
     {
-      "file": "assets/toolkit/03-wrap-facade.webp",
-      "bytes": 38642
-    },
-    {
       "file": "assets/toolkit/01-area.webp",
       "bytes": 115280
+    },
+    {
+      "file": "assets/toolkit/03-wrap-facade.webp",
+      "bytes": 38642
     },
     {
       "file": "assets/toolkit/02-wrap-facade.webp",
@@ -223,19 +223,7 @@
     },
     {
       "file": "projects.json",
-      "bytes": 6124
-    },
-    {
-      "file": "assets/page-layers/2026-page-05-full.webp",
-      "bytes": 405384
-    },
-    {
-      "file": "assets/page-layers/2026-page-05-cover-base.webp",
-      "bytes": 157182
-    },
-    {
-      "file": "assets/page-layers/2026-page-05-cover-column.png",
-      "bytes": 116788
+      "bytes": 6172
     },
     {
       "file": "assets/page-layers/2026-page-06-full.webp",
@@ -256,18 +244,6 @@
     {
       "file": "assets/page-layers/2026-page-10-full.webp",
       "bytes": 409896
-    },
-    {
-      "file": "assets/page-layers/2026-page-11-full.webp",
-      "bytes": 319308
-    },
-    {
-      "file": "assets/page-layers/2026-page-11-cover-base.webp",
-      "bytes": 98898
-    },
-    {
-      "file": "assets/page-layers/2026-page-11-cover-column.png",
-      "bytes": 106076
     },
     {
       "file": "assets/page-layers/2026-page-12-full.webp",
@@ -298,22 +274,6 @@
       "bytes": 428126
     },
     {
-      "file": "assets/page-layers/2026-page-19-full.webp",
-      "bytes": 257950
-    },
-    {
-      "file": "assets/page-layers/2026-page-19-cover-base.webp",
-      "bytes": 72574
-    },
-    {
-      "file": "assets/page-layers/2026-page-19-cover-column.png",
-      "bytes": 119764
-    },
-    {
-      "file": "assets/page-layers/2026-page-20-full.webp",
-      "bytes": 221244
-    },
-    {
       "file": "assets/page-layers/2026-page-21-full.webp",
       "bytes": 332286
     },
@@ -324,18 +284,6 @@
     {
       "file": "assets/page-layers/2026-page-24-full.webp",
       "bytes": 216318
-    },
-    {
-      "file": "assets/page-layers/2026-page-26-full.webp",
-      "bytes": 427898
-    },
-    {
-      "file": "assets/page-layers/2026-page-26-cover-base.webp",
-      "bytes": 146708
-    },
-    {
-      "file": "assets/page-layers/2026-page-26-cover-column.png",
-      "bytes": 123242
     },
     {
       "file": "assets/page-layers/2026-page-27-full.webp",
@@ -366,18 +314,6 @@
       "bytes": 351788
     },
     {
-      "file": "assets/page-layers/2026-page-34-full.webp",
-      "bytes": 302834
-    },
-    {
-      "file": "assets/page-layers/2026-page-34-cover-base.webp",
-      "bytes": 127884
-    },
-    {
-      "file": "assets/page-layers/2026-page-34-cover-column.png",
-      "bytes": 71543
-    },
-    {
       "file": "assets/page-layers/2026-page-35-full.webp",
       "bytes": 523318
     },
@@ -388,18 +324,6 @@
     {
       "file": "assets/page-layers/2026-page-37-full.webp",
       "bytes": 263978
-    },
-    {
-      "file": "assets/page-layers/2026-page-38-full.webp",
-      "bytes": 357386
-    },
-    {
-      "file": "assets/page-layers/2026-page-38-cover-base.webp",
-      "bytes": 166646
-    },
-    {
-      "file": "assets/page-layers/2026-page-38-cover-column.png",
-      "bytes": 55382
     },
     {
       "file": "assets/page-layers/2026-page-39-full.webp",
@@ -434,76 +358,12 @@
       "bytes": 337316
     },
     {
-      "file": "assets/page-layers/2026-page-45-full.webp",
-      "bytes": 301556
-    },
-    {
-      "file": "assets/page-layers/2026-page-45-cover-base.webp",
-      "bytes": 95338
-    },
-    {
-      "file": "assets/page-layers/2026-page-45-cover-column.png",
-      "bytes": 109176
-    },
-    {
       "file": "assets/page-layers/2026-page-46-full.webp",
       "bytes": 392278
     },
     {
       "file": "assets/page-layers/2026-page-47-full.webp",
       "bytes": 338038
-    },
-    {
-      "file": "assets/page-layers/2026-page-48-full.webp",
-      "bytes": 727632
-    },
-    {
-      "file": "assets/page-layers/2026-page-48-cover-base.webp",
-      "bytes": 314104
-    },
-    {
-      "file": "assets/page-layers/2026-page-48-cover-column.png",
-      "bytes": 70692
-    },
-    {
-      "file": "assets/page-layers/2026-page-49-full.webp",
-      "bytes": 293196
-    },
-    {
-      "file": "assets/page-layers/2026-page-49-cover-base.webp",
-      "bytes": 119000
-    },
-    {
-      "file": "assets/page-layers/2026-page-49-cover-column.png",
-      "bytes": 62951
-    },
-    {
-      "file": "assets/page-layers/2026-page-50-full.webp",
-      "bytes": 196032
-    },
-    {
-      "file": "assets/page-layers/2026-page-50-cover-base.webp",
-      "bytes": 66822
-    },
-    {
-      "file": "assets/page-layers/2026-page-50-cover-column.png",
-      "bytes": 66825
-    },
-    {
-      "file": "assets/page-layers/2026-page-51-full.webp",
-      "bytes": 263184
-    },
-    {
-      "file": "assets/page-layers/2026-page-51-cover-base.webp",
-      "bytes": 72272
-    },
-    {
-      "file": "assets/page-layers/2026-page-51-cover-column.png",
-      "bytes": 93169
-    },
-    {
-      "file": "assets/page-layers/2026-v11-page-22-full.webp",
-      "bytes": 352150
     },
     {
       "file": "assets/page-layers/2026-v11-page-25-full.webp",
@@ -522,8 +382,148 @@
       "bytes": 67800
     },
     {
+      "file": "assets/page-layers/2026-v12-page-05-full.webp",
+      "bytes": 405058
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-05-cover-base.webp",
+      "bytes": 160836
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-05-cover-column.png",
+      "bytes": 116788
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-11-full.webp",
+      "bytes": 319488
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-11-cover-base.webp",
+      "bytes": 99014
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-11-cover-column.png",
+      "bytes": 106076
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-19-full.webp",
+      "bytes": 258042
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-19-cover-base.webp",
+      "bytes": 72648
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-19-cover-column.png",
+      "bytes": 119764
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-20-full.webp",
+      "bytes": 221128
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-22-full.webp",
+      "bytes": 352280
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-26-full.webp",
+      "bytes": 430324
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-26-cover-base.webp",
+      "bytes": 148122
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-26-cover-column.png",
+      "bytes": 123242
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-34-full.webp",
+      "bytes": 302964
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-34-cover-base.webp",
+      "bytes": 128122
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-34-cover-column.png",
+      "bytes": 71543
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-38-full.webp",
+      "bytes": 357556
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-38-cover-base.webp",
+      "bytes": 166830
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-38-cover-column.png",
+      "bytes": 55382
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-45-full.webp",
+      "bytes": 301970
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-45-cover-base.webp",
+      "bytes": 95648
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-45-cover-column.png",
+      "bytes": 109176
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-48-full.webp",
+      "bytes": 729450
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-48-cover-base.webp",
+      "bytes": 314362
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-48-cover-column.png",
+      "bytes": 70692
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-49-full.webp",
+      "bytes": 293226
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-49-cover-base.webp",
+      "bytes": 119140
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-49-cover-column.png",
+      "bytes": 62951
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-50-full.webp",
+      "bytes": 196584
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-50-cover-base.webp",
+      "bytes": 67300
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-50-cover-column.png",
+      "bytes": 66825
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-51-full.webp",
+      "bytes": 263776
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-51-cover-base.webp",
+      "bytes": 72492
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-51-cover-column.png",
+      "bytes": 93169
+    },
+    {
       "file": "assets/page-layers/manifest.json",
-      "bytes": 36104
+      "bytes": 36336
     },
     {
       "file": "index.html",
@@ -714,6 +714,6 @@
       "bytes": 846
     }
   ],
-  "totalBytes": 36957204,
+  "totalBytes": 36973786,
   "externalAssets": []
 }
