@@ -1,4 +1,4 @@
-const response=await fetch('./projects.json?v=2026-v12-titles48');
+const response=await fetch('./projects.json?v=2026-v12-rights49');
 if(!response.ok)throw new Error('Could not load projects.json');
 const data=await response.json();
 if(!Array.isArray(data)||data.some(p=>!p.id||!p.title||!Array.isArray(p.pages)||(!p.pages.length&&!p.cover)))throw new Error('Each project needs an id, title and a cover or at least one page.');

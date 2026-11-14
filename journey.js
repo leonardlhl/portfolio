@@ -1,4 +1,4 @@
-import {projects} from './projects.js?v=2026-v12-titles48';
+import {projects} from './projects.js?v=2026-v12-rights49';
 import {createVideoPage} from './toolkit-video.js?v=2';
 import {mountAmbientSky} from './ambient.js?v=45';
 import {mountPageZoom} from './page-zoom.js?v=2';
@@ -27,7 +27,7 @@ cvSlide('Background',[cvSections[1]]);
 cvSlide('Awards & recognition',[cvSections[2],cvSections[3]]);
 for(const slide of cvSlides){const link=document.createElement('a');link.className='cv-detail-link';link.href='./cv-detail.html';link.target='_blank';link.rel='noopener';link.textContent='View full CV & project experience — opens new tab';slide.querySelector('.page-copy').append(link)}
 // These layers come directly from the original PDF, including its typography.
-const layerResponse=await fetch('./assets/page-layers/manifest.json?v=2026-v12');
+const layerResponse=await fetch('./assets/page-layers/manifest.json?v=2026-v12-rights49');
 if(!layerResponse.ok)throw new Error('Portfolio page layers unavailable');
 const layers=await layerResponse.json(),layerURL=name=>'./assets/page-layers/'+name;
 function projectPage(project,value,isCover){
@@ -72,7 +72,7 @@ let stageBox;
 const sequentialTouch=matchMedia('(pointer: coarse)').matches||(/iPad/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1));
 let projectFlight=null,lastSceneOrdinal=0,lastSceneZoom=0,wheelGesture=null,lastSceneFrame=null,lastSceneOrigin=null,treeDragOrdinal=null,readingExit=null;
 function syncPreviewHover(){
- const available=finePointer.matches&&hoverPointer&&!pageZoom.isOpen&&$('#index').hidden&&!projectFlight&&!readingExit&&!touch?.moved&&lastSceneZoom<.001;
+ const available=finePointer.matches&&hoverPointer&&!pageZoom.isOpen&&!document.body.dataset.copyrightOpen&&$('#index').hidden&&!projectFlight&&!readingExit&&!touch?.moved&&lastSceneZoom<.001;
  const hit=available?scene?.pickProject(hoverPointer.x,hoverPointer.y):null;
  if(scene?.setHover(hit?.ordinal??null,reduced.matches)){lastSceneFrame=null;request()}
  const next=String(Boolean(hit));if(document.documentElement.dataset.cursorHover!==next)document.documentElement.dataset.cursorHover=next;

@@ -1,7 +1,7 @@
 {
-  "assets/page-layers/2026-page-06-preview.webp": {
-    "preview": "2026-page-06-preview.webp",
-    "full": "2026-page-06-full.webp",
+  "assets/page-layers/2026-page-06-preview-signed-v1.webp": {
+    "preview": "2026-page-06-preview-signed-v1.webp",
+    "full": "2026-page-06-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -9,9 +9,9 @@
     "sourcePage": 6,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-07-preview.webp": {
-    "preview": "2026-page-07-preview.webp",
-    "full": "2026-page-07-full.webp",
+  "assets/page-layers/2026-page-07-preview-signed-v1.webp": {
+    "preview": "2026-page-07-preview-signed-v1.webp",
+    "full": "2026-page-07-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -19,9 +19,9 @@
     "sourcePage": 7,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-08-preview.webp": {
-    "preview": "2026-page-08-preview.webp",
-    "full": "2026-page-08-full.webp",
+  "assets/page-layers/2026-page-08-preview-signed-v1.webp": {
+    "preview": "2026-page-08-preview-signed-v1.webp",
+    "full": "2026-page-08-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -29,9 +29,9 @@
     "sourcePage": 8,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-09-preview.webp": {
-    "preview": "2026-page-09-preview.webp",
-    "full": "2026-page-09-full.webp",
+  "assets/page-layers/2026-page-09-preview-signed-v1.webp": {
+    "preview": "2026-page-09-preview-signed-v1.webp",
+    "full": "2026-page-09-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -39,9 +39,9 @@
     "sourcePage": 9,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-10-preview.webp": {
-    "preview": "2026-page-10-preview.webp",
-    "full": "2026-page-10-full.webp",
+  "assets/page-layers/2026-page-10-preview-signed-v1.webp": {
+    "preview": "2026-page-10-preview-signed-v1.webp",
+    "full": "2026-page-10-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -49,9 +49,9 @@
     "sourcePage": 10,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-12-preview.webp": {
-    "preview": "2026-page-12-preview.webp",
-    "full": "2026-page-12-full.webp",
+  "assets/page-layers/2026-page-12-preview-signed-v1.webp": {
+    "preview": "2026-page-12-preview-signed-v1.webp",
+    "full": "2026-page-12-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -59,9 +59,9 @@
     "sourcePage": 12,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-13-preview.webp": {
-    "preview": "2026-page-13-preview.webp",
-    "full": "2026-page-13-full.webp",
+  "assets/page-layers/2026-page-13-preview-signed-v1.webp": {
+    "preview": "2026-page-13-preview-signed-v1.webp",
+    "full": "2026-page-13-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -69,9 +69,9 @@
     "sourcePage": 13,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-14-preview.webp": {
-    "preview": "2026-page-14-preview.webp",
-    "full": "2026-page-14-full.webp",
+  "assets/page-layers/2026-page-14-preview-signed-v1.webp": {
+    "preview": "2026-page-14-preview-signed-v1.webp",
+    "full": "2026-page-14-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -79,9 +79,9 @@
     "sourcePage": 14,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-15-preview.webp": {
-    "preview": "2026-page-15-preview.webp",
-    "full": "2026-page-15-full.webp",
+  "assets/page-layers/2026-page-15-preview-signed-v1.webp": {
+    "preview": "2026-page-15-preview-signed-v1.webp",
+    "full": "2026-page-15-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -89,9 +89,9 @@
     "sourcePage": 15,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-16-preview.webp": {
-    "preview": "2026-page-16-preview.webp",
-    "full": "2026-page-16-full.webp",
+  "assets/page-layers/2026-page-16-preview-signed-v1.webp": {
+    "preview": "2026-page-16-preview-signed-v1.webp",
+    "full": "2026-page-16-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -99,9 +99,9 @@
     "sourcePage": 16,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-17-preview.webp": {
-    "preview": "2026-page-17-preview.webp",
-    "full": "2026-page-17-full.webp",
+  "assets/page-layers/2026-page-17-preview-signed-v1.webp": {
+    "preview": "2026-page-17-preview-signed-v1.webp",
+    "full": "2026-page-17-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -109,9 +109,9 @@
     "sourcePage": 17,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-18-preview.webp": {
-    "preview": "2026-page-18-preview.webp",
-    "full": "2026-page-18-full.webp",
+  "assets/page-layers/2026-page-18-preview-signed-v1.webp": {
+    "preview": "2026-page-18-preview-signed-v1.webp",
+    "full": "2026-page-18-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -119,9 +119,9 @@
     "sourcePage": 18,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-21-preview.webp": {
-    "preview": "2026-page-21-preview.webp",
-    "full": "2026-page-21-full.webp",
+  "assets/page-layers/2026-page-21-preview-signed-v1.webp": {
+    "preview": "2026-page-21-preview-signed-v1.webp",
+    "full": "2026-page-21-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -129,9 +129,9 @@
     "sourcePage": 21,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-23-preview.webp": {
-    "preview": "2026-page-23-preview.webp",
-    "full": "2026-page-23-full.webp",
+  "assets/page-layers/2026-page-23-preview-signed-v1.webp": {
+    "preview": "2026-page-23-preview-signed-v1.webp",
+    "full": "2026-page-23-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -139,9 +139,9 @@
     "sourcePage": 23,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-24-preview.webp": {
-    "preview": "2026-page-24-preview.webp",
-    "full": "2026-page-24-full.webp",
+  "assets/page-layers/2026-page-24-preview-signed-v1.webp": {
+    "preview": "2026-page-24-preview-signed-v1.webp",
+    "full": "2026-page-24-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -149,9 +149,9 @@
     "sourcePage": 24,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-27-preview.webp": {
-    "preview": "2026-page-27-preview.webp",
-    "full": "2026-page-27-full.webp",
+  "assets/page-layers/2026-page-27-preview-signed-v1.webp": {
+    "preview": "2026-page-27-preview-signed-v1.webp",
+    "full": "2026-page-27-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -159,9 +159,9 @@
     "sourcePage": 27,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-28-preview.webp": {
-    "preview": "2026-page-28-preview.webp",
-    "full": "2026-page-28-full.webp",
+  "assets/page-layers/2026-page-28-preview-signed-v1.webp": {
+    "preview": "2026-page-28-preview-signed-v1.webp",
+    "full": "2026-page-28-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -169,9 +169,9 @@
     "sourcePage": 28,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-29-preview.webp": {
-    "preview": "2026-page-29-preview.webp",
-    "full": "2026-page-29-full.webp",
+  "assets/page-layers/2026-page-29-preview-signed-v1.webp": {
+    "preview": "2026-page-29-preview-signed-v1.webp",
+    "full": "2026-page-29-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -179,9 +179,9 @@
     "sourcePage": 29,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-30-preview.webp": {
-    "preview": "2026-page-30-preview.webp",
-    "full": "2026-page-30-full.webp",
+  "assets/page-layers/2026-page-30-preview-signed-v1.webp": {
+    "preview": "2026-page-30-preview-signed-v1.webp",
+    "full": "2026-page-30-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -189,9 +189,9 @@
     "sourcePage": 30,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-31-preview.webp": {
-    "preview": "2026-page-31-preview.webp",
-    "full": "2026-page-31-full.webp",
+  "assets/page-layers/2026-page-31-preview-signed-v1.webp": {
+    "preview": "2026-page-31-preview-signed-v1.webp",
+    "full": "2026-page-31-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -199,9 +199,9 @@
     "sourcePage": 31,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-32-preview.webp": {
-    "preview": "2026-page-32-preview.webp",
-    "full": "2026-page-32-full.webp",
+  "assets/page-layers/2026-page-32-preview-signed-v1.webp": {
+    "preview": "2026-page-32-preview-signed-v1.webp",
+    "full": "2026-page-32-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -209,9 +209,9 @@
     "sourcePage": 32,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-33-preview.webp": {
-    "preview": "2026-page-33-preview.webp",
-    "full": "2026-page-33-full.webp",
+  "assets/page-layers/2026-page-33-preview-signed-v1.webp": {
+    "preview": "2026-page-33-preview-signed-v1.webp",
+    "full": "2026-page-33-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -219,9 +219,9 @@
     "sourcePage": 33,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-35-preview.webp": {
-    "preview": "2026-page-35-preview.webp",
-    "full": "2026-page-35-full.webp",
+  "assets/page-layers/2026-page-35-preview-signed-v1.webp": {
+    "preview": "2026-page-35-preview-signed-v1.webp",
+    "full": "2026-page-35-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -229,9 +229,9 @@
     "sourcePage": 35,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-36-preview.webp": {
-    "preview": "2026-page-36-preview.webp",
-    "full": "2026-page-36-full.webp",
+  "assets/page-layers/2026-page-36-preview-signed-v1.webp": {
+    "preview": "2026-page-36-preview-signed-v1.webp",
+    "full": "2026-page-36-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -239,9 +239,9 @@
     "sourcePage": 36,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-37-preview.webp": {
-    "preview": "2026-page-37-preview.webp",
-    "full": "2026-page-37-full.webp",
+  "assets/page-layers/2026-page-37-preview-signed-v1.webp": {
+    "preview": "2026-page-37-preview-signed-v1.webp",
+    "full": "2026-page-37-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -249,9 +249,9 @@
     "sourcePage": 37,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-39-preview.webp": {
-    "preview": "2026-page-39-preview.webp",
-    "full": "2026-page-39-full.webp",
+  "assets/page-layers/2026-page-39-preview-signed-v1.webp": {
+    "preview": "2026-page-39-preview-signed-v1.webp",
+    "full": "2026-page-39-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -259,9 +259,9 @@
     "sourcePage": 39,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-40-preview.webp": {
-    "preview": "2026-page-40-preview.webp",
-    "full": "2026-page-40-full.webp",
+  "assets/page-layers/2026-page-40-preview-signed-v1.webp": {
+    "preview": "2026-page-40-preview-signed-v1.webp",
+    "full": "2026-page-40-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -269,9 +269,9 @@
     "sourcePage": 40,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-41-preview.webp": {
-    "preview": "2026-page-41-preview.webp",
-    "full": "2026-page-41-full.webp",
+  "assets/page-layers/2026-page-41-preview-signed-v1.webp": {
+    "preview": "2026-page-41-preview-signed-v1.webp",
+    "full": "2026-page-41-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -279,16 +279,16 @@
     "sourcePage": 41,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-42-preview.webp": {
-    "preview": "2026-page-42-preview.webp",
-    "full": "2026-page-42-full.webp",
+  "assets/page-layers/2026-page-42-preview-signed-v1.webp": {
+    "preview": "2026-page-42-preview-signed-v1.webp",
+    "full": "2026-page-42-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 42,
     "edition": 2026,
-    "coverBase": "2026-page-42-cover-base.webp",
+    "coverBase": "2026-page-42-cover-base-signed-v1.webp",
     "coverOverlay": "2026-page-42-cover-column.png",
     "coverBands": [
       {
@@ -314,9 +314,9 @@
     ],
     "coverText": "BJ gov| XiongAn\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nBeijing gov\n65,000sqm\n100,000sqm \n30m\n-\nScience Museum\nThis project originated from a competition that ultimately \nproduced no winner. After the competition, the client \napproached more than ten design teams in succession to \nrefine the scheme, but none succeeded in satisfying the \ndecision-makers. We are the last team they turned to.\nThe most challenging aspect of the project is the excessive \nGross Floor Area (GFA). Our strategy is to place as much of the \nprogram as possible underground, thereby liberating a greater \namount of ground-level space for public use and landscape.\nWe adopt a “one solid, one void” approach to create strong \ncontrast. The solid volumes represent stability and rootedness, \nwhile the void and elevated forms suggest a leap into the \nfuture — a transition from being firmly grounded to taking \nflight. This duality is embodied in the building’s overall form, \nwhich reads as a spaceship of knowledge ready to set sail.\nThe distinctive architectural form generates a rich and varied \nspatial experience for visitors. Inside, the exhibition halls are \norganized in a specially designed open, series-connected \nlayout, allowing continuous movement and visual connection \nbetween different thematic zones rather than isolated rooms.\nPersonal Reflections\n|42·"
   },
-  "assets/page-layers/2026-page-43-preview.webp": {
-    "preview": "2026-page-43-preview.webp",
-    "full": "2026-page-43-full.webp",
+  "assets/page-layers/2026-page-43-preview-signed-v1.webp": {
+    "preview": "2026-page-43-preview-signed-v1.webp",
+    "full": "2026-page-43-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -324,9 +324,9 @@
     "sourcePage": 43,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-44-preview.webp": {
-    "preview": "2026-page-44-preview.webp",
-    "full": "2026-page-44-full.webp",
+  "assets/page-layers/2026-page-44-preview-signed-v1.webp": {
+    "preview": "2026-page-44-preview-signed-v1.webp",
+    "full": "2026-page-44-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -334,9 +334,9 @@
     "sourcePage": 44,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-46-preview.webp": {
-    "preview": "2026-page-46-preview.webp",
-    "full": "2026-page-46-full.webp",
+  "assets/page-layers/2026-page-46-preview-signed-v1.webp": {
+    "preview": "2026-page-46-preview-signed-v1.webp",
+    "full": "2026-page-46-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -344,9 +344,9 @@
     "sourcePage": 46,
     "edition": 2026
   },
-  "assets/page-layers/2026-page-47-preview.webp": {
-    "preview": "2026-page-47-preview.webp",
-    "full": "2026-page-47-full.webp",
+  "assets/page-layers/2026-page-47-preview-signed-v1.webp": {
+    "preview": "2026-page-47-preview-signed-v1.webp",
+    "full": "2026-page-47-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -354,9 +354,9 @@
     "sourcePage": 47,
     "edition": 2026
   },
-  "assets/page-layers/2026-v11-page-25-preview.webp": {
-    "preview": "2026-v11-page-25-preview.webp",
-    "full": "2026-v11-page-25-full.webp",
+  "assets/page-layers/2026-v11-page-25-preview-signed-v1.webp": {
+    "preview": "2026-v11-page-25-preview-signed-v1.webp",
+    "full": "2026-v11-page-25-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -364,16 +364,16 @@
     "sourcePage": 25,
     "edition": 2026
   },
-  "assets/page-layers/2026-v11-page-52-preview.webp": {
-    "preview": "2026-v11-page-52-preview.webp",
-    "full": "2026-v11-page-52-full.webp",
+  "assets/page-layers/2026-v11-page-52-preview-signed-v1.webp": {
+    "preview": "2026-v11-page-52-preview-signed-v1.webp",
+    "full": "2026-v11-page-52-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 52,
     "edition": 2026,
-    "coverBase": "2026-v11-page-52-cover-base.webp",
+    "coverBase": "2026-v11-page-52-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v11-page-52-cover-column.png",
     "coverBands": [
       {
@@ -395,16 +395,16 @@
     ],
     "coverText": "Personal Design Toolkit\nI have built a custom suite of AI-driven tools tailored to my \ndesign process. These tools have gradually evolved into a \ncomprehensive, systematic library that spans the full design \nworkflow — from brief analysis to detailed execution.\nThe library is highly adaptable: it can respond to the specific \ndemands of different projects at different stages, allowing me \nto quickly create or customize tools suited to each particular \ntask. Key capabilities include automatically translating the \nSchedule of Accommodation into massing studies, one-click \nfacade generation and application systems, and specialized \ntools for creating diagram bases. Additional utilities further \nsupport various stages of design development.\nIn periods of limited manpower, this personalized tool \nlibrary functions as my private design assistant, substantially \nimproving efficiency and consistency.\nPersonal Reflections\n|52·"
   },
-  "assets/page-layers/2026-v12-page-05-preview.webp": {
-    "preview": "2026-v12-page-05-preview.webp",
-    "full": "2026-v12-page-05-full.webp",
+  "assets/page-layers/2026-v12-page-05-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-05-preview-signed-v1.webp",
+    "full": "2026-v12-page-05-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 5,
     "edition": 2026,
-    "coverBase": "2026-v12-page-05-cover-base.webp",
+    "coverBase": "2026-v12-page-05-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v12-page-05-cover-column.png",
     "coverBands": [
       {
@@ -430,16 +430,16 @@
     ],
     "coverText": "OCT | Kunming\n- \nWinning Scheme\n for the international design \ncompetition in 2019\n- Shortlisted \nThe Plan Award 2021\n under the MixedUse Category\n- Under Construction\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nOCT\n11,280sqm\n132,000sqm \n200m/44storeys\n2.2b rmb\nComprehensive \nDevelopment\nLe Méridien Hotel & \nResorts\nHead Office\nService Apartment\nOct Second Headquarters: A Well-Deserved Victory\nThe Oct Second Headquarters competition was a well-deserved victory, as our idea \nstood out as the most distinctive and superior among all the proposals. We skillfully \nintegrated various functions into a single building, effectively solving circulation issues \nand showcasing Rocco's remarkable abilities. The architectural design capitalized on \nKunming's local climate, incorporating natural ventilation to reduce energy consumption. \nUnfortunately, financial constraints led to modifications in the building's form, and the \nproject came to a halt when our collaborating partner went bankrupt during construction.\nDespite setbacks, our design showcased deep functionality and sustainability \nunderstanding, blending them seamlessly into a harmonious composition. Although \nthe project remains unfinished, the lessons learned will shape future endeavors. I am \ndetermined to continue pursuing excellence in architecture, overcoming challenges, and \ncreating exceptional architectural marvels. The Oct Second Headquarters, regardless of \nits completion status, stands as a testament to our creativity and innovative thinking.\nPersonal Reflections"
   },
-  "assets/page-layers/2026-v12-page-11-preview.webp": {
-    "preview": "2026-v12-page-11-preview.webp",
-    "full": "2026-v12-page-11-full.webp",
+  "assets/page-layers/2026-v12-page-11-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-11-preview-signed-v1.webp",
+    "full": "2026-v12-page-11-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 11,
     "edition": 2026,
-    "coverBase": "2026-v12-page-11-cover-base.webp",
+    "coverBase": "2026-v12-page-11-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v12-page-11-cover-column.png",
     "coverBands": [
       {
@@ -465,16 +465,16 @@
     ],
     "coverText": "SCNUFLS-TM | Guangzhou\nHUAWAI-TONGMAN is an exceptional school that proudly \nembraces its local cultural heritage while fostering \na strong connection to global perspectives. Their \nambitious goal is to build a campus that is entirely unique, \nchallenging architects to think beyond traditional designs \nand create something truly groundbreaking. \nTo achieve this, we explored a diverse array of spatial \narrangements, carefully considering how each could \nenhance both functionality and aesthetics. The result is a \nremarkably cohesive structure that defies the conventional \nappearance of a school, offering instead a bold, innovative \nenvironment that feels fresh and forward-thinking. \nThis distinctive design has given rise to a variety of \nextraordinary spaces, each with its own character and \npurpose, sparking creativity and interaction among \nstudents and educators. Far from typical classrooms \nand hallways, these spaces encourage exploration, \ncollaboration, and inspiration, aligning perfectly with the \nschool’s vision of blending cultural pride with international \nopenness. \nThis project represents a significant architectural \nmilestone, redefining what an educational institution can \nbe. \nPersonal Reflections\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nSCNUFLS-TM\n40,000sqm\n58,000sqm \n60m\n-\nSchool"
   },
-  "assets/page-layers/2026-v12-page-19-preview.webp": {
-    "preview": "2026-v12-page-19-preview.webp",
-    "full": "2026-v12-page-19-full.webp",
+  "assets/page-layers/2026-v12-page-19-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-19-preview-signed-v1.webp",
+    "full": "2026-v12-page-19-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 19,
     "edition": 2026,
-    "coverBase": "2026-v12-page-19-cover-base.webp",
+    "coverBase": "2026-v12-page-19-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v12-page-19-cover-column.png",
     "coverBands": [
       {
@@ -504,9 +504,9 @@
     ],
     "coverText": "GREATER-BAY | Guangzhou\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nGreater-Bay\n5,600sqm\n140,000sqm \n60m\n-\nExhibition\nMuseum\nAcademic Center\nSA\nGreater-Bay Science Forum: An Invitational Competition\nAs an architect speaking from a first-person perspective, \nI would like to convey that at its core, this competition \nrevolves around the exploration of innovative architectural \nforms. It is a challenge to see who can create the most \nextraordinary and distinctive design. As architects tasked \nwith creating a building that serves a simple function and \ncan be seamlessly integrated into various volumes, our \nprimary objective is to meet the functional requirements \nwhile satisfying Rocco's design aspirations.\nWhen contemplating waterfront architecture, the \nimmediate association is often with curved forms. \nHowever, since we are not Zaha and cannot compete \ndirectly in their forte, we decided to approach the design \nfrom a different angle - the concept of a carrier. Our \nintention was to evoke a sense of movement, as if the \nbuilding is propelling forward at high speed. This imagery \nnot only aligns well with the theme of technology but also \nadds a dynamic element to the overall composition.\nRegrettably, our design did not secure a place among the \ntop three winners. The chosen scheme was deemed rather \nordinary and failed to capture the essence of innovation. \nSuch unexpected outcomes are not uncommon in the \nworld of architecture, where subjective judgments and \nvarying tastes play a significant role in the final selection \nprocess.\nPersonal Reflections"
   },
-  "assets/page-layers/2026-v12-page-20-preview.webp": {
-    "preview": "2026-v12-page-20-preview.webp",
-    "full": "2026-v12-page-20-full.webp",
+  "assets/page-layers/2026-v12-page-20-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-20-preview-signed-v1.webp",
+    "full": "2026-v12-page-20-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -514,9 +514,9 @@
     "sourcePage": 20,
     "edition": 2026
   },
-  "assets/page-layers/2026-v12-page-22-preview.webp": {
-    "preview": "2026-v12-page-22-preview.webp",
-    "full": "2026-v12-page-22-full.webp",
+  "assets/page-layers/2026-v12-page-22-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-22-preview-signed-v1.webp",
+    "full": "2026-v12-page-22-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
@@ -524,16 +524,16 @@
     "sourcePage": 22,
     "edition": 2026
   },
-  "assets/page-layers/2026-v12-page-26-preview.webp": {
-    "preview": "2026-v12-page-26-preview.webp",
-    "full": "2026-v12-page-26-full.webp",
+  "assets/page-layers/2026-v12-page-26-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-26-preview-signed-v1.webp",
+    "full": "2026-v12-page-26-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 26,
     "edition": 2026,
-    "coverBase": "2026-v12-page-26-cover-base.webp",
+    "coverBase": "2026-v12-page-26-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v12-page-26-cover-column.png",
     "coverBands": [
       {
@@ -559,16 +559,16 @@
     ],
     "coverText": "ESSENCE | Shenzhen\n- Completed \nin 2021\n- \nPublished in \nDomus\n on 08/23\n- Shortlisted \nArchdaily Building of the Year 2024\n \nunder the Office Category\n- \nCREDAWARD 2024 Gold Award \nunder the Office Category\n- \nHKIA Annual Awards - Commercial Building 2024\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nESSENCE Securities\n4,800sqm\n70,000sqm \n193m/39storeys\n2b rmb\nHead Office\nThe site is located at the central financial district of Futian, Shenzhen with a stunning \nview of the Shenzhen Golf Club at the west.\nThe concepts will be discussed in detail in the subsequent pages. Here, I would like to \nshare my personal reflections as the lead designer of this project.\nThis project presents both opportunities and challenges. The location holds great \npotential, but the difficulties arise from the diverse interests and approaches of the \nstakeholders in safeguarding their own benefits.\nI acknowledge that no project is perfect, and mistakes are inevitable. However, if there \nwere effective oversight mechanisms in place or if project managers approached non-\ncompliance issues with impartiality, many of the visible errors could have been proactively \naddressed. This is merely a suggestion.\nThere has been a comparison made, likening this building to a child that must endure \nhardships to transform into a swan. Yet, it is important to note that the ugly duckling \nbecomes a swan because it was inherently a swan from the beginning, not as a result of \nundergoing genetic mutations due to suffering. Promoting the education of misfortune \n(hardship) only fosters self-doubt and insecurity. It is crucial to never believe that \nmisfortune (hardship) is inherently beneficial.\nPersonal Reflections"
   },
-  "assets/page-layers/2026-v12-page-34-preview.webp": {
-    "preview": "2026-v12-page-34-preview.webp",
-    "full": "2026-v12-page-34-full.webp",
+  "assets/page-layers/2026-v12-page-34-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-34-preview-signed-v1.webp",
+    "full": "2026-v12-page-34-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 34,
     "edition": 2026,
-    "coverBase": "2026-v12-page-34-cover-base.webp",
+    "coverBase": "2026-v12-page-34-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v12-page-34-cover-column.png",
     "coverBands": [
       {
@@ -594,16 +594,16 @@
     ],
     "coverText": "HK gov | Hongkong\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nHK gov\n-\n-\n60m\n-\nHeritage Preservation\nThis is a competition project that I completed with my \ncolleagues. Unfortunately, we did not receive any awards, \nbut I still believe it is worth including in my portfolio. \nSurprisingly, the winning proposal turned out to be a \ndesign that only involved graffiti on the exterior walls, \nwhile the museum itself is now being transformed into \nan exhibition hall showcasing national achievements. \nTherefore, I find it significant to commemorate this once-\nexisting trace.\nAlthough I personally find it foolish and absurd that the \nact of transforming the museum is being disguised under \nthe justification of using a noise barrier, as required by the \nbuilding regulations in Hong Kong, it also reflects, to some \nextent, the relatively robust regulatory system in place.\nPersonal Reflections"
   },
-  "assets/page-layers/2026-v12-page-38-preview.webp": {
-    "preview": "2026-v12-page-38-preview.webp",
-    "full": "2026-v12-page-38-full.webp",
+  "assets/page-layers/2026-v12-page-38-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-38-preview-signed-v1.webp",
+    "full": "2026-v12-page-38-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 38,
     "edition": 2026,
-    "coverBase": "2026-v12-page-38-cover-base.webp",
+    "coverBase": "2026-v12-page-38-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v12-page-38-cover-column.png",
     "coverBands": [
       {
@@ -629,16 +629,16 @@
     ],
     "coverText": "AI center | Shanghai\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nShanghai AI center\n30,000sqm\n180,000sqm \n100m\n-\nOffice\nDespite multiple rounds of mid-term communication with \nthe client, we still lost the competition. They said the \nreason was that they did not want the design to be too \nflashy.\nThis building actually fulfilled the criteria of being easily \nrealizable and having distinctive features. It's a shame we \ndidn't win this competition. Interestingly, the client's boss \nlater passed away, and after that, they commissioned us to \ndo the interior design work.\nPersonal Reflections\n- \n|38·"
   },
-  "assets/page-layers/2026-v12-page-45-preview.webp": {
-    "preview": "2026-v12-page-45-preview.webp",
-    "full": "2026-v12-page-45-full.webp",
+  "assets/page-layers/2026-v12-page-45-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-45-preview-signed-v1.webp",
+    "full": "2026-v12-page-45-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 45,
     "edition": 2026,
-    "coverBase": "2026-v12-page-45-cover-base.webp",
+    "coverBase": "2026-v12-page-45-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v12-page-45-cover-column.png",
     "coverBands": [
       {
@@ -664,16 +664,16 @@
     ],
     "coverText": "SCT | Shenzhen\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nSCT\n5,086sqm\n30,510sqm \n100m/22storeys\n2b rmb\nOffice\nThe site is located at the central financial district of Futian, Shenzhen with a stunning \nview of the Shenzhen Golf Club at the west.\nThe concepts will be discussed in detail in the subsequent pages. Here, I would like to \nshare my personal reflections as the lead designer of this project.\nThis project presents both opportunities and challenges. The location holds great \npotential, but the difficulties arise from the diverse interests and approaches of the \nstakeholders in safeguarding their own benefits.\nI acknowledge that no project is perfect, and mistakes are inevitable. However, if there \nwere effective oversight mechanisms in place or if project managers approached non-\ncompliance issues with impartiality, many of the visible errors could have been proactively \naddressed. This is merely a suggestion.\nThere has been a comparison made, likening this building to a child that must endure \nhardships to transform into a swan. Yet, it is important to note that the ugly duckling \nbecomes a swan because it was inherently a swan from the beginning, not as a result of \nundergoing genetic mutations due to suffering. Promoting the education of misfortune \n(hardship) only fosters self-doubt and insecurity. It is crucial to never believe that \nmisfortune (hardship) is inherently beneficial.\nPersonal Reflections\n- \nWinning Scheme\n for the design \ncompetition in 2018\n- Completed \nin 2023\n- \nCREDAWARD\n 2024 Merit Award\n|45·"
   },
-  "assets/page-layers/2026-v12-page-48-preview.webp": {
-    "preview": "2026-v12-page-48-preview.webp",
-    "full": "2026-v12-page-48-full.webp",
+  "assets/page-layers/2026-v12-page-48-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-48-preview-signed-v1.webp",
+    "full": "2026-v12-page-48-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 48,
     "edition": 2026,
-    "coverBase": "2026-v12-page-48-cover-base.webp",
+    "coverBase": "2026-v12-page-48-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v12-page-48-cover-column.png",
     "coverBands": [
       {
@@ -699,16 +699,16 @@
     ],
     "coverText": "Hengyu | Shenzhen\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nHengyu\n20,000sqm\n4000,000sqm \n220m\n-\nOffice\nService Apartment\nShopping Mall\nThis is a mixed-use project that encompasses \noffice buildings, apar tments, and commercial \nspaces across four plots. The commercial element \nis heavily influenced by market demands, and \ngiven the prime location in Shenzhen, the need \nfor vertical development is particularly pressing. \nThe two towers depicted in the design are high-end \napartments that should convey a public building image \nwhile encouraging interaction. To meet the strict room \nmix requirements, the facade features wavy horizontal \nlines that soften layout differences and create a textural \nconnection with the surrounding area.\nPersonal Reflections\n- Under Contruction\n|48·"
   },
-  "assets/page-layers/2026-v12-page-49-preview.webp": {
-    "preview": "2026-v12-page-49-preview.webp",
-    "full": "2026-v12-page-49-full.webp",
+  "assets/page-layers/2026-v12-page-49-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-49-preview-signed-v1.webp",
+    "full": "2026-v12-page-49-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 49,
     "edition": 2026,
-    "coverBase": "2026-v12-page-49-cover-base.webp",
+    "coverBase": "2026-v12-page-49-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v12-page-49-cover-column.png",
     "coverBands": [
       {
@@ -734,16 +734,16 @@
     ],
     "coverText": "Ping'an | Shenzhen\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nPing'an\n10,000sqm\n3000,000sqm \n250m\n-\nOffice\nRetail\nThis project is commissioned by the owner to focus solely \non the facade. With the main structure already completed \nand the complexities of government regulations, there's \nlimited room for adjustments to the building massing. I’ve \nchosen a design language that emphasizes solid surfaces. \nUnfortunately, the Qianhai management department has \nmany directives that prevent us from fully realizing the \narchitect's and owner's vision. Despite these challenges, \nwe dedicated considerable effort to perfecting the facade \ndetails.\nPersonal Reflections\n- Under Contruction\n|49·"
   },
-  "assets/page-layers/2026-v12-page-50-preview.webp": {
-    "preview": "2026-v12-page-50-preview.webp",
-    "full": "2026-v12-page-50-full.webp",
+  "assets/page-layers/2026-v12-page-50-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-50-preview-signed-v1.webp",
+    "full": "2026-v12-page-50-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 50,
     "edition": 2026,
-    "coverBase": "2026-v12-page-50-cover-base.webp",
+    "coverBase": "2026-v12-page-50-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v12-page-50-cover-column.png",
     "coverBands": [
       {
@@ -769,16 +769,16 @@
     ],
     "coverText": "|50·\nClient\nSite Area\nTotal GFA\nBuilding Height\nConstruction Cost\nProject Nature\nKWG\n4,500sqm\n130,000sqm \n300m\n-\nOffice\nRetail\nThis is a 300-meter-high tower in Guangzhou, situated in \nthe densely built area of Zhujiang New Town. It appears \nnotably unremarkable; without post-processing in the \nphoto, you might not even recognize it as the main \nsubject. The design features exploded corners that don't \nalign with its function, and the 45-degree angle in relation \nto the urban grid feels out of place. Of course, this \nisn't my design—I was only responsible for post-project \ncoordination. A positive takeaway from this job is that it \nmarks my record for the tallest building I've worked on.\nPersonal Reflections\nKWG | Guangzhou\n- Completed"
   },
-  "assets/page-layers/2026-v12-page-51-preview.webp": {
-    "preview": "2026-v12-page-51-preview.webp",
-    "full": "2026-v12-page-51-full.webp",
+  "assets/page-layers/2026-v12-page-51-preview-signed-v1.webp": {
+    "preview": "2026-v12-page-51-preview-signed-v1.webp",
+    "full": "2026-v12-page-51-full-signed-v1.webp",
     "width": 1600,
     "height": 900,
     "fullWidth": 2600,
     "fullHeight": 1461,
     "sourcePage": 51,
     "edition": 2026,
-    "coverBase": "2026-v12-page-51-cover-base.webp",
+    "coverBase": "2026-v12-page-51-cover-base-signed-v1.webp",
     "coverOverlay": "2026-v12-page-51-cover-column.png",
     "coverBands": [
       {
