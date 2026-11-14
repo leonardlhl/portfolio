@@ -1,13 +1,13 @@
 import {projects} from './projects.js?v=2026-v12';
 import {createVideoPage} from './toolkit-video.js?v=2';
-import {mountAmbientSky} from './ambient.js?v=3';
+import {mountAmbientSky} from './ambient.js?v=45';
 import {mountPageZoom} from './page-zoom.js?v=2';
 import {mountContact} from './contact.js?v=1';
 import {mountCursor} from './cursor.js?v=4';
 mountCursor();
 const $=s=>document.querySelector(s),mod=(a,b)=>(a%b+b)%b,clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{const t=clamp(v);return t*t*(3-2*t)};
-const cvResponse=await fetch('./cv.html?v=43');if(!cvResponse.ok)throw new Error('CV source unavailable');
+const cvResponse=await fetch('./cv.html?v=45');if(!cvResponse.ok)throw new Error('CV source unavailable');
 const cvDoc=new DOMParser().parseFromString(await cvResponse.text(),'text/html');
 const contactEmail=cvDoc.querySelector('a[href^="mailto:"]')?.getAttribute('href').slice(7).split('?')[0];
 mountContact({button:$('#contact-copy'),status:$('#contact-status'),email:contactEmail});
@@ -87,6 +87,19 @@ function onContent(x,y){
  }
  return scene?.hitProject(x,y)||false;
 }
+function onReadingBlank(x,y,element){
+ if(pageZoom.isOpen||!$('#index').hidden||projectFlight||document.body.dataset.phase!=='reading'||Number(stage.style.opacity)<.95)return false;
+ if(element?.closest('header,footer,#index,.reading-head,button,a,input,textarea,select,video'))return false;
+ const page=stops[activeIndex]?.slides[activePage];
+ if(!page)return false;
+ // White areas inside the artwork are still content; only the surrounding
+ // background/letterbox closes the reader. Text groups keep their gaps too.
+ if(page.querySelector('.portfolio-image'))return !onContent(x,y);
+ const content=page.querySelector('.page-copy,.toolkit-video-layout')||page;
+ const box=content.getBoundingClientRect(),clip=page.getBoundingClientRect();
+ return x<Math.max(box.left,clip.left)||x>Math.min(box.right,clip.right)
+  ||y<Math.max(box.top,clip.top)||y>Math.min(box.bottom,clip.bottom);
+}
 function selectAdjacent(direction){
  // A page-wheel burst can queue the next stop before the outgoing sheet has
  // faded. Background navigation must advance from the tree actually on screen,
@@ -153,7 +166,7 @@ function closeReading(){
  $('#scene').focus({preventScroll:true});
 }
 function step(direction){projectFlight=null;wheelGesture=null;setTarget(Math.round(target)+direction,true)}
-stops.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.title;b.onclick=()=>jump(i);$('#project-list').append(b)});
+stops.forEach((s,i)=>{const b=document.createElement('button');b.textContent=i===0?'CV':s.title;b.onclick=()=>jump(i);$('#project-list').append(b)});
 $('#index-toggle').onclick=()=>{const open=$('#index').hidden;$('#index').hidden=!open;$('#index-toggle').setAttribute('aria-expanded',String(open))};
 $('#home').onclick=()=>openProject(0,null,true);
 $('#left').onclick=()=>step(-1);$('#right').onclick=()=>step(1);
@@ -200,7 +213,7 @@ function paint(time){
  if(document.body.dataset.stop!==stop.id)document.body.dataset.stop=stop.id;
  if(document.body.dataset.page!==String(nearest+1))document.body.dataset.page=String(nearest+1);
  const phaseName=alpha>.8?'reading':t<1?'travel':zoom>0?'zoom':'tree';
- if(document.body.dataset.phase!==phaseName){document.body.dataset.phase=phaseName;if(sequentialTouch)document.querySelector('footer>span').textContent=phaseName==='reading'?'Swipe to turn pages':'Drag sideways · Tap a project to open'}
+ if(document.body.dataset.phase!==phaseName){document.body.dataset.phase=phaseName;if(sequentialTouch)$('#browse-hint').textContent=phaseName==='reading'?'Swipe to turn pages':'Drag sideways · Tap a project to open'}
  syncPreviewHover();
  if(projectFlight||scene?.isAnimating||Math.abs(target-current)+Math.abs(velocity)>.001)request();else lastTime=0;
 }
@@ -232,7 +245,7 @@ document.addEventListener('pointerdown',e=>{
  const pick=e.target.closest('#scene')&&document.body.dataset.phase!=='reading'?scene?.pickProject(e.clientX,e.clientY):null;
  const content=e.target.closest('.cv-page-content');
  const tree=e.pointerType==='touch'&&!!scene&&!!e.target.closest('#scene')&&lastSceneZoom<.001&&!projectFlight;
- touch={id:e.pointerId,x:e.clientX,y:e.clientY,originX:e.clientX,originY:e.clientY,type:e.pointerType,start:Math.round(target),moved:false,pick,axis:null,mode:null,distance:0,content,scrollTop:content?.scrollTop||0,link,tree,sceneOrdinal:lastSceneOrdinal,startYaw:dragYaw};
+ touch={id:e.pointerId,x:e.clientX,y:e.clientY,originX:e.clientX,originY:e.clientY,type:e.pointerType,start:Math.round(target),moved:false,pick,axis:null,mode:null,distance:0,content,scrollTop:content?.scrollTop||0,link,tree,sceneOrdinal:lastSceneOrdinal,startYaw:dragYaw,readingBlank:onReadingBlank(e.clientX,e.clientY,e.target)};
  if(e.pointerType==='touch'){
   wheelGesture=null;swipedLink=null;
   // Keep the same target throughout a finger gesture, even as pages move.
@@ -282,6 +295,9 @@ document.addEventListener('pointerup',e=>{
  if(!touch||e.pointerId!==touch.id)return;
  const gesture=touch;touch=null;
  if(document.body.hasPointerCapture(e.pointerId))document.body.releasePointerCapture(e.pointerId);
+ if(gesture.readingBlank&&!gesture.moved&&onReadingBlank(e.clientX,e.clientY,document.elementFromPoint(e.clientX,e.clientY))){
+  e.preventDefault();closeReading();return;
+ }
  if(gesture.link&&gesture.moved)swipedLink={element:gesture.link,until:performance.now()+500};
  if(gesture.mode==='tree'){
   if(treeDragOrdinal!==null){
@@ -313,4 +329,4 @@ window.addEventListener('resize',()=>{measureStage();request()});reduced.addEven
 const sceneProjects=projects.map((project,index)=>{const copy=[...project];copy[5]=stops[index+1].slides[0].querySelector('.portfolio-image').getAttribute('src');return copy});
 try{const module=await import('./journey-scene.js?v=2026-v11');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
 request();
-document.querySelector('footer>span').textContent=sequentialTouch?'Drag sideways · Tap a project to open':'Click a preview to open · Scroll to explore';
+$('#browse-hint').textContent=sequentialTouch?'Drag sideways · Tap a project to open':'Click a preview to open · Scroll to explore';

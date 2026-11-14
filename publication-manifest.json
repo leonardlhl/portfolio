@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T15:13:00.398Z",
+  "generatedAt": "2026-11-14T13:57:04.114Z",
   "projects": 13,
   "projectPages": 49,
   "videoPages": 1,
@@ -10,24 +10,24 @@
       "bytes": 224880
     },
     {
-      "file": "assets/page-layers/2026-page-08-preview.webp",
-      "bytes": 138782
-    },
-    {
       "file": "assets/page-layers/2026-page-06-preview.webp",
       "bytes": 48614
     },
     {
-      "file": "assets/page-layers/2026-page-07-preview.webp",
-      "bytes": 253338
+      "file": "assets/page-layers/2026-page-09-preview.webp",
+      "bytes": 189550
     },
     {
       "file": "assets/page-layers/2026-page-10-preview.webp",
       "bytes": 201568
     },
     {
-      "file": "assets/page-layers/2026-page-09-preview.webp",
-      "bytes": 189550
+      "file": "assets/page-layers/2026-page-07-preview.webp",
+      "bytes": 253338
+    },
+    {
+      "file": "assets/page-layers/2026-page-08-preview.webp",
+      "bytes": 138782
     },
     {
       "file": "assets/page-layers/2026-v12-page-11-preview.webp",
@@ -42,6 +42,10 @@
       "bytes": 139216
     },
     {
+      "file": "assets/page-layers/2026-page-16-preview.webp",
+      "bytes": 60712
+    },
+    {
       "file": "assets/page-layers/2026-page-15-preview.webp",
       "bytes": 189596
     },
@@ -50,28 +54,16 @@
       "bytes": 266418
     },
     {
-      "file": "assets/page-layers/2026-page-16-preview.webp",
-      "bytes": 60712
+      "file": "assets/page-layers/2026-page-18-preview.webp",
+      "bytes": 219372
     },
     {
       "file": "assets/page-layers/2026-page-17-preview.webp",
       "bytes": 196734
     },
     {
-      "file": "assets/page-layers/2026-page-18-preview.webp",
-      "bytes": 219372
-    },
-    {
       "file": "assets/page-layers/2026-v12-page-19-preview.webp",
       "bytes": 131576
-    },
-    {
-      "file": "assets/page-layers/2026-v12-page-22-preview.webp",
-      "bytes": 170716
-    },
-    {
-      "file": "assets/page-layers/2026-v12-page-20-preview.webp",
-      "bytes": 114176
     },
     {
       "file": "assets/page-layers/2026-page-21-preview.webp",
@@ -82,16 +74,32 @@
       "bytes": 155400
     },
     {
-      "file": "assets/page-layers/2026-v11-page-25-preview.webp",
-      "bytes": 130718
+      "file": "assets/page-layers/2026-v12-page-22-preview.webp",
+      "bytes": 170716
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-20-preview.webp",
+      "bytes": 114176
     },
     {
       "file": "assets/page-layers/2026-page-24-preview.webp",
       "bytes": 106366
     },
     {
+      "file": "assets/page-layers/2026-v11-page-25-preview.webp",
+      "bytes": 130718
+    },
+    {
       "file": "assets/page-layers/2026-v12-page-26-preview.webp",
       "bytes": 217012
+    },
+    {
+      "file": "assets/page-layers/2026-page-28-preview.webp",
+      "bytes": 240386
+    },
+    {
+      "file": "assets/page-layers/2026-page-27-preview.webp",
+      "bytes": 258134
     },
     {
       "file": "assets/page-layers/2026-page-30-preview.webp",
@@ -102,18 +110,6 @@
       "bytes": 229360
     },
     {
-      "file": "assets/page-layers/2026-page-27-preview.webp",
-      "bytes": 258134
-    },
-    {
-      "file": "assets/page-layers/2026-page-31-preview.webp",
-      "bytes": 236904
-    },
-    {
-      "file": "assets/page-layers/2026-page-28-preview.webp",
-      "bytes": 240386
-    },
-    {
       "file": "assets/page-layers/2026-page-32-preview.webp",
       "bytes": 213270
     },
@@ -122,8 +118,16 @@
       "bytes": 185708
     },
     {
+      "file": "assets/page-layers/2026-page-31-preview.webp",
+      "bytes": 236904
+    },
+    {
       "file": "assets/page-layers/2026-v12-page-34-preview.webp",
       "bytes": 167770
+    },
+    {
+      "file": "assets/page-layers/2026-page-37-preview.webp",
+      "bytes": 133918
     },
     {
       "file": "assets/page-layers/2026-page-35-preview.webp",
@@ -134,20 +138,16 @@
       "bytes": 230722
     },
     {
-      "file": "assets/page-layers/2026-page-37-preview.webp",
-      "bytes": 133918
-    },
-    {
       "file": "assets/page-layers/2026-v12-page-38-preview.webp",
       "bytes": 191874
     },
     {
-      "file": "assets/page-layers/2026-page-39-preview.webp",
-      "bytes": 66126
-    },
-    {
       "file": "assets/page-layers/2026-page-40-preview.webp",
       "bytes": 260602
+    },
+    {
+      "file": "assets/page-layers/2026-page-39-preview.webp",
+      "bytes": 66126
     },
     {
       "file": "assets/page-layers/2026-page-41-preview.webp",
@@ -170,12 +170,12 @@
       "bytes": 153608
     },
     {
-      "file": "assets/page-layers/2026-page-47-preview.webp",
-      "bytes": 170452
-    },
-    {
       "file": "assets/page-layers/2026-page-46-preview.webp",
       "bytes": 195032
+    },
+    {
+      "file": "assets/page-layers/2026-page-47-preview.webp",
+      "bytes": 170452
     },
     {
       "file": "assets/page-layers/2026-v12-page-48-preview.webp",
@@ -214,12 +214,12 @@
       "bytes": 115280
     },
     {
-      "file": "assets/toolkit/02-wrap-facade.webp",
-      "bytes": 81854
-    },
-    {
       "file": "assets/toolkit/03-wrap-facade.webp",
       "bytes": 38642
+    },
+    {
+      "file": "assets/toolkit/02-wrap-facade.webp",
+      "bytes": 81854
     },
     {
       "file": "projects.json",
@@ -527,7 +527,7 @@
     },
     {
       "file": "index.html",
-      "bytes": 3578
+      "bytes": 3636
     },
     {
       "file": "style.css",
@@ -535,11 +535,11 @@
     },
     {
       "file": "journey.css",
-      "bytes": 9179
+      "bytes": 10008
     },
     {
       "file": "journey.js",
-      "bytes": 24761
+      "bytes": 25852
     },
     {
       "file": "journey-scene.js",
@@ -551,7 +551,7 @@
     },
     {
       "file": "cv.html",
-      "bytes": 6627
+      "bytes": 6829
     },
     {
       "file": "cv.css",
@@ -559,7 +559,7 @@
     },
     {
       "file": "cv-detail.html",
-      "bytes": 1644
+      "bytes": 1643
     },
     {
       "file": "cv-detail.css",
@@ -587,11 +587,11 @@
     },
     {
       "file": "ambient.js",
-      "bytes": 6396
+      "bytes": 5102
     },
     {
       "file": "ambient.css",
-      "bytes": 1305
+      "bytes": 437
     },
     {
       "file": "page-zoom.js",
@@ -643,7 +643,7 @@
     },
     {
       "file": "m/index.html",
-      "bytes": 3629
+      "bytes": 3687
     },
     {
       "file": "m/mobile.js",
@@ -718,6 +718,6 @@
       "bytes": 846
     }
   ],
-  "totalBytes": 36975299,
+  "totalBytes": 36975374,
   "externalAssets": []
 }

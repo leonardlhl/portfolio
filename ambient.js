@@ -1,5 +1,4 @@
 // A quiet atmospheric layer; it never participates in project navigation.
-const STORAGE_KEY = 'portfolio:ambientPaused';
 const FRAME_MS = 1000 / 30;
 const INK = '62, 78, 91';
 let mounted = null;
@@ -19,16 +18,7 @@ export function mountAmbientSky() {
     return null;
   }
 
-  const toggle = document.createElement('button');
-  toggle.id = 'ambient-toggle';
-  toggle.type = 'button';
-  toggle.setAttribute('aria-label', 'Background motion');
-  toggle.setAttribute('aria-controls', canvas.id);
-  document.body.append(toggle);
-
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  let paused = false;
-  try { paused = localStorage.getItem(STORAGE_KEY) === 'true'; } catch { /* Storage is optional. */ }
   let width = 1;
   let height = 1;
   let stars = [];
@@ -41,20 +31,10 @@ export function mountAmbientSky() {
   let destroyed = false;
 
   const random = (min, max) => min + Math.random() * (max - min);
-  const canAnimate = () => !destroyed && !paused && !reducedMotion.matches && !document.hidden;
+  const canAnimate = () => !destroyed && !reducedMotion.matches && !document.hidden;
   const scheduleMeteor = (now) => {
-    nextMeteor = now + (hasShownMeteor ? random(6000, 11000) : random(2000, 3500));
+    nextMeteor = now + (hasShownMeteor ? random(3000, 5500) : random(1000, 1750));
   };
-
-  function updateToggle() {
-    toggle.setAttribute('aria-pressed', String(!paused));
-    toggle.title = paused ? 'Resume background motion' : 'Pause background motion';
-    toggle.hidden = reducedMotion.matches;
-    toggle.innerHTML = paused
-      ? '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5 12 8l-6.5 4.5Z"/></svg>'
-      : '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9m5-9v9"/></svg>';
-    canvas.dataset.motion = canAnimate() ? 'running' : 'paused';
-  }
 
   function resize() {
     width = window.innerWidth;
@@ -63,7 +43,7 @@ export function mountAmbientSky() {
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const count = width <= 700 ? 70 : 168;
+    const count = width <= 700 ? 84 : 202;
     // Normalized coordinates preserve the constellation when the window changes.
     if (stars.length !== count) {
       stars = Array.from({ length: count }, () => {
@@ -156,19 +136,11 @@ export function mountAmbientSky() {
     previousTime = now;
     previousDrawTime = now;
     scheduleMeteor(now);
-    updateToggle();
+    canvas.dataset.motion = canAnimate() ? 'running' : 'paused';
     draw(now);
     if (canAnimate()) frame = requestAnimationFrame(tick);
   }
 
-  function setPaused(value) {
-    paused = Boolean(value);
-    try { localStorage.setItem(STORAGE_KEY, String(paused)); } catch { /* Keep the session setting. */ }
-    syncMotion();
-  }
-
-  const onToggle = () => setPaused(!paused);
-  toggle.addEventListener('click', onToggle);
   window.addEventListener('resize', resize, { passive: true });
   document.addEventListener('visibilitychange', syncMotion);
   reducedMotion.addEventListener('change', syncMotion);
@@ -176,17 +148,13 @@ export function mountAmbientSky() {
   syncMotion();
 
   mounted = {
-    setPaused,
-    get paused() { return paused; },
     destroy() {
       destroyed = true;
       cancelAnimationFrame(frame);
-      toggle.removeEventListener('click', onToggle);
       window.removeEventListener('resize', resize);
       document.removeEventListener('visibilitychange', syncMotion);
       reducedMotion.removeEventListener('change', syncMotion);
       canvas.remove();
-      toggle.remove();
       mounted = null;
     },
   };
