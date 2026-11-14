@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-14T15:50:17.423Z",
+  "generatedAt": "2026-11-14T16:08:52.299Z",
   "projects": 13,
   "projectPages": 49,
   "videoPages": 1,
@@ -10,16 +10,16 @@
       "bytes": 236510
     },
     {
+      "file": "assets/page-layers/2026-page-07-preview-signed-v1.webp",
+      "bytes": 267438
+    },
+    {
       "file": "assets/page-layers/2026-page-06-preview-signed-v1.webp",
       "bytes": 52856
     },
     {
       "file": "assets/page-layers/2026-page-08-preview-signed-v1.webp",
       "bytes": 148854
-    },
-    {
-      "file": "assets/page-layers/2026-page-07-preview-signed-v1.webp",
-      "bytes": 267438
     },
     {
       "file": "assets/page-layers/2026-page-09-preview-signed-v1.webp",
@@ -38,8 +38,8 @@
       "bytes": 101362
     },
     {
-      "file": "assets/page-layers/2026-page-13-preview-signed-v1.webp",
-      "bytes": 145480
+      "file": "assets/page-layers/2026-page-14-preview-signed-v1.webp",
+      "bytes": 272776
     },
     {
       "file": "assets/page-layers/2026-page-15-preview-signed-v1.webp",
@@ -50,16 +50,16 @@
       "bytes": 65600
     },
     {
-      "file": "assets/page-layers/2026-page-17-preview-signed-v1.webp",
-      "bytes": 210290
-    },
-    {
-      "file": "assets/page-layers/2026-page-14-preview-signed-v1.webp",
-      "bytes": 272776
-    },
-    {
       "file": "assets/page-layers/2026-page-18-preview-signed-v1.webp",
       "bytes": 233710
+    },
+    {
+      "file": "assets/page-layers/2026-page-13-preview-signed-v1.webp",
+      "bytes": 145480
+    },
+    {
+      "file": "assets/page-layers/2026-page-17-preview-signed-v1.webp",
+      "bytes": 210290
     },
     {
       "file": "assets/page-layers/2026-v12-page-19-preview-signed-v1.webp",
@@ -70,16 +70,16 @@
       "bytes": 179126
     },
     {
-      "file": "assets/page-layers/2026-v12-page-20-preview-signed-v1.webp",
-      "bytes": 120276
-    },
-    {
       "file": "assets/page-layers/2026-v12-page-22-preview-signed-v1.webp",
       "bytes": 180598
     },
     {
       "file": "assets/page-layers/2026-page-24-preview-signed-v1.webp",
       "bytes": 111858
+    },
+    {
+      "file": "assets/page-layers/2026-v12-page-20-preview-signed-v1.webp",
+      "bytes": 120276
     },
     {
       "file": "assets/page-layers/2026-page-23-preview-signed-v1.webp",
@@ -102,32 +102,28 @@
       "bytes": 263812
     },
     {
-      "file": "assets/page-layers/2026-page-28-preview-signed-v1.webp",
-      "bytes": 250078
-    },
-    {
       "file": "assets/page-layers/2026-page-29-preview-signed-v1.webp",
       "bytes": 242594
+    },
+    {
+      "file": "assets/page-layers/2026-page-28-preview-signed-v1.webp",
+      "bytes": 250078
     },
     {
       "file": "assets/page-layers/2026-page-33-preview-signed-v1.webp",
       "bytes": 196900
     },
     {
-      "file": "assets/page-layers/2026-page-31-preview-signed-v1.webp",
-      "bytes": 251204
-    },
-    {
       "file": "assets/page-layers/2026-page-32-preview-signed-v1.webp",
       "bytes": 226970
     },
     {
-      "file": "assets/page-layers/2026-v12-page-34-preview-signed-v1.webp",
-      "bytes": 177318
+      "file": "assets/page-layers/2026-page-31-preview-signed-v1.webp",
+      "bytes": 251204
     },
     {
-      "file": "assets/page-layers/2026-page-35-preview-signed-v1.webp",
-      "bytes": 268660
+      "file": "assets/page-layers/2026-v12-page-34-preview-signed-v1.webp",
+      "bytes": 177318
     },
     {
       "file": "assets/page-layers/2026-page-36-preview-signed-v1.webp",
@@ -138,6 +134,10 @@
       "bytes": 143866
     },
     {
+      "file": "assets/page-layers/2026-page-35-preview-signed-v1.webp",
+      "bytes": 268660
+    },
+    {
       "file": "assets/page-layers/2026-v12-page-38-preview-signed-v1.webp",
       "bytes": 200906
     },
@@ -146,12 +146,12 @@
       "bytes": 71238
     },
     {
-      "file": "assets/page-layers/2026-page-40-preview-signed-v1.webp",
-      "bytes": 271104
-    },
-    {
       "file": "assets/page-layers/2026-page-41-preview-signed-v1.webp",
       "bytes": 196982
+    },
+    {
+      "file": "assets/page-layers/2026-page-40-preview-signed-v1.webp",
+      "bytes": 271104
     },
     {
       "file": "assets/page-layers/2026-page-42-preview-signed-v1.webp",
@@ -198,10 +198,6 @@
       "bytes": 97018
     },
     {
-      "file": "assets/toolkit/01-area.mp4",
-      "bytes": 2071937
-    },
-    {
       "file": "assets/toolkit/03-wrap-facade.mp4",
       "bytes": 2503137
     },
@@ -210,8 +206,8 @@
       "bytes": 2736539
     },
     {
-      "file": "assets/toolkit/01-area.webp",
-      "bytes": 115280
+      "file": "assets/toolkit/01-area.mp4",
+      "bytes": 2071937
     },
     {
       "file": "assets/toolkit/03-wrap-facade.webp",
@@ -220,6 +216,10 @@
     {
       "file": "assets/toolkit/02-wrap-facade.webp",
       "bytes": 81854
+    },
+    {
+      "file": "assets/toolkit/01-area.webp",
+      "bytes": 115280
     },
     {
       "file": "projects.json",
@@ -527,7 +527,7 @@
     },
     {
       "file": "index.html",
-      "bytes": 4689
+      "bytes": 5414
     },
     {
       "file": "style.css",
@@ -619,11 +619,11 @@
     },
     {
       "file": "copyright.js",
-      "bytes": 1543
+      "bytes": 1853
     },
     {
       "file": "copyright.css",
-      "bytes": 1820
+      "bytes": 2537
     },
     {
       "file": "analytics.js",
@@ -651,7 +651,7 @@
     },
     {
       "file": "m/index.html",
-      "bytes": 4740
+      "bytes": 5465
     },
     {
       "file": "m/mobile.js",
@@ -726,6 +726,6 @@
       "bytes": 846
     }
   ],
-  "totalBytes": 39866505,
+  "totalBytes": 39868982,
   "externalAssets": []
 }

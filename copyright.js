@@ -9,7 +9,15 @@ if(trigger&&panel&&closeButton){
     delete document.body.dataset.copyrightOpen;
     if(restoreFocus)trigger.focus({preventScroll:true});
   };
+  const syncPhase=()=>{
+    const onHome=document.body.dataset.phase==='tree';
+    trigger.hidden=!onHome;
+    if(!onHome)close();
+  };
+  new MutationObserver(syncPhase).observe(document.body,{attributes:true,attributeFilter:['data-phase']});
+  syncPhase();
   trigger.addEventListener('click',()=>{
+    if(document.body.dataset.phase!=='tree')return;
     if(!panel.hidden){close();return}
     panel.hidden=false;
     trigger.setAttribute('aria-expanded','true');
