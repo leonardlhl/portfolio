@@ -1,4 +1,4 @@
-import {projects} from './projects.js?v=2026-v12';
+import {projects} from './projects.js?v=2026-v12-titles48';
 import {createVideoPage} from './toolkit-video.js?v=2';
 import {mountAmbientSky} from './ambient.js?v=45';
 import {mountPageZoom} from './page-zoom.js?v=2';
@@ -88,7 +88,8 @@ function onContent(x,y){
  return scene?.hitProject(x,y)||false;
 }
 function onReadingBlank(x,y,element){
- if(pageZoom.isOpen||!$('#index').hidden||projectFlight||readingExit||document.body.dataset.phase!=='reading'||Number(stage.style.opacity)<.95)return false;
+ if(pageZoom.isOpen||projectFlight||readingExit||document.body.dataset.phase!=='reading'||Number(stage.style.opacity)<.95)return false;
+ // An open index protects its own panel, not the reader's surrounding blank area.
  if(element?.closest('header,footer,#index,.reading-head,button,a,input,textarea,select,video'))return false;
  const page=stops[activeIndex]?.slides[activePage];
  if(!page)return false;

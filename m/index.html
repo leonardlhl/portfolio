@@ -8,7 +8,7 @@
 // WebKit resolves a relative inline import from the document URL rather than
 // its <base>. Resolve explicitly so /m/ loads the same root journey as desktop.
 if (!document.documentElement.dataset.mobileRedirect) {
- import(new URL('./journey.js?v=47', document.baseURI).href).catch(error => {
+ import(new URL('./journey.js?v=48', document.baseURI).href).catch(error => {
   const loading = document.getElementById('loading');
   loading.hidden = false;
   loading.textContent = 'The portfolio could not load. ';
