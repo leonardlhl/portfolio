@@ -217,7 +217,19 @@ function paint(time){
  if(!readingExit){
  if(activeIndex!==p.index){activeIndex=p.index;activePage=-1;document.body.dataset.stop=stop.id;warmImages(p.index);track.replaceChildren(...stop.slides);measureStage();$('#reading-title').textContent=stop.title;$('#reading-title').hidden=p.index===0;$('#page-enlarge').hidden=p.index===0;$('#project-list').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-current',String(i===p.index)))}
  stage.style.opacity=String(alpha);stage.style.pointerEvents=alpha>.95?'auto':'none';stage.inert=alpha<.95;stage.setAttribute('aria-hidden',String(alpha<.95));
- track.style.transform='translate3d('+(-pageOffset*100)+'%,0,0)';
+ // Project sheets share a position and crossfade through the same journey spring.
+ // The text-based CV retains its existing horizontal reading track.
+ const pageFade=p.index!==0;
+ track.dataset.pageEffect=pageFade?'fade':'slide';
+ track.style.transform=pageFade?'none':'translate3d('+(-pageOffset*100)+'%,0,0)';
+ stop.slides.forEach((slide,i)=>{
+  if(pageFade){
+   const opacity=1-smooth(Math.min(1,Math.abs(i-pageOffset)));
+   slide.style.opacity=String(opacity);
+   slide.style.visibility=opacity>0?'visible':'hidden';
+   slide.style.pointerEvents=i===nearest?'auto':'none';
+  }else{slide.style.removeProperty('opacity');slide.style.removeProperty('visibility');slide.style.removeProperty('pointer-events')}
+ });
  if(activePage!==nearest){activePage=nearest;warmImages(p.index,nearest);stop.slides.forEach((el,i)=>{el.inert=i!==nearest;el.setAttribute('aria-hidden',String(i!==nearest))});$('#page-position').textContent=(nearest+1)+' / '+stop.slides.length;$('#page-enlarge').hidden=!stop.slides[nearest].dataset.full}
  for(const page of videoPages)page.syncActive(page===stop.slides[nearest]&&alpha>.95&&Math.abs(pageOffset-nearest)<.02&&!flying&&!pageZoom.isOpen);
  for(const slide of stop.slides){if(slide.revealStep!==undefined){const revealed=stepOffset>=slide.revealStep-.5;if(slide.dataset.revealed!==String(revealed)){slide.dataset.revealed=String(revealed);slide.querySelector('.cover-column')?.setAttribute('aria-hidden',String(!revealed))}}}
