@@ -70,15 +70,15 @@ const pageZoom=mountPageZoom({button:$('#page-enlarge'),getPage:()=>{
 }});
 let stageBox;
 const sequentialTouch=matchMedia('(pointer: coarse)').matches||(/iPad/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1));
-let projectFlight=null,lastSceneOrdinal=0,lastSceneZoom=0,wheelGesture=null,lastSceneFrame=null,lastSceneOrigin=null,treeDragOrdinal=null;
+let projectFlight=null,lastSceneOrdinal=0,lastSceneZoom=0,wheelGesture=null,lastSceneFrame=null,lastSceneOrigin=null,treeDragOrdinal=null,readingExit=null;
 function syncPreviewHover(){
- const available=finePointer.matches&&hoverPointer&&!pageZoom.isOpen&&$('#index').hidden&&!projectFlight&&!touch?.moved&&lastSceneZoom<.001;
+ const available=finePointer.matches&&hoverPointer&&!pageZoom.isOpen&&$('#index').hidden&&!projectFlight&&!readingExit&&!touch?.moved&&lastSceneZoom<.001;
  const hit=available?scene?.pickProject(hoverPointer.x,hoverPointer.y):null;
  if(scene?.setHover(hit?.ordinal??null,reduced.matches)){lastSceneFrame=null;request()}
  const next=String(Boolean(hit));if(document.documentElement.dataset.cursorHover!==next)document.documentElement.dataset.cursorHover=next;
 }
 function onContent(x,y){
- if(Number(stage.style.opacity)>.8){
+ if(!readingExit&&Number(stage.style.opacity)>.8){
   const page=stops[activeIndex]?.slides[activePage],el=page?.querySelector('img')||page;
   if(!el)return false;
   const r=el.getBoundingClientRect();let w=r.width,h=r.height;
@@ -88,7 +88,7 @@ function onContent(x,y){
  return scene?.hitProject(x,y)||false;
 }
 function onReadingBlank(x,y,element){
- if(pageZoom.isOpen||!$('#index').hidden||projectFlight||document.body.dataset.phase!=='reading'||Number(stage.style.opacity)<.95)return false;
+ if(pageZoom.isOpen||!$('#index').hidden||projectFlight||readingExit||document.body.dataset.phase!=='reading'||Number(stage.style.opacity)<.95)return false;
  if(element?.closest('header,footer,#index,.reading-head,button,a,input,textarea,select,video'))return false;
  const page=stops[activeIndex]?.slides[activePage];
  if(!page)return false;
@@ -142,7 +142,12 @@ function warmImages(index,page=0){
  }
 }
 function locate(value){const round=Math.floor(value/total),local=mod(value,total);let index=stops.length-1;while(index>0&&local<starts[index])index--;return {index,ordinal:round*stops.length+index,local:local-starts[index]}}
-function setTarget(value,instant=false){clearTimeout(snapTimer);target=value;dragYaw=0;if(instant||reduced.matches){current=target;velocity=0}request()}
+function cancelReadingExit(){
+ if(!readingExit)return;
+ const exit=readingExit;readingExit=null;
+ for(const animation of exit.animations)animation.cancel();
+}
+function setTarget(value,instant=false){cancelReadingExit();clearTimeout(snapTimer);target=value;dragYaw=0;if(instant||reduced.matches){current=target;velocity=0}request()}
 function closeIndex(){$('#index').hidden=true;$('#index-toggle').setAttribute('aria-expanded','false')}
 function jump(index){projectFlight=null;wheelGesture=null;const round=Math.floor(target/total);setTarget(round*total+starts[index]+1,true);closeIndex()}
 function openProject(index,ordinal=null,immediate=false){
@@ -158,18 +163,32 @@ function openProject(index,ordinal=null,immediate=false){
   setTarget(base+2);
  }
 }
-function closeReading(){
+function closeReading(event){
+ if(readingExit)return;
  // Use the displayed stop, not a queued scroll target, and retain its loop cycle.
  const ordinal=locate(current).ordinal;
+ const opacity=getComputedStyle(stage).opacity,sceneElement=$('#scene'),sceneOpacity=getComputedStyle(sceneElement).opacity;
  cancelPointer();projectFlight=null;treeDragOrdinal=null;wheelGesture=null;
  closeIndex();setTarget(treeTarget(ordinal),true);
- $('#scene').focus({preventScroll:true});
+ if(!reduced.matches&&event?.detail!==0&&Number(opacity)>.01&&stage.animate){
+  // Keep the visible sheet and its reveal/scroll state fixed while it fades.
+  // The tree renders its destination once; both fades run in the compositor.
+  const exit=readingExit={animations:[]},timing={duration:220,easing:'cubic-bezier(0.23, 1, 0.32, 1)',fill:'both'};
+  stage.inert=true;stage.style.pointerEvents='none';stage.setAttribute('aria-hidden','true');
+  for(const page of videoPages)page.syncActive(false);
+  exit.animations=[stage.animate([{opacity},{opacity:0}],timing),sceneElement.animate([{opacity:sceneOpacity},{opacity:1}],timing)];
+  Promise.allSettled(exit.animations.map(animation=>animation.finished)).then(()=>{
+   if(readingExit!==exit)return;
+   // Hide the outgoing sheet before removing the finished animation effect.
+   const focus=document.activeElement,returnFocus=focus===document.body||focus===sceneElement||stage.contains(focus);
+   stage.style.opacity='0';cancelReadingExit();request();if(returnFocus&&$('#index').hidden)sceneElement.focus({preventScroll:true});
+  });
+ }else sceneElement.focus({preventScroll:true});
 }
-function step(direction){projectFlight=null;wheelGesture=null;setTarget(Math.round(target)+direction,true)}
+function step(direction,instant=false){projectFlight=null;wheelGesture=null;setTarget(Math.round(target)+direction,instant)}
 stops.forEach((s,i)=>{const b=document.createElement('button');b.textContent=i===0?'CV':s.title;b.onclick=()=>jump(i);$('#project-list').append(b)});
 $('#index-toggle').onclick=()=>{const open=$('#index').hidden;$('#index').hidden=!open;$('#index-toggle').setAttribute('aria-expanded',String(open))};
-$('#home').onclick=()=>openProject(0,null,true);
-$('#left').onclick=()=>step(-1);$('#right').onclick=()=>step(1);
+$('#left').onclick=e=>step(-1,e.detail===0);$('#right').onclick=e=>step(1,e.detail===0);
 $('#reading-close').onclick=closeReading;
 function paint(time){
  raf=0;const elapsed=Math.min(lastTime?(time-lastTime)/1000:1/60,.08);lastTime=time;
@@ -194,12 +213,15 @@ function paint(time){
  if(treeDragOrdinal!==null){sceneOrdinal=treeDragOrdinal;zoom=0}
  const stepOffset=Math.max(0,Math.min(n-1,t-2)),stepFloor=Math.floor(stepOffset),stepNext=Math.min(n-1,stepFloor+1);
  const pageOffset=stop.steps[stepFloor].page+(stop.steps[stepNext].page-stop.steps[stepFloor].page)*(stepOffset-stepFloor),nearest=Math.round(pageOffset);
+ const alpha=flying?0:smooth((zoom-.25)/.75);
+ if(!readingExit){
  if(activeIndex!==p.index){activeIndex=p.index;activePage=-1;document.body.dataset.stop=stop.id;warmImages(p.index);track.replaceChildren(...stop.slides);measureStage();$('#reading-title').textContent=stop.title;$('#reading-title').hidden=p.index===0;$('#page-enlarge').hidden=p.index===0;$('#project-list').querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-current',String(i===p.index)))}
- const alpha=flying?0:smooth((zoom-.25)/.75);stage.style.opacity=String(alpha);stage.style.pointerEvents=alpha>.95?'auto':'none';stage.inert=alpha<.95;stage.setAttribute('aria-hidden',String(alpha<.95));
+ stage.style.opacity=String(alpha);stage.style.pointerEvents=alpha>.95?'auto':'none';stage.inert=alpha<.95;stage.setAttribute('aria-hidden',String(alpha<.95));
  track.style.transform='translate3d('+(-pageOffset*100)+'%,0,0)';
  if(activePage!==nearest){activePage=nearest;warmImages(p.index,nearest);stop.slides.forEach((el,i)=>{el.inert=i!==nearest;el.setAttribute('aria-hidden',String(i!==nearest))});$('#page-position').textContent=(nearest+1)+' / '+stop.slides.length;$('#page-enlarge').hidden=!stop.slides[nearest].dataset.full}
  for(const page of videoPages)page.syncActive(page===stop.slides[nearest]&&alpha>.95&&Math.abs(pageOffset-nearest)<.02&&!flying&&!pageZoom.isOpen);
  for(const slide of stop.slides){if(slide.revealStep!==undefined){const revealed=stepOffset>=slide.revealStep-.5;if(slide.dataset.revealed!==String(revealed)){slide.dataset.revealed=String(revealed);slide.querySelector('.cover-column')?.setAttribute('aria-hidden',String(!revealed))}}}
+ }
  $('#scene').style.opacity=String(1-.88*alpha);
  lastSceneOrdinal=sceneOrdinal;lastSceneZoom=zoom;
  const sceneFrame=[sceneOrdinal,reduced.matches?0:zoom,dragYaw,innerWidth,innerHeight];
@@ -209,10 +231,12 @@ function paint(time){
   lastSceneOrigin=scene.update(sceneFrame[0],sceneFrame[1],dragYaw,reduced.matches?0:current);lastSceneFrame=sceneFrame;
  }
  const origin=lastSceneOrigin;
+ if(!readingExit){
  if(origin&&!reduced.matches){const {cx,cy,width}=stageBox;const startScale=Math.min(1,origin.width/width);stage.style.transform='translate3d('+((origin.x-cx)*(1-zoom))+'px,'+((origin.y-cy)*(1-zoom))+'px,0) scale('+(startScale+(1-startScale)*zoom)+')'}else stage.style.transform='none';
+ }
  if(document.body.dataset.stop!==stop.id)document.body.dataset.stop=stop.id;
- if(document.body.dataset.page!==String(nearest+1))document.body.dataset.page=String(nearest+1);
- const phaseName=alpha>.8?'reading':t<1?'travel':zoom>0?'zoom':'tree';
+ if(!readingExit&&document.body.dataset.page!==String(nearest+1))document.body.dataset.page=String(nearest+1);
+ const phaseName=readingExit?'closing':alpha>.8?'reading':t<1?'travel':zoom>0?'zoom':'tree';
  if(document.body.dataset.phase!==phaseName){document.body.dataset.phase=phaseName;if(sequentialTouch)$('#browse-hint').textContent=phaseName==='reading'?'Swipe to turn pages':'Drag sideways · Tap a project to open'}
  syncPreviewHover();
  if(projectFlight||scene?.isAnimating||Math.abs(target-current)+Math.abs(velocity)>.001)request();else lastTime=0;
@@ -236,9 +260,10 @@ document.addEventListener('wheel',e=>{
  // Fresh wheel detents and direction changes re-arm without an idle lockout.
  if(Math.abs(wheelGesture.distance)>=40){wheelGesture.used=true;setTarget(Math.round(target)+Math.sign(wheelGesture.distance))}
 },{passive:false});
-document.addEventListener('keydown',e=>{if(pageZoom.isOpen||e.target.closest('button,a,input,select,#index'))return;if(e.key==='Enter'&&e.target.id==='scene'){e.preventDefault();openProject(locate(target).index,null,true);return}const direction=['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)?1:['ArrowLeft','ArrowUp','PageUp'].includes(e.key)?-1:0;if(direction){e.preventDefault();step(direction)}if(e.key==='Escape'){projectFlight=null;const p=locate(target);setTarget(Math.floor(target/total)*total+starts[p.index]+stops[p.index].steps.length+2,true)}});
+document.addEventListener('keydown',e=>{if(pageZoom.isOpen||e.target.closest('button,a,input,select,#index'))return;if(e.key==='Enter'&&e.target.id==='scene'){e.preventDefault();openProject(locate(target).index,null,true);return}const direction=['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)?1:['ArrowLeft','ArrowUp','PageUp'].includes(e.key)?-1:0;if(direction){e.preventDefault();step(direction,true)}if(e.key==='Escape'){projectFlight=null;const p=locate(target);setTarget(Math.floor(target/total)*total+starts[p.index]+stops[p.index].steps.length+2,true)}});
 let swipedLink=null;
 document.addEventListener('pointerdown',e=>{
+ if(readingExit)return;
  if(e.pointerType==='touch'&&e.isPrimary===false){cancelPointer();return}
  const link=e.pointerType==='touch'?e.target.closest('.cv-page-content a'):null;
  if(pageZoom.isOpen||e.button!==0||e.isPrimary===false||e.target.closest('button,input,textarea,select,#index,header,footer')||(e.target.closest('a')&&!link))return;
@@ -325,7 +350,7 @@ document.addEventListener('pointerout',e=>{if(!e.relatedTarget){hoverPointer=nul
 window.addEventListener('blur',cancelPointer);
 finePointer.addEventListener('change',()=>{hoverPointer=null;syncPreviewHover()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else request()});
-window.addEventListener('resize',()=>{measureStage();request()});reduced.addEventListener('change',request);
+window.addEventListener('resize',()=>{measureStage();request()});reduced.addEventListener('change',()=>{if(reduced.matches)cancelReadingExit();request()});
 const sceneProjects=projects.map((project,index)=>{const copy=[...project];copy[5]=stops[index+1].slides[0].querySelector('.portfolio-image').getAttribute('src');return copy});
 try{const module=await import('./journey-scene.js?v=2026-v11');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
 request();
