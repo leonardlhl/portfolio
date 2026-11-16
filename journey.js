@@ -1,9 +1,9 @@
-import {projects} from './projects.js?v=2026-v12-rights49';
+import {projects} from './projects.js?v=2026-v12-rights52';
 import {createVideoPage} from './toolkit-video.js?v=2';
 import {mountAmbientSky} from './ambient.js?v=45';
 import {mountPageZoom} from './page-zoom.js?v=2';
 import {mountContact} from './contact.js?v=1';
-import {mountCursor} from './cursor.js?v=4';
+import {mountCursor} from './cursor.js?v=5';
 mountCursor();
 const $=s=>document.querySelector(s),mod=(a,b)=>(a%b+b)%b,clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{const t=clamp(v);return t*t*(3-2*t)};
@@ -27,7 +27,7 @@ cvSlide('Background',[cvSections[1]]);
 cvSlide('Awards & recognition',[cvSections[2],cvSections[3]]);
 for(const slide of cvSlides){const link=document.createElement('a');link.className='cv-detail-link';link.href='./cv-detail.html';link.target='_blank';link.rel='noopener';link.textContent='View full CV & project experience — opens new tab';slide.querySelector('.page-copy').append(link)}
 // These layers come directly from the original PDF, including its typography.
-const layerResponse=await fetch('./assets/page-layers/manifest.json?v=2026-v12-rights49');
+const layerResponse=await fetch('./assets/page-layers/manifest.json?v=2026-v12-rights52');
 if(!layerResponse.ok)throw new Error('Portfolio page layers unavailable');
 const layers=await layerResponse.json(),layerURL=name=>'./assets/page-layers/'+name;
 function projectPage(project,value,isCover){
@@ -72,11 +72,23 @@ let stageBox;
 const sequentialTouch=matchMedia('(pointer: coarse)').matches||(/iPad/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1));
 let projectFlight=null,lastSceneOrdinal=0,lastSceneZoom=0,wheelGesture=null,lastSceneFrame=null,lastSceneOrigin=null,treeDragOrdinal=null,readingExit=null;
 function syncPreviewHover(){
- const available=finePointer.matches&&hoverPointer&&!pageZoom.isOpen&&!document.body.dataset.copyrightOpen&&$('#index').hidden&&!projectFlight&&!readingExit&&!touch?.moved&&lastSceneZoom<.001;
+ const pointerReady=finePointer.matches&&hoverPointer&&!pageZoom.isOpen&&!document.body.dataset.copyrightOpen&&!readingExit&&!touch?.moved;
+ const element=pointerReady?document.elementFromPoint(hoverPointer.x,hoverPointer.y):null;
+ const available=pointerReady&&element?.closest('#scene')&&$('#index').hidden&&!projectFlight&&lastSceneZoom<.001;
  const hit=available?scene?.pickProject(hoverPointer.x,hoverPointer.y):null;
  if(scene?.setHover(hit?.ordinal??null,reduced.matches)){lastSceneFrame=null;request()}
  const next=String(Boolean(hit));if(document.documentElement.dataset.cursorHover!==next)document.documentElement.dataset.cursorHover=next;
+ const pageHit=pointerReady?readingPageClick(hoverPointer.x,hoverPointer.y,element):null;
+ const control=pointerReady&&!projectFlight?element?.closest('#left,#right'):null;
+ const direction=pageHit?.direction||(control?.id==='left'?-1:control?.id==='right'?1:0);
+ const pageCursor=direction<0?'previous':direction>0?'next':'';
+ if(document.documentElement.dataset.cursorPage!==pageCursor)document.documentElement.dataset.cursorPage=pageCursor;
 }
+// Keyboard-opened panels must update the cursor without needing mouse movement.
+const cursorSurfaceObserver=new MutationObserver(syncPreviewHover);
+cursorSurfaceObserver.observe($('#page-zoom'),{attributes:true,attributeFilter:['open']});
+cursorSurfaceObserver.observe($('#index'),{attributes:true,attributeFilter:['hidden']});
+cursorSurfaceObserver.observe(document.body,{attributes:true,attributeFilter:['data-copyright-open']});
 function onContent(x,y){
  if(!readingExit&&Number(stage.style.opacity)>.8){
   const page=stops[activeIndex]?.slides[activePage],el=page?.querySelector('img')||page;
@@ -302,7 +314,7 @@ document.addEventListener('pointerdown',e=>{
  }
 });
 document.addEventListener('pointermove',e=>{
- if(e.pointerType==='mouse'){hoverPointer=e.target.closest('#scene')?{x:e.clientX,y:e.clientY}:null;syncPreviewHover()}
+ if(e.pointerType==='mouse'){hoverPointer={x:e.clientX,y:e.clientY};syncPreviewHover()}
  else{hoverPointer=null;syncPreviewHover()}
  if(!touch||e.pointerId!==touch.id)return;const dx=e.clientX-touch.x,dy=e.clientY-touch.y;
  const totalX=e.clientX-touch.originX,totalY=e.clientY-touch.originY;

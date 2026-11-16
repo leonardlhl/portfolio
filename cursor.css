@@ -16,6 +16,22 @@
   html[data-cursor-enabled="true"][data-cursor="drag"] * {
     cursor: url('./assets/cursors/drag.svg?v=4') 8 8, grabbing !important;
   }
+  html[data-cursor-enabled="true"][data-cursor="previous"],
+  html[data-cursor-enabled="true"][data-cursor="previous"] * {
+    cursor: url('./assets/cursors/previous.svg?v=5') 5 14, w-resize !important;
+  }
+  html[data-cursor-enabled="true"][data-cursor="next"],
+  html[data-cursor-enabled="true"][data-cursor="next"] * {
+    cursor: url('./assets/cursors/next.svg?v=5') 22 14, e-resize !important;
+  }
+  html[data-cursor-enabled="true"][data-cursor="previous-pressed"],
+  html[data-cursor-enabled="true"][data-cursor="previous-pressed"] * {
+    cursor: url('./assets/cursors/previous-pressed.svg?v=5') 5 14, w-resize !important;
+  }
+  html[data-cursor-enabled="true"][data-cursor="next-pressed"],
+  html[data-cursor-enabled="true"][data-cursor="next-pressed"] * {
+    cursor: url('./assets/cursors/next-pressed.svg?v=5') 22 14, e-resize !important;
+  }
   html[data-cursor-enabled="true"] :is(textarea, input:not([type]), input[type="text"], input[type="search"], input[type="email"], input[type="password"], input[type="tel"], input[type="url"], input[type="number"], [contenteditable=""], [contenteditable="true"], [contenteditable="true"] *) {
     cursor: text !important;
   }

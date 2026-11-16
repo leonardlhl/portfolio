@@ -12,10 +12,13 @@ export function mountCursor() {
   function enabled(value) { root.dataset.cursorEnabled = String(value); }
   function idle() {
     if (press) return;
-    state(root.dataset.cursorEnabled === 'true' && root.dataset.cursorHover === 'true' ? 'hover' : 'normal');
+    const page=root.dataset.cursorPage;
+    state(root.dataset.cursorEnabled === 'true'
+      ? (page==='previous'||page==='next'?page:root.dataset.cursorHover==='true'?'hover':'normal')
+      : 'normal');
   }
   function reset() { press = null; idle(); }
-  function clearHover() { root.dataset.cursorHover = 'false'; }
+  function clearHover() { root.dataset.cursorHover = 'false'; root.dataset.cursorPage = ''; }
   function usePointer(event) {
     lastPointer = event.pointerType || 'mouse';
     enabled(lastPointer === 'mouse' && mouseAvailable.matches);
@@ -27,15 +30,16 @@ export function mountCursor() {
     const element = event.target instanceof Element ? event.target : null;
     const draggable = Boolean(element?.closest('.page-zoom-viewport.is-zoomed') ||
       (element?.closest('#scene') && document.body.dataset.phase !== 'reading'));
-    press = {id: event.pointerId, x: event.clientX, y: event.clientY, draggable, dragging: false};
-    state('pressed');
+    const page=draggable?'':root.dataset.cursorPage;
+    press = {id: event.pointerId, x: event.clientX, y: event.clientY, draggable, dragging: false, page};
+    state(page==='previous'||page==='next'?page+'-pressed':'pressed');
   }
   function onMove(event) {
     if (!usePointer(event)) { reset(); return; }
     if (!(event.buttons & 1)) { reset(); return; }
     if (!press || press.id !== event.pointerId) return;
     if (press.draggable && Math.hypot(event.clientX - press.x, event.clientY - press.y) > 5) press.dragging = true;
-    state(press.dragging ? 'drag' : 'pressed');
+    state(press.dragging ? 'drag' : press.page==='previous'||press.page==='next'?press.page+'-pressed':'pressed');
   }
   function onUp(event) { usePointer(event); reset(); }
   function onLeave(event) { if (!event.relatedTarget) { clearHover(); reset(); } }
@@ -49,13 +53,13 @@ export function mountCursor() {
   // Scene hit-testing belongs to the journey; react even when it changes after
   // this module's pointer listener or while the geometry is moving under a mouse.
   const hoverObserver = new MutationObserver(idle);
-  hoverObserver.observe(root, {attributes: true, attributeFilter: ['data-cursor-hover']});
+  hoverObserver.observe(root, {attributes: true, attributeFilter: ['data-cursor-hover','data-cursor-page']});
   const options = {passive: true, capture: true};
 
   // Decode once before the first press so changing state does not wait on a fetch.
-  const images = ['normal', 'hover', 'pressed', 'drag'].map(name => {
+  const images = ['normal', 'hover', 'pressed', 'drag', 'previous', 'next', 'previous-pressed', 'next-pressed'].map(name => {
     const image = new Image();
-    image.src = new URL('./assets/cursors/' + name + '.svg?v=4', import.meta.url).href;
+    image.src = new URL('./assets/cursors/' + name + '.svg?v=5', import.meta.url).href;
     image.decode().catch(() => {});
     return image;
   });
@@ -85,6 +89,7 @@ export function mountCursor() {
       images.length = 0;
       delete root.dataset.cursor;
       delete root.dataset.cursorEnabled;
+      delete root.dataset.cursorPage;
       mounted = null;
     },
   };
