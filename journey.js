@@ -101,6 +101,16 @@ function onReadingBlank(x,y,element){
  return x<Math.max(box.left,clip.left)||x>Math.min(box.right,clip.right)
   ||y<Math.max(box.top,clip.top)||y>Math.min(box.bottom,clip.bottom);
 }
+function readingPageClick(x,y,element){
+ if(pageZoom.isOpen||projectFlight||readingExit||document.body.dataset.phase!=='reading'||Number(stage.style.opacity)<.95)return null;
+ if(element?.closest('header,footer,#index,.reading-head,button,a,input,textarea,select,video'))return null;
+ const page=stops[activeIndex]?.slides[activePage],image=page?.querySelector('.portfolio-image');
+ // Only the fitted artwork turns pages. Keep letterbox/background exit,
+ // selectable CV text, media controls and touch gestures independent.
+ if(!image||element?.closest('.journey-page')!==page||!onContent(x,y))return null;
+ const box=image.getBoundingClientRect();
+ return {page,direction:x<box.left+box.width/2?-1:1};
+}
 function selectAdjacent(direction){
  // A page-wheel burst can queue the next stop before the outgoing sheet has
  // faded. Background navigation must advance from the tree actually on screen,
@@ -283,7 +293,7 @@ document.addEventListener('pointerdown',e=>{
  const pick=e.target.closest('#scene')&&document.body.dataset.phase!=='reading'?scene?.pickProject(e.clientX,e.clientY):null;
  const content=e.target.closest('.cv-page-content');
  const tree=e.pointerType==='touch'&&!!scene&&!!e.target.closest('#scene')&&lastSceneZoom<.001&&!projectFlight;
- touch={id:e.pointerId,x:e.clientX,y:e.clientY,originX:e.clientX,originY:e.clientY,type:e.pointerType,start:Math.round(target),moved:false,pick,axis:null,mode:null,distance:0,content,scrollTop:content?.scrollTop||0,link,tree,sceneOrdinal:lastSceneOrdinal,startYaw:dragYaw,readingBlank:onReadingBlank(e.clientX,e.clientY,e.target)};
+ touch={id:e.pointerId,x:e.clientX,y:e.clientY,originX:e.clientX,originY:e.clientY,type:e.pointerType,start:Math.round(target),moved:false,pick,axis:null,mode:null,distance:0,content,scrollTop:content?.scrollTop||0,link,tree,sceneOrdinal:lastSceneOrdinal,startYaw:dragYaw,readingBlank:onReadingBlank(e.clientX,e.clientY,e.target),readingClick:e.pointerType==='mouse'?readingPageClick(e.clientX,e.clientY,e.target):null};
  if(e.pointerType==='touch'){
   wheelGesture=null;swipedLink=null;
   // Keep the same target throughout a finger gesture, even as pages move.
@@ -335,6 +345,12 @@ document.addEventListener('pointerup',e=>{
  if(document.body.hasPointerCapture(e.pointerId))document.body.releasePointerCapture(e.pointerId);
  if(gesture.readingBlank&&!gesture.moved&&onReadingBlank(e.clientX,e.clientY,document.elementFromPoint(e.clientX,e.clientY))){
   e.preventDefault();closeReading();return;
+ }
+ if(gesture.readingClick&&!gesture.moved){
+  const hit=readingPageClick(e.clientX,e.clientY,document.elementFromPoint(e.clientX,e.clientY));
+  if(hit?.page===gesture.readingClick.page&&hit.direction===gesture.readingClick.direction){
+   e.preventDefault();step(hit.direction);return;
+  }
  }
  if(gesture.link&&gesture.moved)swipedLink={element:gesture.link,until:performance.now()+500};
  if(gesture.mode==='tree'){
