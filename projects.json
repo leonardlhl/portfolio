@@ -149,19 +149,10 @@
       "title": "Tools in motion",
       "clips": [
         {
-          "src": "./assets/toolkit/01-area.mp4",
-          "poster": "./assets/toolkit/01-area.webp",
-          "label": "Area analysis"
-        },
-        {
-          "src": "./assets/toolkit/02-wrap-facade.mp4",
-          "poster": "./assets/toolkit/02-wrap-facade.webp",
-          "label": "Facade wrapping · 01"
-        },
-        {
-          "src": "./assets/toolkit/03-wrap-facade.mp4",
-          "poster": "./assets/toolkit/03-wrap-facade.webp",
-          "label": "Facade wrapping · 02"
+          "src": "./assets/toolkit/bespoke-tools-353c4292.mp4",
+          "poster": "./assets/toolkit/bespoke-tools-353c4292.webp",
+          "label": "Bespoke Tools",
+          "hasAudio": true
         }
       ]
     }

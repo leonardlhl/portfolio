@@ -12,3 +12,57 @@
 .toolkit-video-status:empty{display:none}
 @media(hover:hover) and (pointer:fine){.toolkit-video-controls button:not(:disabled):hover{text-decoration:underline;text-underline-offset:4px}}
 @media(max-width:700px){.toolkit-video-layout{gap:12px}.toolkit-video-stack{gap:6px}.toolkit-video-controls{gap:16px}.toolkit-video-status{width:100%;text-align:center;font-size:11px}}
+
+.toolkit-video-single .toolkit-video-stack{
+ grid-template: minmax(0,1fr) / minmax(0,1fr);
+ aspect-ratio:16/9;
+ min-height:0;
+}
+.toolkit-video-single .toolkit-video-clip{
+ height:100%;
+ max-width:100%;
+ aspect-ratio:16/9;
+ justify-self:center;
+}
+.toolkit-video-single .toolkit-video{
+ height:100%;
+ aspect-ratio:16/9;
+}
+.toolkit-video-single .toolkit-video-controls button{
+ min-width:44px;
+ min-height:44px;
+}
+.toolkit-video-single .toolkit-video-controls{
+ row-gap:2px;
+}
+.toolkit-video-single .toolkit-video-status{
+ width:100%;
+ text-align:center;
+}
+@media(orientation:landscape) and (max-height:460px){
+ /* Let the video use the open centre above the page, between the side controls. */
+ #journey-stage:has(.toolkit-video-single),
+ #journey-stage:has(.toolkit-video-single) .journey-window{
+  overflow:visible;
+ }
+ #journey-stage:has(.toolkit-video-single[aria-hidden="false"]) .reading-head{
+  position:relative;
+  z-index:1;
+  pointer-events:none;
+ }
+ #journey-stage:has(.toolkit-video-single[aria-hidden="false"]) #reading-title{
+  max-width:20%;
+  font-size:clamp(16px,2.6vw,22px);
+  pointer-events:auto;
+ }
+ #journey-stage:has(.toolkit-video-single[aria-hidden="false"]) .reading-tools{
+  pointer-events:auto;
+ }
+ #journey-stage .toolkit-video-single .toolkit-video-layout{
+  position:absolute;
+  inset:auto 22% 0;
+  width:auto;
+  height:calc(100% + 126px);
+  gap:6px;
+ }
+}
