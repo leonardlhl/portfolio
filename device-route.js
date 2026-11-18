@@ -13,6 +13,8 @@
   if (choice === 'mobile' || (choice !== 'desktop' && touchDevice)) {
     document.documentElement.dataset.mobileRedirect = 'true';
     const mobile = new URL('./m/', location.href);
+    const analytics = params.get('analytics');
+    if (analytics === 'off' || analytics === 'on') mobile.searchParams.set('analytics', analytics);
     mobile.hash = location.hash;
     location.replace(mobile.href);
   }
