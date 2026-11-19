@@ -1,4 +1,4 @@
-import {projects} from './projects.js?v=2026-v12-bespoke54';
+import {projects} from './projects.js?v=2026-v12-bespoke55';
 import {createVideoPage} from './toolkit-video.js?v=3';
 import {mountAmbientSky} from './ambient.js?v=45';
 import {mountPageZoom} from './page-zoom.js?v=2';

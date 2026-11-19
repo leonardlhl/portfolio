@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T15:10:31.046Z",
+  "generatedAt": "2026-11-19T16:18:58.677Z",
   "projects": 13,
   "projectPages": 49,
   "videoPages": 1,
@@ -199,8 +199,8 @@
       "bytes": 97018
     },
     {
-      "file": "assets/toolkit/bespoke-tools-353c4292.mp4",
-      "bytes": 9981590
+      "file": "assets/toolkit/bespoke-tools-e7d96a78.mp4",
+      "bytes": 11512393
     },
     {
       "file": "assets/toolkit/bespoke-tools-353c4292.webp",
@@ -727,6 +727,6 @@
       "bytes": 846
     }
   ],
-  "totalBytes": 42953985,
+  "totalBytes": 44484788,
   "externalAssets": []
 }
