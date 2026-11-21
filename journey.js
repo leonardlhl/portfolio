@@ -153,7 +153,7 @@ function measureCoverBands(){
   }
  }
 }
-function measureStage(){stageBox={width:stage.offsetWidth,cx:stage.offsetLeft+stage.offsetWidth/2,cy:stage.offsetTop+stage.offsetHeight/2};measureCoverBands()}
+function measureStage(){stageBox={width:track.parentElement.offsetWidth,cx:stage.offsetLeft+stage.offsetWidth/2,cy:stage.offsetTop+stage.offsetHeight/2};measureCoverBands()}
 measureStage();
 const warmedImages=new WeakSet();
 function warmImages(index,page=0){
@@ -391,8 +391,13 @@ document.addEventListener('pointerout',e=>{if(!e.relatedTarget){hoverPointer=nul
 window.addEventListener('blur',cancelPointer);
 finePointer.addEventListener('change',()=>{hoverPointer=null;syncPreviewHover()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else request()});
-window.addEventListener('resize',()=>{measureStage();request()});reduced.addEventListener('change',()=>{if(reduced.matches)cancelReadingExit();request()});
+// Observe the actual dynamic viewport and reader; Safari's browser bars
+// and safe areas can settle after the initial orientation resize.
+function resizeLayout(){scene?.resize();measureStage();lastSceneFrame=null;request()}
+const layoutObserver=new ResizeObserver(resizeLayout);
+layoutObserver.observe($('#scene'));layoutObserver.observe(track.parentElement);
+reduced.addEventListener('change',()=>{if(reduced.matches)cancelReadingExit();request()});
 const sceneProjects=projects.map((project,index)=>{const copy=[...project];copy[5]=stops[index+1].slides[0].querySelector('.portfolio-image').getAttribute('src');return copy});
-try{const module=await import('./journey-scene.js?v=2026-v11');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
+try{const module=await import('./journey-scene.js?v=56');scene=module.mountJourneyScene(sceneProjects)}catch(error){$('#loading').textContent='The tree preview is unavailable. Scroll to read the portfolio.';console.error(error)}
 request();
 $('#browse-hint').textContent=sequentialTouch?'Drag sideways · Tap a project to open':'Click a preview to open · Scroll to explore';

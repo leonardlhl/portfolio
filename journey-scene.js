@@ -77,7 +77,7 @@ export function mountJourneyScene(projects){
  const cvCanvas=document.createElement('canvas');cvCanvas.width=900;cvCanvas.height=560;const ctx=cvCanvas.getContext('2d');ctx.clearRect(0,0,900,560);ctx.fillStyle='#252a2b';ctx.font='bold 64px sans-serif';ctx.fillText('LEONARD LO',65,155);ctx.font='28px sans-serif';ctx.fillText('PROFILE / CV',65,235);ctx.font='22px sans-serif';ctx.fillText('Architecture · Awards · Experience',65,350);
  const cvTexture=new T.CanvasTexture(cvCanvas);cvTexture.colorSpace=T.SRGBColorSpace;
  const slots=Array.from({length:7},()=>{const g=new T.Group(),mat=new T.MeshBasicMaterial({side:T.DoubleSide,color:'#ffffff',toneMapped:false,fog:false,transparent:true,depthWrite:false,alphaTest:.005}),mesh=new T.Mesh(new T.PlaneGeometry(3.7,2.38),mat);g.add(mesh);scene.add(g);return {g,mat,ordinal:null}});
- let ordinal=0,zoom=0,azimuth=0,scroll=0,width=innerWidth,height=innerHeight,ready=false;
+ let ordinal=0,zoom=0,azimuth=0,scroll=0,width=1,height=1,shortLandscape=false,ready=false;
  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
  const HOVER_SCALE=1.06,HOVER_DURATION=200;
  let hoverOrdinal=null;
@@ -138,7 +138,12 @@ export function mountJourneyScene(projects){
   if(!ready)return;
   const now=performance.now();
   const viewAngle=ordinal*3.25/turnPitch*Math.PI*2-scroll*.18-.36*(1-zoom)+azimuth;
-  const spread=width<800?1:Math.min(2.6,1+(width/height-1)*1.25),right=new T.Vector3(Math.sin(viewAngle),0,-Math.cos(viewAngle));
+  const aspect=width/height;
+  // Landscape phones gain horizontal room while losing vertical field of
+  // view. Widen the helix and its attachment points, but never the artwork.
+  const spread=shortLandscape?Math.min(3.1,Math.max(1.45,aspect*.95))
+    :width<800?1:Math.min(2.6,1+(aspect-1)*1.25);
+  const right=new T.Vector3(Math.sin(viewAngle),0,-Math.cos(viewAngle));
   function widen(v){return v.addScaledVector(right,v.dot(right)*(spread-1))}
   const x=right.x,z=right.z,k=spread-1;landscape.matrix.set(1+k*x*x,0,k*x*z,0,0,1,0,0,k*x*z,0,1+k*z*z,0,0,0,0,1);
   function anchor(n){const y=n*3.25,t=y/turnPitch*Math.PI*2,offset=.5/13,a=t+offset*.38+.17*Math.sin(t*.5+offset),r=2.55+.72*Math.sin(t*.5+.6)+offset*.20;return widen(new T.Vector3(Math.cos(a)*r+.3*Math.sin(t*.5),y+offset*.48*Math.sin(t),Math.sin(a)*r).applyAxisAngle(new T.Vector3(0,1,0),-scroll*.18).add(new T.Vector3(0,scroll*.3,0)))}
@@ -151,14 +156,25 @@ export function mountJourneyScene(projects){
    const selected=n===center;slot.saturation.value=selected?1:.12;slot.mat.opacity=selected?1-(()=>{const t=Math.max(0,Math.min(1,(zoom-.25)/.75));return t*t*(3-2*t)})():.72;
    if(slot.ordinal!==n){slot.ordinal=n;slot.mat.map=index===0?cvTexture:textures[index-1];slot.paperKey.value=index===0?0:1;slot.photoRect.value.fromArray(index===0?[0,0,1,1]:coverPhotoRectangle(projects[index-1][0]));if(slot.mat.map)slot.mat.map.colorSpace=T.SRGBColorSpace;slot.mat.needsUpdate=true}
   });
-  const d=(width<700?17:12.8)-zoom*1.8,yaw=angle-.36*(1-zoom)+azimuth;
+  const d=(width<700&&!shortLandscape?17:12.8)-zoom*1.8,yaw=angle-.36*(1-zoom)+azimuth;
   const cardCenter=focus.clone().add(new T.Vector3(1.85,0,0).applyAxisAngle(new T.Vector3(0,1,0),Math.PI/2-angle));
   camera.position.set(Math.cos(yaw)*d,lookY+.65*(1-zoom),Math.sin(yaw)*d);
-  camera.lookAt(cardCenter.x*zoom,lookY,cardCenter.z*zoom);camera.aspect=width/height;camera.updateProjectionMatrix();renderer.render(scene,camera);
+  // With the closer landscape framing, follow part of the selected card's
+  // lateral travel so even the outermost stops remain fully tappable.
+  const follow=shortLandscape ? .6+.4*zoom : zoom;
+  camera.lookAt(cardCenter.x*follow,lookY,cardCenter.z*follow);camera.aspect=aspect;
+  camera.zoom=shortLandscape?Math.min(1.8,Math.max(1.25,aspect*.75)):1;
+  camera.updateProjectionMatrix();renderer.render(scene,camera);
   const projected=cardCenter.clone().project(camera),edge=cardCenter.clone().add(new T.Vector3(1.85,0,0).applyQuaternion(camera.quaternion)).project(camera);return {x:(projected.x+1)*width/2,y:(1-projected.y)*height/2,width:Math.abs(edge.x-projected.x)*width};
  }
- function resize(){width=innerWidth;height=innerHeight;renderer.setSize(width,height);render()}
- ready=true;resize();window.addEventListener('resize',resize);
+ function resize(){
+  shortLandscape=getComputedStyle(surface).getPropertyValue('--landscape-framing').trim()==='1';
+  const newWidth=Math.max(1,surface.clientWidth),newHeight=Math.max(1,surface.clientHeight);
+  if(newWidth===width&&newHeight===height)return;
+  width=newWidth;height=newHeight;
+  renderer.setSize(width,height,false);
+ }
+ ready=true;resize();render();
  reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches){const now=performance.now();slots.forEach(slot=>syncHover(slot,slot.ordinal,now,true));render()}});
  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();$('#loading').textContent='3D interrupted. Project pages remain available.';$('#loading').hidden=false});
  $('#loading').hidden=true;
@@ -196,6 +212,7 @@ export function mountJourneyScene(projects){
  }
  function cast(x,y,meshes){raycaster.setFromCamera(new T.Vector2(x/width*2-1,1-y/height*2),camera);return raycaster.intersectObjects(meshes,false)}
  return {
+  resize,
   setHover(value,immediate=false){
    const next=Number.isInteger(value)&&slots.some(slot=>slot.ordinal===value&&slot.mat.opacity>=.1)?value:null;
    let changed=next!==hoverOrdinal;hoverOrdinal=next;

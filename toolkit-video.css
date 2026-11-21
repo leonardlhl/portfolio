@@ -39,7 +39,7 @@
  width:100%;
  text-align:center;
 }
-@media(orientation:landscape) and (max-height:460px){
+@media (orientation:landscape) and (max-height:460px) and (pointer:fine){
  /* Let the video use the open centre above the page, between the side controls. */
  #journey-stage:has(.toolkit-video-single),
  #journey-stage:has(.toolkit-video-single) .journey-window{

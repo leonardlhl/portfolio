@@ -120,3 +120,77 @@ footer .edition-link{color:#94989c;opacity:1}
 /* Project sheets crossfade in place; CV keeps its horizontal text track. */
 #journey-track[data-page-effect="fade"]{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr);transform:none;will-change:auto}
 #journey-track[data-page-effect="fade"]>.journey-page{grid-area:1/1;width:100%;height:100%;min-height:0}
+
+/* In a short touch viewport, keep the drawing at full height between two
+   narrow side columns. The original sheet and all its reveal layers fit
+   the same rectangle throughout a device rotation. */
+@media (pointer: coarse) and (orientation: landscape) and (max-height: 540px) {
+  :root {
+    --reading-rail: clamp(90px, 12vw, 124px);
+    --landscape-left: max(12px, calc(env(safe-area-inset-left) + 6px));
+    --landscape-right: max(12px, calc(env(safe-area-inset-right) + 6px));
+    --landscape-top: max(8px, env(safe-area-inset-top));
+    --landscape-bottom: max(6px, env(safe-area-inset-bottom));
+  }
+  #scene { --landscape-framing: 1 }
+  header, footer {
+    padding-left: var(--landscape-left);
+    padding-right: var(--landscape-right);
+  }
+  header { padding-top: var(--landscape-top); padding-bottom: 0 }
+  header .header-identity { max-width: var(--reading-rail); gap: 2px }
+  .header-identity .identity { font-size: 15px; letter-spacing: .12em }
+  .header-identity .identity span { margin-top: 3px; font-size: 12px; letter-spacing: .015em }
+  #index-toggle { max-width: var(--reading-rail) }
+  #index {
+    inset: calc(var(--landscape-top) + 48px) var(--landscape-right) auto auto;
+    width: min(330px, 60vw);
+    max-height: calc(100dvh - var(--landscape-top) - var(--landscape-bottom) - 52px);
+  }
+  footer { padding-top: 0; padding-bottom: var(--landscape-bottom) }
+  #journey-stage, body[data-stop=profile] #journey-stage {
+    inset: var(--landscape-top) var(--landscape-right) var(--landscape-bottom) var(--landscape-left);
+  }
+  .journey-window { margin-inline: calc(var(--reading-rail) + 6px); height: 100% }
+  .reading-head {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    margin: 0;
+    pointer-events: none;
+  }
+  #reading-title {
+    position: absolute;
+    top: clamp(90px, 34%, 145px);
+    left: 0;
+    width: var(--reading-rail);
+    font-size: clamp(15px, 1.95vw, 20px);
+    letter-spacing: .015em;
+    hyphens: auto;
+  }
+  .reading-tools {
+    position: absolute;
+    top: 56px;
+    right: 0;
+    width: var(--reading-rail);
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 4px 2px;
+    pointer-events: auto;
+  }
+  #page-position { flex-basis: 100%; text-align: right }
+  .journey-page.cv-page-content { padding: 8px 6px 22px }
+  body[data-phase=reading] footer { grid-template-columns: var(--reading-rail) 1fr var(--reading-rail) }
+  body[data-phase=reading] footer .footer-navigation {
+    grid-column: 1;
+    justify-self: start;
+    grid-template-rows: 44px;
+  }
+  body[data-phase=reading] footer .footer-meta {
+    grid-column: 3;
+    max-width: var(--reading-rail);
+    gap: 0;
+  }
+  body[data-phase=reading] #browse-hint { font-size: 12px }
+}
