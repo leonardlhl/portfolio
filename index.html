@@ -4,7 +4,127 @@
 <main><div id="scene" tabindex="0" aria-label="3D project tree. Click or scroll a preview to open it. Drag to orbit. Use arrow keys to explore, or Enter to open the selected project."></div><p id="loading" role="status">Loading projects…</p><aside id="index" hidden><h2>Projects</h2><div id="project-list"></div></aside></main>
 <footer><div class="footer-navigation"><div class="step-controls"><button id="left" aria-label="Previous page" title="Previous page">&lt;</button><button id="right" aria-label="Next page" title="Next page">&gt;</button></div><button id="copyright-toggle" hidden type="button" aria-expanded="false" aria-controls="copyright-panel">Copyright</button></div><div class="footer-meta"><span id="browse-hint">Click a preview to open · Scroll to explore</span><div class="footer-edition"><a class="edition-link" href="./m/">Mobile version</a><button type="button" id="music-toggle" aria-label="Mute background music" aria-pressed="true" title="Mute background music" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path class="music-note" d="M9 5.4 20 3v12.2c0 1.9-1.7 3.4-3.8 3.4-1.5 0-2.7-.9-2.7-2.3 0-1.9 1.8-3.4 3.9-3.4.4 0 .7 0 1 .1V7L10.6 8.7v9.1c0 1.9-1.8 3.4-3.9 3.4-1.5 0-2.7-.9-2.7-2.3 0-1.9 1.8-3.4 3.9-3.4.4 0 .7 0 1.1.1Z"/><g class="music-slash"><path d="m3 3 18 18" stroke="#fff" stroke-width="4"/><path d="m3 3 18 18" stroke="currentColor" stroke-width="1.6"/></g></svg></button></div></div></footer>
 <audio id="background-music" loop preload="none" data-src="./assets/audio/boccherini-minuet-solo-piano.mp3?v=2"></audio>
-<script type="module" src="./background-music.js?v=1"></script>
+<script id="music-startup">
+(() => {
+// The MP3 is mastered quietly so phones with hardware-only volume stay quiet too.
+const preferenceKey = 'portfolio-background-music';
+
+function savedPreference() {
+  try { return localStorage.getItem(preferenceKey) !== 'off'; }
+  catch { return true; }
+}
+
+function mountBackgroundMusic() {
+  const audio = document.querySelector('#background-music');
+  const button = document.querySelector('#music-toggle');
+  let enabled = savedPreference();
+  let needsGesture = Boolean(navigator.connection?.saveData);
+  let failed = false;
+  let pageHidden = false;
+  let videoAudible = false;
+  let pending = null;
+  let requestNumber = 0;
+  let lastGestureAttempt = -Infinity;
+
+  const held = () => pageHidden || document.hidden || videoAudible;
+  function showState() {
+    let state = 'playing';
+    let label = 'Mute background music';
+    if (!enabled) { state = 'muted'; label = 'Turn on background music'; }
+    else if (held()) { state = 'paused'; }
+    else if (failed) { state = 'unavailable'; label = 'Retry background music'; }
+    else if (needsGesture || audio.paused || pending) { state = 'waiting'; label = 'Play background music'; }
+    button.dataset.state = state;
+    button.setAttribute('aria-label', label);
+    button.setAttribute('aria-pressed', String(enabled));
+    button.title = label;
+  }
+
+  function sync(userGesture = false) {
+    if (!enabled || held()) {
+      ++requestNumber;
+      if (pending || !audio.paused) audio.pause();
+      pending = null;
+      showState();
+      return;
+    }
+    if (!userGesture && (pending || needsGesture || failed)) return showState();
+    if (!pending && !audio.paused && !failed && !needsGesture) return showState();
+    // One tap can emit touchend and click. A later tap may retry a stalled load.
+    if (userGesture && (pending === 'gesture' || failed) && performance.now() - lastGestureAttempt < 300) return;
+    const ticket = ++requestNumber;
+    pending = userGesture ? 'gesture' : 'auto';
+    if (userGesture) lastGestureAttempt = performance.now();
+    needsGesture = false;
+    if (!audio.hasAttribute('src')) audio.src = audio.dataset.src;
+    else if (failed || audio.error) audio.load();
+    failed = false;
+    audio.play().then(() => {
+      if (ticket !== requestNumber) return;
+      pending = null;
+      showState();
+    }).catch(error => {
+      if (ticket !== requestNumber) return;
+      pending = null;
+      failed = error.name !== 'NotAllowedError' && error.name !== 'AbortError';
+      needsGesture = !failed;
+      showState();
+    });
+    showState();
+  }
+
+  function setEnabled(value) {
+    enabled = value;
+    try { localStorage.setItem(preferenceKey, value ? 'on' : 'off'); } catch {}
+    sync(true);
+  }
+
+  button.addEventListener('click', () => {
+    if (enabled && !held() && (pending || failed || needsGesture || audio.paused)) sync(true);
+    else setEnabled(!enabled);
+  });
+  function unlock(event) {
+    if (!event.isTrusted || !enabled || held()) return;
+    if (!pending && !audio.paused && !failed && !needsGesture) return;
+    if (event.type === 'pointerdown' && (event.pointerType !== 'mouse' || event.button !== 0)) return;
+    if (event.type === 'pointerup' && event.pointerType === 'touch' && 'ontouchend' in window) return;
+    if (event.type === 'keydown' && (event.repeat || event.ctrlKey || event.metaKey || event.altKey)) return;
+    if (event.target.closest?.('#music-toggle, video, .toolkit-video-controls')) return;
+    sync(true);
+  }
+  // Capture also covers taps consumed by the helix, without cancelling navigation.
+  for (const name of ['pointerdown', 'pointerup', 'touchend', 'click', 'keydown']) {
+    window.addEventListener(name, unlock, {capture:true, passive:true});
+  }
+  audio.addEventListener('playing', showState);
+  audio.addEventListener('pause', showState);
+  audio.addEventListener('error', () => {
+    if (!audio.error) return;
+    ++requestNumber;
+    pending = null;
+    failed = true;
+    showState();
+  });
+  function checkVideo() {
+    videoAudible = !!document.querySelector('.toolkit-video-page[data-audible="true"]');
+    sync();
+  }
+  document.addEventListener('portfolio:media-audio', checkVideo);
+  document.addEventListener('visibilitychange', () => sync());
+  window.addEventListener('pagehide', () => { pageHidden = true; sync(); });
+  window.addEventListener('pageshow', () => { pageHidden = false; checkVideo(); });
+  window.addEventListener('storage', event => {
+    if (event.key === preferenceKey || event.key === null) { enabled = savedPreference(); sync(); }
+  });
+  audio.volume = 0.8;
+  button.hidden = false;
+  checkVideo();
+}
+
+if (!document.documentElement.dataset.mobileRedirect) mountBackgroundMusic();
+
+})();
+</script>
 <section id="journey-stage" aria-label="Portfolio pages" aria-hidden="true" inert><div class="reading-head"><h2 id="reading-title"></h2><div class="reading-tools"><span id="page-position" role="status" aria-live="polite"></span><button id="page-enlarge" type="button" aria-label="Enlarge this portfolio page" title="Enlarge page" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M7.5 10.5h6m-3-3v6"/></svg></button><button id="reading-close" type="button" aria-label="Close pages and return to tree" title="Close pages"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div></div><div class="journey-window"><div id="journey-track"></div></div></section>
 <section id="copyright-panel" hidden tabindex="-1" aria-labelledby="copyright-title"><div class="copyright-head"><h2 id="copyright-title">Copyright &amp; credits</h2><button id="copyright-close" type="button" aria-label="Close copyright notice"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><p class="copyright-credit">&copy; 2026 Leonard Lo. All rights reserved in the portfolio presentation and original material owned by Leonard Lo.</p>
 <p>Projects completed with architectural practices, and third-party images and materials, remain subject to their respective owners’ rights. Project credits and stated roles apply.</p>
