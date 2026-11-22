@@ -45,10 +45,27 @@ export function createVideoPage(config){
  const saveData=()=>Boolean(navigator.connection?.saveData);
  const viewerOpen=()=>!!document.querySelector('#page-zoom[open]');
  const unavailable=()=>!active||disposed||document.hidden||viewerOpen();
+ const playingClips=new Set();
+ // Once a clip owns sound, keep it through buffering and seeks to avoid music bursts.
+ const audioEvents=['playing','pause','ended','emptied','abort','error','volumechange','ratechange'];
+ page.dataset.audible='false';
+ function publishAudioState(){
+  const audible=!unavailable()&&audioVideos.some(video=>playingClips.has(video)&&
+   !video.paused&&!video.ended&&!video.muted&&video.volume>0&&video.playbackRate!==0);
+  if(page.dataset.audible===String(audible))return;
+  page.dataset.audible=String(audible);
+  document.dispatchEvent(new CustomEvent('portfolio:media-audio',{detail:{player:page,audible}}));
+ }
+ function onAudioState(event){
+  // play() can still be pending or be rejected; only native playback owns sound.
+  if(event.type==='playing')playingClips.add(event.currentTarget);
+  else if(event.type!=='volumechange'&&event.type!=='ratechange')playingClips.delete(event.currentTarget);
+  publishAudioState();
+ }
  const isMuted=()=>audioVideos.every(video=>video.muted);
  const blockedLabel=()=>isMuted()?playLabel:'Play with sound';
  const promptToPlay=()=>{status.textContent='Select '+(blocked?blockedLabel():playLabel)+' to watch.'};
- function setMuted(muted){for(const video of audioVideos)video.muted=muted}
+ function setMuted(muted){for(const video of audioVideos)video.muted=muted;publishAudioState()}
  function draw(){
   const action=loading?'Cancel playback':playing?(single?'Pause':'Pause all'):blocked?blockedLabel():finished?replayLabel:started?(single?'Resume':'Resume all'):playLabel;
   toggle.innerHTML=icon(playing||loading?'pause':finished?'replay':'play')+'<span>'+action+'</span>';
@@ -64,6 +81,7 @@ export function createVideoPage(config){
  function pause(message){
   run++;playing=false;loading=false;buffering?.abort();buffering=null;
   for(const video of videos)video.pause();
+  playingClips.clear();publishAudioState();
   if(!failed&&!blocked)status.textContent=message||'';
   draw();
  }
@@ -94,6 +112,7 @@ export function createVideoPage(config){
   if(fromStart||finished||failed)reset();
   const ticket=++run;started=true;loading=true;playing=false;failed=false;blocked=false;
   for(const video of videos)video.pause();
+  playingClips.clear();publishAudioState();
   status.textContent=single?'Loading video…':'Loading demos…';draw();
   // A common ready point prevents the fastest download starting on its own.
   // Media fetch starts only on active entry or an explicit Play/Replay action.
@@ -136,6 +155,7 @@ export function createVideoPage(config){
  // The journey creates its zoom dialog after assembling the reading pages.
  dialogObserver.observe(document.body,{attributes:true,subtree:true,attributeFilter:['open']});
  for(const video of videos){video.addEventListener('ended',ended);video.addEventListener('error',mediaError)}
+ for(const video of audioVideos)for(const type of audioEvents)video.addEventListener(type,onAudioState);
  toggle.addEventListener('click',()=>playing||loading?pause():play());
  replay.addEventListener('click',()=>play(true));
  sound?.addEventListener('click',()=>{if(!unavailable()){setMuted(!isMuted());if(blocked)promptToPlay();draw()}});
@@ -153,6 +173,7 @@ export function createVideoPage(config){
  page.dispose=()=>{
   if(disposed)return;disposed=true;pause();dialogObserver.disconnect();
   document.removeEventListener('visibilitychange',onVisibility);window.removeEventListener('pagehide',onPageHide);reduced.removeEventListener('change',onReduced);
+  for(const video of audioVideos)for(const type of audioEvents)video.removeEventListener(type,onAudioState);
   for(const video of videos){video.removeEventListener('ended',ended);video.removeEventListener('error',mediaError);video.removeAttribute('src');video.load()}
  };
  status.textContent='';draw();return page;

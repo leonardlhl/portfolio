@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T16:08:56.155Z",
+  "generatedAt": "2026-11-22T15:06:29.386Z",
   "projects": 13,
   "projectPages": 49,
   "videoPages": 1,
@@ -9,6 +9,10 @@
     {
       "file": "assets/page-layers/2026-v12-page-05-preview-signed-v1.webp",
       "bytes": 236510
+    },
+    {
+      "file": "assets/page-layers/2026-page-07-preview-signed-v1.webp",
+      "bytes": 267438
     },
     {
       "file": "assets/page-layers/2026-page-06-preview-signed-v1.webp",
@@ -23,10 +27,6 @@
       "bytes": 148854
     },
     {
-      "file": "assets/page-layers/2026-page-07-preview-signed-v1.webp",
-      "bytes": 267438
-    },
-    {
       "file": "assets/page-layers/2026-page-10-preview-signed-v1.webp",
       "bytes": 211512
     },
@@ -35,36 +35,40 @@
       "bytes": 160730
     },
     {
-      "file": "assets/page-layers/2026-page-14-preview-signed-v1.webp",
-      "bytes": 272776
+      "file": "assets/page-layers/2026-page-13-preview-signed-v1.webp",
+      "bytes": 145480
     },
     {
       "file": "assets/page-layers/2026-page-12-preview-signed-v1.webp",
       "bytes": 101362
     },
     {
-      "file": "assets/page-layers/2026-page-16-preview-signed-v1.webp",
-      "bytes": 65600
-    },
-    {
       "file": "assets/page-layers/2026-page-15-preview-signed-v1.webp",
       "bytes": 198488
     },
     {
-      "file": "assets/page-layers/2026-page-13-preview-signed-v1.webp",
-      "bytes": 145480
+      "file": "assets/page-layers/2026-page-14-preview-signed-v1.webp",
+      "bytes": 272776
     },
     {
-      "file": "assets/page-layers/2026-page-18-preview-signed-v1.webp",
-      "bytes": 233710
+      "file": "assets/page-layers/2026-page-16-preview-signed-v1.webp",
+      "bytes": 65600
     },
     {
       "file": "assets/page-layers/2026-page-17-preview-signed-v1.webp",
       "bytes": 210290
     },
     {
+      "file": "assets/page-layers/2026-page-18-preview-signed-v1.webp",
+      "bytes": 233710
+    },
+    {
       "file": "assets/page-layers/2026-v12-page-19-preview-signed-v1.webp",
       "bytes": 142330
+    },
+    {
+      "file": "assets/page-layers/2026-page-21-preview-signed-v1.webp",
+      "bytes": 179126
     },
     {
       "file": "assets/page-layers/2026-v12-page-20-preview-signed-v1.webp",
@@ -75,16 +79,12 @@
       "bytes": 180598
     },
     {
-      "file": "assets/page-layers/2026-page-21-preview-signed-v1.webp",
-      "bytes": 179126
+      "file": "assets/page-layers/2026-page-23-preview-signed-v1.webp",
+      "bytes": 162760
     },
     {
       "file": "assets/page-layers/2026-page-24-preview-signed-v1.webp",
       "bytes": 111858
-    },
-    {
-      "file": "assets/page-layers/2026-page-23-preview-signed-v1.webp",
-      "bytes": 162760
     },
     {
       "file": "assets/page-layers/2026-v11-page-25-preview-signed-v1.webp",
@@ -99,6 +99,14 @@
       "bytes": 263812
     },
     {
+      "file": "assets/page-layers/2026-page-31-preview-signed-v1.webp",
+      "bytes": 251204
+    },
+    {
+      "file": "assets/page-layers/2026-page-28-preview-signed-v1.webp",
+      "bytes": 250078
+    },
+    {
       "file": "assets/page-layers/2026-page-29-preview-signed-v1.webp",
       "bytes": 242594
     },
@@ -107,24 +115,20 @@
       "bytes": 69612
     },
     {
-      "file": "assets/page-layers/2026-page-28-preview-signed-v1.webp",
-      "bytes": 250078
-    },
-    {
-      "file": "assets/page-layers/2026-page-31-preview-signed-v1.webp",
-      "bytes": 251204
+      "file": "assets/page-layers/2026-page-32-preview-signed-v1.webp",
+      "bytes": 226970
     },
     {
       "file": "assets/page-layers/2026-page-33-preview-signed-v1.webp",
       "bytes": 196900
     },
     {
-      "file": "assets/page-layers/2026-page-32-preview-signed-v1.webp",
-      "bytes": 226970
-    },
-    {
       "file": "assets/page-layers/2026-v12-page-34-preview-signed-v1.webp",
       "bytes": 177318
+    },
+    {
+      "file": "assets/page-layers/2026-page-35-preview-signed-v1.webp",
+      "bytes": 268660
     },
     {
       "file": "assets/page-layers/2026-page-37-preview-signed-v1.webp",
@@ -135,12 +139,12 @@
       "bytes": 243862
     },
     {
-      "file": "assets/page-layers/2026-page-35-preview-signed-v1.webp",
-      "bytes": 268660
-    },
-    {
       "file": "assets/page-layers/2026-v12-page-38-preview-signed-v1.webp",
       "bytes": 200906
+    },
+    {
+      "file": "assets/page-layers/2026-page-40-preview-signed-v1.webp",
+      "bytes": 271104
     },
     {
       "file": "assets/page-layers/2026-page-39-preview-signed-v1.webp",
@@ -149,10 +153,6 @@
     {
       "file": "assets/page-layers/2026-page-41-preview-signed-v1.webp",
       "bytes": 196982
-    },
-    {
-      "file": "assets/page-layers/2026-page-40-preview-signed-v1.webp",
-      "bytes": 271104
     },
     {
       "file": "assets/page-layers/2026-page-42-preview-signed-v1.webp",
@@ -171,12 +171,12 @@
       "bytes": 165996
     },
     {
-      "file": "assets/page-layers/2026-page-47-preview-signed-v1.webp",
-      "bytes": 180868
-    },
-    {
       "file": "assets/page-layers/2026-page-46-preview-signed-v1.webp",
       "bytes": 209776
+    },
+    {
+      "file": "assets/page-layers/2026-page-47-preview-signed-v1.webp",
+      "bytes": 180868
     },
     {
       "file": "assets/page-layers/2026-v12-page-48-preview-signed-v1.webp",
@@ -512,7 +512,7 @@
     },
     {
       "file": "index.html",
-      "bytes": 5414
+      "bytes": 6185
     },
     {
       "file": "style.css",
@@ -520,7 +520,7 @@
     },
     {
       "file": "journey.css",
-      "bytes": 13226
+      "bytes": 14066
     },
     {
       "file": "journey.js",
@@ -615,6 +615,10 @@
       "bytes": 1640
     },
     {
+      "file": "background-music.js",
+      "bytes": 4119
+    },
+    {
       "file": "cursor.js",
       "bytes": 4791
     },
@@ -624,7 +628,7 @@
     },
     {
       "file": "toolkit-video.js",
-      "bytes": 9318
+      "bytes": 10598
     },
     {
       "file": "toolkit-video.css",
@@ -636,7 +640,7 @@
     },
     {
       "file": "m/index.html",
-      "bytes": 5465
+      "bytes": 6236
     },
     {
       "file": "m/mobile.js",
@@ -669,6 +673,10 @@
     {
       "file": "fonts/OFL.txt",
       "bytes": 4388
+    },
+    {
+      "file": "assets/audio/boccherini-minuet-solo-piano.mp3",
+      "bytes": 285623
     },
     {
       "file": "assets/cursors/normal.svg",
@@ -727,6 +735,6 @@
       "bytes": 846
     }
   ],
-  "totalBytes": 44488683,
+  "totalBytes": 44782087,
   "externalAssets": []
 }

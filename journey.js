@@ -1,5 +1,5 @@
 import {projects} from './projects.js?v=2026-v12-bespoke55';
-import {createVideoPage} from './toolkit-video.js?v=3';
+import {createVideoPage} from './toolkit-video.js?v=4';
 import {mountAmbientSky} from './ambient.js?v=45';
 import {mountPageZoom} from './page-zoom.js?v=2';
 import {mountContact} from './contact.js?v=1';

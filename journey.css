@@ -100,6 +100,14 @@ footer .step-controls button{min-width:44px;font-size:20px;line-height:1}
 footer .footer-meta{grid-column:3;justify-self:end;display:flex;flex-direction:column;align-items:flex-end;gap:5px;max-width:min(32vw,370px);pointer-events:none;text-align:right}
 #browse-hint{color:#94989c;font-size:13px;line-height:1.35;letter-spacing:.04em}
 footer .edition-link{color:#94989c;opacity:1}
+footer .footer-edition{display:flex;align-items:center;justify-content:flex-end;gap:2px;pointer-events:none}
+footer #music-toggle{display:grid;place-items:center;flex:0 0 44px;width:44px;min-height:44px;padding:0;color:#686e73;border:0;background:transparent;pointer-events:auto;touch-action:manipulation}
+footer #music-toggle[hidden]{display:none}
+#music-toggle svg{width:16px;height:16px;fill:currentColor;pointer-events:none}
+#music-toggle .music-slash{display:none;fill:none;stroke-linecap:round}
+#music-toggle[data-state="muted"] .music-slash,#music-toggle[data-state="unavailable"] .music-slash{display:inline}
+#music-toggle[data-state="muted"]{color:#898e92}
+#music-toggle:hover,#music-toggle:focus-visible{color:#272c2f}
 #index-toggle{font-size:12px;padding:6.4px 10.4px;letter-spacing:.056em}
 @media(max-width:700px){
  footer{grid-template-columns:auto minmax(0,1fr);column-gap:12px}
@@ -193,4 +201,5 @@ footer .edition-link{color:#94989c;opacity:1}
     gap: 0;
   }
   body[data-phase=reading] #browse-hint { font-size: 12px }
+  body[data-phase=reading] .footer-edition {flex-direction:column-reverse;align-items:flex-end;gap:0}
 }
