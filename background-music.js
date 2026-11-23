@@ -32,7 +32,7 @@ function mountBackgroundMusic() {
     button.title = label;
   }
 
-  function sync(userGesture = false) {
+  function sync(trigger = 'auto') {
     if (!enabled || held()) {
       ++requestNumber;
       if (pending || !audio.paused) audio.pause();
@@ -40,13 +40,13 @@ function mountBackgroundMusic() {
       showState();
       return;
     }
-    if (!userGesture && (pending || needsGesture || failed)) return showState();
+    if (trigger === 'auto' && (pending || needsGesture || failed)) return showState();
     if (!pending && !audio.paused && !failed && !needsGesture) return showState();
     // One tap can emit touchend and click. A later tap may retry a stalled load.
-    if (userGesture && (pending === 'gesture' || failed) && performance.now() - lastGestureAttempt < 300) return;
+    if (trigger === 'gesture' && (pending === 'gesture' || failed) && performance.now() - lastGestureAttempt < 300) return;
     const ticket = ++requestNumber;
-    pending = userGesture ? 'gesture' : 'auto';
-    if (userGesture) lastGestureAttempt = performance.now();
+    pending = trigger;
+    if (trigger === 'gesture') lastGestureAttempt = performance.now();
     needsGesture = false;
     if (!audio.hasAttribute('src')) audio.src = audio.dataset.src;
     else if (failed || audio.error) audio.load();
@@ -68,11 +68,11 @@ function mountBackgroundMusic() {
   function setEnabled(value) {
     enabled = value;
     try { localStorage.setItem(preferenceKey, value ? 'on' : 'off'); } catch {}
-    sync(true);
+    sync('gesture');
   }
 
   button.addEventListener('click', () => {
-    if (enabled && !held() && (pending || failed || needsGesture || audio.paused)) sync(true);
+    if (enabled && !held() && (pending || failed || needsGesture || audio.paused)) sync('gesture');
     else setEnabled(!enabled);
   });
   function unlock(event) {
@@ -82,11 +82,24 @@ function mountBackgroundMusic() {
     if (event.type === 'pointerup' && event.pointerType === 'touch' && 'ontouchend' in window) return;
     if (event.type === 'keydown' && (event.repeat || event.ctrlKey || event.metaKey || event.altKey)) return;
     if (event.target.closest?.('#music-toggle, video, .toolkit-video-controls')) return;
-    sync(true);
+    sync('gesture');
   }
   // Capture also covers taps consumed by the helix, without cancelling navigation.
   for (const name of ['pointerdown', 'pointerup', 'touchend', 'click', 'keydown']) {
     window.addEventListener(name, unlock, {capture:true, passive:true});
+  }
+  // Try once at the start of scrolling. Browsers that require activation can
+  // still accept the subsequent tap/click, even if this play() is pending.
+  function onFirstScroll(event) {
+    if (!event.isTrusted || !enabled || held() || pending === 'gesture') return;
+    if (event.type === 'wheel' && (event.ctrlKey || (!event.deltaX && !event.deltaY))) return;
+    if (event.type === 'touchmove' && event.touches.length !== 1) return;
+    window.removeEventListener('wheel', onFirstScroll, true);
+    window.removeEventListener('touchmove', onFirstScroll, true);
+    sync('scroll');
+  }
+  for (const name of ['wheel', 'touchmove']) {
+    window.addEventListener(name, onFirstScroll, {capture:true, passive:true});
   }
   audio.addEventListener('playing', showState);
   audio.addEventListener('pause', showState);
